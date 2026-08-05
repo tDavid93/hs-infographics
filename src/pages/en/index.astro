@@ -1,70 +1,70 @@
 ---
 import { ArrowUpRight, CalendarClock, Filter, Info, Sparkles } from "@lucide/astro";
-import { comps, mechanics, sources, tribes, updated } from "../data/bg14";
-import "../styles/global.css";
+import { comps, mechanics, sources, tribes, updated } from "../../data/bg14-en";
+import "../../styles/global.css";
 
 const cardArt = (cardId: string) =>
   `https://art.hearthstonejson.com/v1/512x/${cardId}.jpg`;
 
-const date = new Intl.DateTimeFormat("hu-HU", {
+const date = new Intl.DateTimeFormat("en-US", {
   month: "short",
   day: "numeric",
   year: "numeric",
 }).format(new Date(`${updated}T12:00:00Z`));
 ---
 
-<html lang="hu">
-      <head>
+<html lang="en">
+  <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Magyar Hearthstone Battlegrounds 14. szezon segéd infografika aktuális compokkal, Dark Gifts tanácsokkal és HearthstoneJSON kártyaképekkel."
+      content="English Hearthstone Battlegrounds Season 14 helper infographic with current comps, Dark Gifts guidance, and HearthstoneJSON card art."
     />
     <link rel="alternate" hreflang="hu" href="/" />
     <link rel="alternate" hreflang="en" href="/en/" />
-    <title>BG14 Meta Desk | Hearthstone Battlegrounds magyar segéd</title>
+    <title>BG14 Meta Desk | Hearthstone Battlegrounds helper</title>
   </head>
   <body>
     <main class="shell">
       <header class="masthead">
         <div class="masthead-copy">
-          <p class="eyebrow">Hearthstone Battlegrounds · 14. szezon</p>
+          <p class="eyebrow">Hearthstone Battlegrounds · Season 14</p>
           <h1>Dark Gifts Meta Desk</h1>
           <p class="lede">
-            Tömör magyar segéd az early Season 14 döntésekhez: melyik engine-re érdemes ráállni,
-            mely darabok számítanak, és mikor elég egy Dark Gift vagy Trinket a pivothoz.
+            A compact helper for early Season 14 decisions: which engine to commit to,
+            which pieces matter, and when a Dark Gift or Trinket is enough to pivot.
           </p>
         </div>
-        <div class="update-card" aria-label={`Frissítve: ${date}`}>
+        <div class="update-card" aria-label={`Updated ${date}`}>
           <CalendarClock size={18} />
-          <span>Frissítve</span>
+          <span>Updated</span>
           <strong>{date}</strong>
         </div>
-        <nav class="language-switch" aria-label="Nyelvválasztó">
-          <a class="active" href="/" aria-current="page">HU</a>
-          <a href="/en/">EN</a>
+        <nav class="language-switch" aria-label="Language selector">
+          <a href="/">HU</a>
+          <a class="active" href="/en/" aria-current="page">EN</a>
         </nav>
       </header>
 
       <section class="snapshot" aria-labelledby="snapshot-title">
         <div class="snapshot-main">
-          <p class="eyebrow">Korai közösségi snapshot</p>
-          <h2 id="snapshot-title">Előbb engine, utána tribe</h2>
+          <p class="eyebrow">Early community snapshot</p>
+          <h2 id="snapshot-title">Engine first, tribe second</h2>
           <p>
-            A jelenlegi olvasat az ismételhető engine-eket részesíti előnyben a vak tribe force-olással szemben.
-            A Mech és a Quilboar skálázási loopja a legtisztább, a Murloc és az Undead erős, ha összeállnak
-            a kulcstriggerek, a lassabb Dragon, Beast, Pirate, Naga vagy Demon vonalakhoz pedig élesebb lobby jel kell.
+            The current read favors repeatable engines over blind tribe forcing. Mech and Quilboar
+            have the cleanest visible scaling loops, Murloc and Undead are strong when their key
+            triggers line up, and slower Dragon, Beast, Pirate, Naga, or Demon lines need a sharper lobby signal.
           </p>
         </div>
-        <div class="rank-board" aria-label="Korai comp rangsor">
+        <div class="rank-board" aria-label="Early comp ranking">
           {["S Mech", "S Quilboar", "A Murloc", "A Undead", "A Elemental", "B Naga", "B Pirate", "B Beast", "B Dragon", "C Demon"].map((rank) => (
             <span>{rank}</span>
           ))}
         </div>
       </section>
 
-      <section class="mechanics" aria-label="Season 14 mechanikák">
+      <section class="mechanics" aria-label="Season 14 mechanics">
         {mechanics.map((item) => (
           <article>
             <Sparkles size={20} />
@@ -75,10 +75,10 @@ const date = new Intl.DateTimeFormat("hu-HU", {
         ))}
       </section>
 
-      <section class="toolbar" aria-label="Comp szűrés">
+      <section class="toolbar" aria-label="Filter comps">
         <div>
           <Filter size={18} />
-          <span>Szűrő</span>
+          <span>Filter</span>
         </div>
         <nav>
           {tribes.map((tribe) => (
@@ -89,7 +89,7 @@ const date = new Intl.DateTimeFormat("hu-HU", {
         </nav>
       </section>
 
-      <section class="comps" aria-label="Battlegrounds Season 14 compok">
+      <section class="comps" aria-label="Battlegrounds Season 14 comps">
         {comps.map((comp) => (
           <article class="comp-card" data-tribe={comp.tribe}>
             <div class="comp-head">
@@ -103,7 +103,7 @@ const date = new Intl.DateTimeFormat("hu-HU", {
               </aside>
             </div>
 
-            <div class="card-strip" aria-label={`${comp.name} core kártyák`}>
+            <div class="card-strip" aria-label={`${comp.name} core cards`}>
               {comp.cards.map((card) => (
                 <figure class="hs-card">
                   <div class="hs-card-face">
@@ -111,7 +111,7 @@ const date = new Intl.DateTimeFormat("hu-HU", {
                     <div class="art-window">
                       <img
                         src={cardArt(card.cardId)}
-                        alt={`${card.name} Hearthstone kártyakép`}
+                        alt={`${card.name} Hearthstone card art`}
                         loading="lazy"
                         decoding="async"
                         data-card-name={card.name}
@@ -121,13 +121,13 @@ const date = new Intl.DateTimeFormat("hu-HU", {
                     <div class="nameplate">{card.name}</div>
                     <div class="type-line">Tier {card.tier} · {card.type}</div>
                     <p class="rules" set:html={card.rules} />
-                    <div class="stats" aria-label={`${card.attack} Attack és ${card.health} Health`}>
+                    <div class="stats" aria-label={`${card.attack} Attack and ${card.health} Health`}>
                       <span class="attack">{card.attack}</span>
                       <span class="health">{card.health}</span>
                     </div>
                   </div>
                   <figcaption class="meta-note">
-                    <strong>Meta jegyzet</strong>
+                    <strong>Meta note</strong>
                     <span>{card.note}</span>
                   </figcaption>
                 </figure>
@@ -136,13 +136,13 @@ const date = new Intl.DateTimeFormat("hu-HU", {
 
             <div class="decision-grid">
               <section>
-                <h3>Commit jel</h3>
+                <h3>Commit When</h3>
                 <ul>
                   {comp.commit.map((item) => <li>{item}</li>)}
                 </ul>
               </section>
               <section>
-                <h3>Kerüld</h3>
+                <h3>Avoid</h3>
                 <ul>
                   {comp.avoid.map((item) => <li>{item}</li>)}
                 </ul>
@@ -155,11 +155,11 @@ const date = new Intl.DateTimeFormat("hu-HU", {
       <section class="notes" aria-labelledby="notes-title">
         <Info size={20} />
         <div>
-          <h2 id="notes-title">Megbízhatósági jegyzet</h2>
+          <h2 id="notes-title">Reliability Notes</h2>
           <p>
-            Ez nem végleges win-rate tierlista. A Blizzard 36.2-es Season 14 kártya- és mechanikaadatait,
-            a HSBG vizuális adatbázisát, a HearthstoneJSON képazonosítóit és a korai közösségi tapasztalatokat
-            kombinálja. Balance változások és nagyobb tracker minták után a sorrend várhatóan mozogni fog.
+            This is not a settled win-rate tier list. It combines Blizzard's 36.2 Season 14 card
+            and mechanic data, HSBG's visual database, HearthstoneJSON image IDs, and early
+            community discussion. Expect this ordering to move after balance changes and larger tracker samples.
           </p>
           <div class="source-list">
             {sources.map((source) => (
@@ -191,7 +191,7 @@ const date = new Intl.DateTimeFormat("hu-HU", {
         image.addEventListener("error", () => {
           const fallback = document.createElement("div");
           fallback.className = "render-fallback";
-          fallback.innerHTML = `<strong>${image.dataset.cardName ?? "Kártya"}</strong><span>${image.dataset.cardText ?? "Kép nem elérhető"}</span>`;
+          fallback.innerHTML = `<strong>${image.dataset.cardName ?? "Card"}</strong><span>${image.dataset.cardText ?? "Image unavailable"}</span>`;
           image.replaceWith(fallback);
         });
       });

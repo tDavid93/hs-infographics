@@ -117,6 +117,35 @@ h1 {
   white-space: nowrap;
 }
 
+.language-switch {
+  display: inline-flex;
+  gap: 4px;
+  align-self: end;
+  justify-self: end;
+  padding: 4px;
+  border: 1px solid rgb(255 255 255 / 0.18);
+  border-radius: 8px;
+  background: rgb(8 10 15 / 0.72);
+  box-shadow: var(--shadow);
+}
+
+.language-switch a {
+  display: grid;
+  place-items: center;
+  min-width: 42px;
+  min-height: 34px;
+  border-radius: 5px;
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.language-switch a:is(:hover, .active) {
+  background: var(--panel-strong);
+  color: var(--ink);
+}
+
 .snapshot,
 .notes {
   display: grid;
@@ -600,6 +629,10 @@ h1 {
   }
 
   .update-card {
+    justify-self: start;
+  }
+
+  .language-switch {
     justify-self: start;
   }
 
