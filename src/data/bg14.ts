@@ -32,6 +32,18 @@ export type Comp = {
   avoid: string[];
 };
 
+export type TimelineRow = {
+  turn: string;
+  offer: string;
+  use: string;
+};
+
+export type InfoBlock = {
+  title: string;
+  body: string;
+  points: string[];
+};
+
 export const updated = "2026-08-05";
 
 export const sources = [
@@ -220,4 +232,63 @@ export const mechanics = [
   { name: "Activate", value: "Recruit Phase költés", detail: "Kattints egy Activate lényre a warbandedben, és fizesd ki az aranyköltségét körönként egyszer." },
   { name: "Lockbox", value: "Pirate késleltetett érték", detail: "A Pirate-ok Golden lényeket találhatnak, amelyek később nyílnak ki, hacsak nem nyitod őket korán." },
   { name: "Fishbait", value: "Beast recruit támadás", detail: "A Beastek Recruit Phase-ben is támadhatnak, ezért másképp kell megtervezni a setup köröket." },
+];
+
+export const giftTimeline: TimelineRow[] = [
+  { turn: "3", offer: "Csak Tier 2", use: "Stabilizálás vagy korai irányjel; ne dobd el érte az egész economy kört." },
+  { turn: "4", offer: "Tier 2-3", use: "Jó időpont tempo Giftre, ha gyenge a board vagy rossz a shop." },
+  { turn: "5", offer: "Tier 3", use: "Első komolyabb setup kör; engine darabot vagy economy hidat keress." },
+  { turn: "6", offer: "Tier 3-4", use: "Pivot jel: ha a Gift összeér egy már meglévő párral vagy trinket-iránnyal, commitálható." },
+  { turn: "7", offer: "Tier 4", use: "Sok comp itt találja meg az első valódi motorját. Board előtt ne greedelj túl." },
+  { turn: "8", offer: "Tier 4-5", use: "Erős power spike ablak; a legtöbb lobbiban innen már top 4 stabilizációt vársz." },
+  { turn: "9", offer: "Tier 4-6", use: "High-roll keresés T6 payoffra, de csak akkor, ha az életerőd engedi." },
+  { turn: "10+", offer: "Tier 5-6", use: "Finisher vagy tech keresés; a gyenge scalinget ilyenkor már nem menti meg önmagában." },
+];
+
+export const playbook: InfoBlock[] = [
+  {
+    title: "Mikor nyomj Dark Giftet?",
+    body: "A Gift nem ingyenes tempo: 3 aranyért miniont és hatást veszel, ezért mindig a köröd legjobb három aranyas play-ével hasonlítsd össze.",
+    points: [
+      "Korán akkor jó, ha megállítja a vérzést vagy irányt ad egy üres boardnak.",
+      "Középen akkor jó, ha létező engine-hez ad payoffot, nem csak új ötletet nyit.",
+      "Későn akkor jó, ha T5/T6 payoffot, scamet vagy célzott techet keresel.",
+    ],
+  },
+  {
+    title: "Commit szabály",
+    body: "Egy tribe tag nem engine. Akkor állj rá egy vonalra, ha legalább két darab ugyanazt a loopot erősíti.",
+    points: [
+      "Mech: spell + Magnetic payoff + end-of-turn vagy duplication hatás.",
+      "Quilboar: Gem-minőség + Gem felhasználás + Choose One/Rally payoff.",
+      "Murloc/Undead: triggerforrás és payoff egyszerre kell, külön-külön kevés.",
+    ],
+  },
+  {
+    title: "Gold menedzsment",
+    body: "Season 14-ben az Activate, a Gift és a Tavern upgrade ugyanabból az aranyból versenyez. A kör elején számolj, ne a végén.",
+    points: [
+      "Activate képességet még vásárlás előtt értékeld, mert boardhelyet és célpontot is igényelhet.",
+      "Ha Giftet nyomsz, előtte tisztítsd a boardot, hogy a típus-alapú ajánlatok ne torzuljanak.",
+      "Ne rollolj 0 goldig úgy, hogy a kulcs Activate vagy Tavern upgrade kimarad.",
+    ],
+  },
+];
+
+export const glossary: InfoBlock[] = [
+  {
+    title: "Activate",
+    body: "Recruit Phase-ben kattintható képesség, aranyköltséggel. Minden Activate képesség körönként egyszer használható.",
+    points: ["Tervezd a célpontot.", "Számold bele a gold curve-be.", "A képesség csak akkor számít, ha a lény a warbandedben van."],
+  },
+  {
+    title: "Rally",
+    body: "Recruit Phase fókuszú triggercsomag, amely több Season 14 tribe-nál engine-darabot vagy value-t ad.",
+    points: ["Jó, ha ismételhető.", "Gyenge, ha csak egyszeri value.", "Keresd azokat a lapokat, amelyek Rallyt újraindítanak."],
+  },
+  {
+    title: "Lockbox és Fishbait",
+    body: "A Lockbox késleltetett Golden érték, a Fishbait pedig Recruit Phase támadásokat nyit. Mindkettő setupot kér, nem puszta statot.",
+    points: ["Lockboxnál életerő kell a várakozáshoz.", "Fishbaitnél támadási sorrend és célpont számít.", "Ne áldozd fel a stabil boardot puszta upside-ért."],
+  },
 ];

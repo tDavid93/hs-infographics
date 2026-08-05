@@ -1,4 +1,4 @@
-import type { CardRef, Comp, Tribe } from "./bg14";
+import type { CardRef, Comp, InfoBlock, TimelineRow, Tribe } from "./bg14";
 
 export const updated = "2026-08-05";
 
@@ -165,4 +165,63 @@ export const mechanics = [
   { name: "Activate", value: "Recruit-phase spend", detail: "Click an Activate minion in your warband and pay its Gold cost once per turn." },
   { name: "Lockbox", value: "Pirate delayed value", detail: "Pirates can find Golden minions that unlock later unless opened early." },
   { name: "Fishbait", value: "Beast recruit attacks", detail: "Beasts can attack during Recruit Phase, changing how setup turns are planned." },
+];
+
+export const giftTimeline: TimelineRow[] = [
+  { turn: "3", offer: "Tier 2 only", use: "Stabilize or take an early direction; do not sacrifice your whole economy turn for it." },
+  { turn: "4", offer: "Tier 2-3", use: "Good tempo window if your board is weak or the shop is poor." },
+  { turn: "5", offer: "Tier 3", use: "First real setup point; look for an engine piece or economy bridge." },
+  { turn: "6", offer: "Tier 3-4", use: "Pivot signal: commit if the Gift connects with an existing pair or Trinket direction." },
+  { turn: "7", offer: "Tier 4", use: "Many comps find their first real engine here. Do not greed past board strength." },
+  { turn: "8", offer: "Tier 4-5", use: "Strong power-spike window; most lobbies expect top-four stabilization from here." },
+  { turn: "9", offer: "Tier 4-6", use: "High-roll search for T6 payoff, but only if your health allows it." },
+  { turn: "10+", offer: "Tier 5-6", use: "Finisher or tech search; it usually will not rescue weak scaling by itself." },
+];
+
+export const playbook: InfoBlock[] = [
+  {
+    title: "When To Press Dark Gift",
+    body: "A Gift is not free tempo: you are spending 3 Gold for a minion plus an effect, so compare it to your best normal 3-Gold play.",
+    points: [
+      "Early Gifts are good when they stop bleeding or give direction to an empty board.",
+      "Midgame Gifts are good when they add payoff to an engine you already have, not just a new idea.",
+      "Late Gifts are good when you are searching for a T5/T6 payoff, scam, or specific tech.",
+    ],
+  },
+  {
+    title: "Commit Rule",
+    body: "A tribe tag is not an engine. Commit when at least two pieces reinforce the same repeatable loop.",
+    points: [
+      "Mech: spell access plus Magnetic payoff plus end-of-turn or duplication value.",
+      "Quilboar: Gem quality plus Gem usage plus Choose One/Rally payoff.",
+      "Murloc/Undead: trigger source and payoff need to be present together.",
+    ],
+  },
+  {
+    title: "Gold Management",
+    body: "In Season 14, Activate, Gift, and Tavern upgrade all compete for the same Gold. Count at the start of the turn.",
+    points: [
+      "Evaluate Activate before buying because it can need board space and a target.",
+      "Before pressing Gift, clean up your board so type-based offers are not distorted.",
+      "Do not roll down to 0 if it skips a key Activate or Tavern upgrade.",
+    ],
+  },
+];
+
+export const glossary: InfoBlock[] = [
+  {
+    title: "Activate",
+    body: "A Recruit Phase ability with a Gold cost. Each Activate ability can be used once per turn.",
+    points: ["Plan the target.", "Count it into your gold curve.", "The minion must be in your warband for the ability to matter."],
+  },
+  {
+    title: "Rally",
+    body: "A Recruit Phase trigger package that gives engine pieces or value across several Season 14 tribes.",
+    points: ["Strong when repeatable.", "Weak when it is only one-time value.", "Look for cards that retrigger Rally."],
+  },
+  {
+    title: "Lockbox and Fishbait",
+    body: "Lockbox is delayed Golden value; Fishbait enables Recruit Phase attacks. Both need setup, not just stats.",
+    points: ["Lockbox needs health to wait.", "Fishbait cares about attack order and target quality.", "Do not trade away a stable board for pure upside."],
+  },
 ];

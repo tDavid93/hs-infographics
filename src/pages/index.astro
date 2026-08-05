@@ -1,6 +1,6 @@
 ---
 import { ArrowUpRight, CalendarClock, Filter, Info, Sparkles } from "@lucide/astro";
-import { comps, mechanics, sources, tribes, updated } from "../data/bg14";
+import { comps, giftTimeline, glossary, mechanics, playbook, sources, tribes, updated } from "../data/bg14";
 import "../styles/global.css";
 
 const cardArt = (cardId: string) =>
@@ -71,6 +71,52 @@ const date = new Intl.DateTimeFormat("hu-HU", {
             <span>{item.name}</span>
             <strong>{item.value}</strong>
             <p>{item.detail}</p>
+          </article>
+        ))}
+      </section>
+
+      <section class="strategy-section" aria-labelledby="gift-timing-title">
+        <div class="section-head">
+          <p class="eyebrow">Dark Gift timing</p>
+          <h2 id="gift-timing-title">Mikor milyen ajánlatot kapsz?</h2>
+          <p>
+            A Dark Gift gomb a 3. körtől nyílik meg, és a felajánlott minion tierje körönként emelkedik.
+            Ezért nem mindegy, hogy stabilizáló Giftet, engine-keresést vagy késői finishert akarsz.
+          </p>
+        </div>
+        <div class="timeline-table">
+          <div class="timeline-row timeline-header">
+            <span>Kör</span>
+            <span>Ajánlat</span>
+            <span>Használat</span>
+          </div>
+          {giftTimeline.map((row) => (
+            <div class="timeline-row">
+              <strong>{row.turn}</strong>
+              <span>{row.offer}</span>
+              <p>{row.use}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section class="info-grid" aria-label="Játékterv és fogalomtár">
+        {playbook.map((block) => (
+          <article class="info-card">
+            <h2>{block.title}</h2>
+            <p>{block.body}</p>
+            <ul>
+              {block.points.map((point) => <li>{point}</li>)}
+            </ul>
+          </article>
+        ))}
+        {glossary.map((block) => (
+          <article class="info-card glossary-card">
+            <h2>{block.title}</h2>
+            <p>{block.body}</p>
+            <ul>
+              {block.points.map((point) => <li>{point}</li>)}
+            </ul>
           </article>
         ))}
       </section>
