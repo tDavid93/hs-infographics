@@ -1,0 +1,182 @@
+---
+import { ArrowUpRight, CalendarClock, Filter, Info, Sparkles } from "@lucide/astro";
+import { comps, mechanics, sources, tribes, updated } from "../data/bg14";
+import "../styles/global.css";
+
+const cardArt = (cardId: string) =>
+  `https://art.hearthstonejson.com/v1/512x/${cardId}.jpg`;
+
+const date = new Intl.DateTimeFormat("en-US", {
+  month: "short",
+  day: "numeric",
+  year: "numeric",
+}).format(new Date(`${updated}T12:00:00Z`));
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="A Hearthstone Battlegrounds Season 14 helper infographic with current comps, Dark Gifts guidance, and HearthstoneJSON card renders."
+    />
+    <title>BG14 Meta Desk | Hearthstone Battlegrounds</title>
+  </head>
+  <body>
+    <main class="shell">
+      <header class="masthead">
+        <div class="masthead-copy">
+          <p class="eyebrow">Hearthstone Battlegrounds · Season 14</p>
+          <h1>Dark Gifts Meta Desk</h1>
+          <p class="lede">
+            A compact helper site for early Season 14 decisions: which engine to commit to, which pieces matter,
+            and when a Dark Gift or Trinket is actually enough to pivot.
+          </p>
+        </div>
+        <div class="update-card" aria-label={`Last updated ${date}`}>
+          <CalendarClock size={18} />
+          <span>Updated</span>
+          <strong>{date}</strong>
+        </div>
+      </header>
+
+      <section class="snapshot" aria-labelledby="snapshot-title">
+        <div class="snapshot-main">
+          <p class="eyebrow">Early community snapshot</p>
+          <h2 id="snapshot-title">Engine first, tribe second</h2>
+          <p>
+            The current read favors repeatable engines over blind tribe forcing. Mech and Quilboar have the
+            cleanest visible scaling loops, Murloc and Undead are strong when their key triggers line up, and
+            slower Dragon, Beast, Pirate, Naga, or Demon lines need a sharper lobby signal.
+          </p>
+        </div>
+        <div class="rank-board" aria-label="Early comp ranking">
+          {["S Mech", "S Quilboar", "A Murloc", "A Undead", "A Elemental", "B Naga", "B Pirate", "B Beast", "B Dragon", "C Demon"].map((rank) => (
+            <span>{rank}</span>
+          ))}
+        </div>
+      </section>
+
+      <section class="mechanics" aria-label="Season 14 mechanics">
+        {mechanics.map((item) => (
+          <article>
+            <Sparkles size={20} />
+            <span>{item.name}</span>
+            <strong>{item.value}</strong>
+            <p>{item.detail}</p>
+          </article>
+        ))}
+      </section>
+
+      <section class="toolbar" aria-label="Filter comps">
+        <div>
+          <Filter size={18} />
+          <span>Filter</span>
+        </div>
+        <nav>
+          {tribes.map((tribe) => (
+            <button type="button" data-filter={tribe.key} class={tribe.key === "all" ? "active" : ""}>
+              {tribe.label}
+            </button>
+          ))}
+        </nav>
+      </section>
+
+      <section class="comps" aria-label="Battlegrounds Season 14 comps">
+        {comps.map((comp) => (
+          <article class="comp-card" data-tribe={comp.tribe}>
+            <div class="comp-head">
+              <div>
+                <span class={`grade grade-${comp.grade.toLowerCase()}`}>{comp.grade}-tier</span>
+                <h2>{comp.name}</h2>
+                <p>{comp.why}</p>
+              </div>
+              <aside>
+                <strong>{comp.signal}</strong>
+              </aside>
+            </div>
+
+            <div class="card-strip" aria-label={`${comp.name} core cards`}>
+              {comp.cards.map((card) => (
+                <figure class="hs-card">
+                  <img
+                    src={cardArt(card.cardId)}
+                    alt={`${card.name} Hearthstone card art`}
+                    loading="lazy"
+                    decoding="async"
+                    data-card-name={card.name}
+                    data-card-text={card.text}
+                  />
+                  <figcaption>
+                    <strong>{card.name}</strong>
+                    <span>Tier {card.tier} · {card.type}</span>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+
+            <div class="decision-grid">
+              <section>
+                <h3>Commit When</h3>
+                <ul>
+                  {comp.commit.map((item) => <li>{item}</li>)}
+                </ul>
+              </section>
+              <section>
+                <h3>Avoid</h3>
+                <ul>
+                  {comp.avoid.map((item) => <li>{item}</li>)}
+                </ul>
+              </section>
+            </div>
+          </article>
+        ))}
+      </section>
+
+      <section class="notes" aria-labelledby="notes-title">
+        <Info size={20} />
+        <div>
+          <h2 id="notes-title">Reliability Notes</h2>
+          <p>
+            This is not a settled win-rate tier list. It combines Blizzard’s 36.2 Season 14 card/mechanic data,
+            HSBG’s visual card database, HearthstoneJSON render IDs, and early community discussion. Expect this
+            ordering to move after balance changes and larger tracker samples.
+          </p>
+          <div class="source-list">
+            {sources.map((source) => (
+              <a href={source.href} target="_blank" rel="noreferrer">
+                {source.label}
+                <ArrowUpRight size={14} />
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const buttons = document.querySelectorAll<HTMLButtonElement>("[data-filter]");
+      const cards = document.querySelectorAll<HTMLElement>("[data-tribe]");
+
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const filter = button.dataset.filter ?? "all";
+          buttons.forEach((item) => item.classList.toggle("active", item === button));
+          cards.forEach((card) => {
+            card.hidden = filter !== "all" && card.dataset.tribe !== filter;
+          });
+        });
+      });
+
+      document.querySelectorAll<HTMLImageElement>(".hs-card img").forEach((image) => {
+        image.addEventListener("error", () => {
+          const fallback = document.createElement("div");
+          fallback.className = "render-fallback";
+          fallback.innerHTML = `<strong>${image.dataset.cardName ?? "Card"}</strong><span>${image.dataset.cardText ?? "Render unavailable"}</span>`;
+          image.replaceWith(fallback);
+        });
+      });
+    </script>
+  </body>
+</html>
