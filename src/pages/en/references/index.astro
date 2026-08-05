@@ -1,0 +1,23 @@
+---
+import { ArrowUpRight, Info } from "@lucide/astro";
+import PageFrame from "../../../components/PageFrame.astro";
+import StrategySections from "../../../components/StrategySections.astro";
+import { referenceNotes, sources, updated } from "../../../data/bg14-en";
+import { languageLinks, navItems, siteCopy } from "../../../data/site";
+import "../../../styles/global.css";
+
+const copy = siteCopy.en;
+const links = languageLinks.references;
+const date = new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", year: "numeric" }).format(new Date(`${updated}T12:00:00Z`));
+---
+
+<PageFrame lang="en" title={`References | ${copy.title}`} description={copy.description} eyebrow={copy.eyebrow} lede={copy.lede} updatedLabel={copy.updated} date={date} navItems={navItems("en", "references")} language={{ label: copy.languageLabel, ...links }}>
+  <StrategySections boardStates={[]} buildRoutes={[]} referenceNotes={referenceNotes} labels={{ boardsEyebrow: "", boardsTitle: "", boardsBody: "", boardLabel: "", handLabel: "", nextLabel: "", routesAria: "", opener: "", midgame: "", late: "", pivots: "", refsEyebrow: "Analyzed references", refsTitle: "What Is This Based On?", refsBody: "Official patch data is separated from community and video impressions." }} />
+  <section class="notes" aria-labelledby="notes-title">
+    <Info size={20} />
+    <div>
+      <h2 id="notes-title">Source List</h2>
+      <div class="source-list">{sources.map((source) => <a href={source.href} target="_blank" rel="noreferrer">{source.label}<ArrowUpRight size={14} /></a>)}</div>
+    </div>
+  </section>
+</PageFrame>

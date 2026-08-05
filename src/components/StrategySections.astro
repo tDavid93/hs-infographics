@@ -1,0 +1,106 @@
+---
+import { ArrowUpRight } from "@lucide/astro";
+import type { BoardState, BuildRoute, ReferenceNote } from "../data/bg14";
+
+type Props = {
+  boardStates: BoardState[];
+  buildRoutes: BuildRoute[];
+  referenceNotes?: ReferenceNote[];
+  labels: {
+    boardsEyebrow: string;
+    boardsTitle: string;
+    boardsBody: string;
+    boardLabel: string;
+    handLabel: string;
+    nextLabel: string;
+    routesAria: string;
+    opener: string;
+    midgame: string;
+    late: string;
+    pivots: string;
+    refsEyebrow?: string;
+    refsTitle?: string;
+    refsBody?: string;
+  };
+};
+
+const { boardStates, buildRoutes, referenceNotes = [], labels } = Astro.props;
+---
+
+{boardStates.length > 0 && (
+  <section class="strategy-section" aria-labelledby="boards-title">
+    <div class="section-head">
+      <p class="eyebrow">{labels.boardsEyebrow}</p>
+      <h2 id="boards-title">{labels.boardsTitle}</h2>
+      <p>{labels.boardsBody}</p>
+    </div>
+    <div class="board-grid">
+      {boardStates.map((state) => (
+        <article class="board-card" data-tribe={state.tribe}>
+          <div>
+            <span>{state.stage}</span>
+            <h3>{state.title}</h3>
+            <p>{state.goal}</p>
+          </div>
+          <section>
+            <h4>{labels.boardLabel}</h4>
+            <div class="token-list">
+              {state.board.map((item) => <span>{item}</span>)}
+            </div>
+          </section>
+          <section>
+            <h4>{labels.handLabel}</h4>
+            <div class="token-list muted-tokens">
+              {state.hand.map((item) => <span>{item}</span>)}
+            </div>
+          </section>
+          <section>
+            <h4>{labels.nextLabel}</h4>
+            <ul>
+              {state.next.map((item) => <li>{item}</li>)}
+            </ul>
+          </section>
+        </article>
+      ))}
+    </div>
+  </section>
+)}
+
+{buildRoutes.length > 0 && (
+  <section class="route-grid" aria-label={labels.routesAria}>
+    {buildRoutes.map((route) => (
+      <article class="route-card" data-tribe={route.tribe}>
+        <h2>{route.title}</h2>
+        <dl>
+          <div><dt>{labels.opener}</dt><dd>{route.opener}</dd></div>
+          <div><dt>{labels.midgame}</dt><dd>{route.midgame}</dd></div>
+          <div><dt>{labels.late}</dt><dd>{route.late}</dd></div>
+        </dl>
+        <h3>{labels.pivots}</h3>
+        <ul>
+          {route.pivots.map((item) => <li>{item}</li>)}
+        </ul>
+      </article>
+    ))}
+  </section>
+)}
+
+{referenceNotes.length > 0 && (
+  <section class="strategy-section" aria-labelledby="refs-title">
+    <div class="section-head">
+      <p class="eyebrow">{labels.refsEyebrow}</p>
+      <h2 id="refs-title">{labels.refsTitle}</h2>
+      <p>{labels.refsBody}</p>
+    </div>
+    <div class="reference-grid">
+      {referenceNotes.map((ref) => (
+        <a href={ref.href} target="_blank" rel="noreferrer" class="reference-card">
+          <span>{ref.kind}</span>
+          <strong>{ref.label}</strong>
+          <p>{ref.summary}</p>
+          <ArrowUpRight size={16} />
+        </a>
+      ))}
+    </div>
+  </section>
+)}

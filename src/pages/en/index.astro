@@ -1,362 +1,71 @@
 ---
-import { ArrowUpRight, CalendarClock, Filter, Info, Sparkles } from "@lucide/astro";
-import { boardStates, buildRoutes, comps, giftTimeline, glossary, mechanics, playbook, referenceNotes, sources, tribes, updated } from "../../data/bg14-en";
+import { ArrowUpRight, Sparkles } from "@lucide/astro";
+import PageFrame from "../../components/PageFrame.astro";
+import { mechanics, sources, updated } from "../../data/bg14-en";
+import { languageLinks, navItems, siteCopy } from "../../data/site";
 import "../../styles/global.css";
 
-const cardArt = (cardId: string) =>
-  `https://art.hearthstonejson.com/v1/512x/${cardId}.jpg`;
-
-const date = new Intl.DateTimeFormat("en-US", {
-  month: "short",
-  day: "numeric",
-  year: "numeric",
-}).format(new Date(`${updated}T12:00:00Z`));
+const copy = siteCopy.en;
+const links = languageLinks.overview;
+const date = new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", year: "numeric" }).format(new Date(`${updated}T12:00:00Z`));
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="English Hearthstone Battlegrounds Season 14 helper infographic with current comps, Dark Gifts guidance, and HearthstoneJSON card art."
-    />
-    <link rel="alternate" hreflang="hu" href="/" />
-    <link rel="alternate" hreflang="en" href="/en/" />
-    <title>BG14 Meta Desk | Hearthstone Battlegrounds helper</title>
-  </head>
-  <body>
-    <main class="shell">
-      <header class="masthead">
-        <div class="masthead-copy">
-          <p class="eyebrow">Hearthstone Battlegrounds · Season 14</p>
-          <h1>Dark Gifts Meta Desk</h1>
-          <p class="lede">
-            A compact helper for early Season 14 decisions: which engine to commit to,
-            which pieces matter, and when a Dark Gift or Trinket is enough to pivot.
-          </p>
-        </div>
-        <div class="update-card" aria-label={`Updated ${date}`}>
-          <CalendarClock size={18} />
-          <span>Updated</span>
-          <strong>{date}</strong>
-        </div>
-        <nav class="language-switch" aria-label="Language selector">
-          <a href="/">HU</a>
-          <a class="active" href="/en/" aria-current="page">EN</a>
-        </nav>
-      </header>
+<PageFrame
+  lang="en"
+  title={copy.title}
+  description={copy.description}
+  eyebrow={copy.eyebrow}
+  lede={copy.lede}
+  updatedLabel={copy.updated}
+  date={date}
+  navItems={navItems("en", "overview")}
+  language={{ label: copy.languageLabel, ...links }}
+>
+  <section class="snapshot" aria-labelledby="snapshot-title">
+    <div class="snapshot-main">
+      <p class="eyebrow">Early community snapshot</p>
+      <h2 id="snapshot-title">Engine first, tribe second</h2>
+      <p>
+        The current read favors repeatable engines over blind tribe forcing. Detailed comps, routes,
+        and sources now live on separate pages so the guide is easier to navigate.
+      </p>
+    </div>
+    <div class="rank-board" aria-label="Early comp ranking">
+      {["S Mech", "S Quilboar", "A Murloc", "A Undead", "A Elemental", "B Naga", "B Pirate", "B Beast", "B Dragon", "C Demon"].map((rank) => (
+        <span>{rank}</span>
+      ))}
+    </div>
+  </section>
 
-      <section class="snapshot" aria-labelledby="snapshot-title">
-        <div class="snapshot-main">
-          <p class="eyebrow">Early community snapshot</p>
-          <h2 id="snapshot-title">Engine first, tribe second</h2>
-          <p>
-            The current read favors repeatable engines over blind tribe forcing. Mech and Quilboar
-            have the cleanest visible scaling loops, Murloc and Undead are strong when their key
-            triggers line up, and slower Dragon, Beast, Pirate, Naga, or Demon lines need a sharper lobby signal.
-          </p>
-        </div>
-        <div class="rank-board" aria-label="Early comp ranking">
-          {["S Mech", "S Quilboar", "A Murloc", "A Undead", "A Elemental", "B Naga", "B Pirate", "B Beast", "B Dragon", "C Demon"].map((rank) => (
-            <span>{rank}</span>
-          ))}
-        </div>
-      </section>
+  <section class="mechanics" aria-label="Season 14 mechanics">
+    {mechanics.map((item) => (
+      <article>
+        <Sparkles size={20} />
+        <span>{item.name}</span>
+        <strong>{item.value}</strong>
+        <p>{item.detail}</p>
+      </article>
+    ))}
+  </section>
 
-      <section class="mechanics" aria-label="Season 14 mechanics">
-        {mechanics.map((item) => (
-          <article>
-            <Sparkles size={20} />
-            <span>{item.name}</span>
-            <strong>{item.value}</strong>
-            <p>{item.detail}</p>
-          </article>
+  <section class="page-links" aria-label="Main pages">
+    <a href="/en/comps/"><strong>Comps</strong><span>Core cards, commit signals, avoid lists.</span></a>
+    <a href="/en/strategy/"><strong>Strategy</strong><span>Dark Gift timing, playbook, board states, and build routes.</span></a>
+    <a href="/en/references/"><strong>References</strong><span>Patch data, community reads, and video references.</span></a>
+  </section>
+
+  <section class="notes" aria-labelledby="notes-title">
+    <ArrowUpRight size={20} />
+    <div>
+      <h2 id="notes-title">Quick Sources</h2>
+      <div class="source-list">
+        {sources.map((source) => (
+          <a href={source.href} target="_blank" rel="noreferrer">
+            {source.label}
+            <ArrowUpRight size={14} />
+          </a>
         ))}
-      </section>
-
-      <section class="strategy-section" aria-labelledby="gift-timing-title">
-        <div class="section-head">
-          <p class="eyebrow">Dark Gift timing</p>
-          <h2 id="gift-timing-title">What Offers Do You Get?</h2>
-          <p>
-            The Dark Gift button unlocks on Turn 3, and eligible minion tiers rise as the game progresses.
-            That changes whether you want stabilization, engine discovery, or a late finisher.
-          </p>
-        </div>
-        <div class="timeline-table">
-          <div class="timeline-row timeline-header">
-            <span>Turn</span>
-            <span>Offer</span>
-            <span>Use</span>
-          </div>
-          {giftTimeline.map((row) => (
-            <div class="timeline-row">
-              <strong>{row.turn}</strong>
-              <span>{row.offer}</span>
-              <p>{row.use}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section class="info-grid" aria-label="Playbook and glossary">
-        {playbook.map((block) => (
-          <article class="info-card">
-            <h2>{block.title}</h2>
-            <p>{block.body}</p>
-            <ul>
-              {block.points.map((point) => <li>{point}</li>)}
-            </ul>
-          </article>
-        ))}
-        {glossary.map((block) => (
-          <article class="info-card glossary-card">
-            <h2>{block.title}</h2>
-            <p>{block.body}</p>
-            <ul>
-              {block.points.map((point) => <li>{point}</li>)}
-            </ul>
-          </article>
-        ))}
-      </section>
-
-      <section class="toolbar" aria-label="Filter comps">
-        <div>
-          <Filter size={18} />
-          <span>Filter</span>
-        </div>
-        <nav>
-          {tribes.map((tribe) => (
-            <button
-              type="button"
-              data-filter={tribe.key}
-              class={tribe.key === "all" ? "active" : ""}
-              aria-pressed={tribe.key === "all" ? "true" : "false"}
-            >
-              {tribe.label}
-            </button>
-          ))}
-        </nav>
-      </section>
-
-      <section class="comps" aria-label="Battlegrounds Season 14 comps">
-        {comps.map((comp) => (
-          <article class="comp-card" data-tribe={comp.tribe}>
-            <div class="comp-head">
-              <div>
-                <span class={`grade grade-${comp.grade.toLowerCase()}`}>{comp.grade}-tier</span>
-                <h2>{comp.name}</h2>
-                <p>{comp.why}</p>
-              </div>
-              <aside>
-                <strong>{comp.signal}</strong>
-              </aside>
-            </div>
-
-            <div class="card-strip" aria-label={`${comp.name} core cards`}>
-              {comp.cards.map((card) => (
-                <figure class="hs-card">
-                  <div class="hs-card-face">
-                    <div class="tier-gem" aria-label={`Tavern tier ${card.tier}`}>{card.tier}</div>
-                    <div class="art-window">
-                      <img
-                        src={cardArt(card.cardId)}
-                        alt={`${card.name} Hearthstone card art`}
-                        loading="lazy"
-                        decoding="async"
-                        data-card-name={card.name}
-                        data-card-text={card.rules}
-                      />
-                    </div>
-                    <div class="nameplate">{card.name}</div>
-                    <div class="type-line">Tier {card.tier} · {card.type}</div>
-                    <p class="rules" set:html={card.rules} />
-                    <div class="stats" aria-label={`${card.attack} Attack and ${card.health} Health`}>
-                      <span class="attack">{card.attack}</span>
-                      <span class="health">{card.health}</span>
-                    </div>
-                  </div>
-                  <figcaption class="meta-note">
-                    <strong>Meta note</strong>
-                    <span>{card.note}</span>
-                  </figcaption>
-                </figure>
-              ))}
-            </div>
-
-            <div class="decision-grid">
-              <section>
-                <h3>Commit When</h3>
-                <ul>
-                  {comp.commit.map((item) => <li>{item}</li>)}
-                </ul>
-              </section>
-              <section>
-                <h3>Avoid</h3>
-                <ul>
-                  {comp.avoid.map((item) => <li>{item}</li>)}
-                </ul>
-              </section>
-            </div>
-          </article>
-        ))}
-      </section>
-
-      <section class="strategy-section" aria-labelledby="boards-title">
-        <div class="section-head">
-          <p class="eyebrow">Board state examples</p>
-          <h2 id="boards-title">What Should Your Board Look Like?</h2>
-          <p>
-            These are not final seven-minion boards. They are recognizable midgame states. If you have two or
-            three key pieces, you can start calling it a real build route.
-          </p>
-        </div>
-        <div class="board-grid">
-          {boardStates.map((state) => (
-            <article class="board-card" data-tribe={state.tribe}>
-              <div>
-                <span>{state.stage}</span>
-                <h3>{state.title}</h3>
-                <p>{state.goal}</p>
-              </div>
-              <section>
-                <h4>Board</h4>
-                <div class="token-list">
-                  {state.board.map((item) => <span>{item}</span>)}
-                </div>
-              </section>
-              <section>
-                <h4>Hand / reserve</h4>
-                <div class="token-list muted-tokens">
-                  {state.hand.map((item) => <span>{item}</span>)}
-                </div>
-              </section>
-              <section>
-                <h4>Next decisions</h4>
-                <ul>
-                  {state.next.map((item) => <li>{item}</li>)}
-                </ul>
-              </section>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section class="route-grid" aria-label="Build routes">
-        {buildRoutes.map((route) => (
-          <article class="route-card" data-tribe={route.tribe}>
-            <h2>{route.title}</h2>
-            <dl>
-              <div><dt>Opener</dt><dd>{route.opener}</dd></div>
-              <div><dt>Midgame</dt><dd>{route.midgame}</dd></div>
-              <div><dt>Late game</dt><dd>{route.late}</dd></div>
-            </dl>
-            <h3>Pivot signals</h3>
-            <ul>
-              {route.pivots.map((item) => <li>{item}</li>)}
-            </ul>
-          </article>
-        ))}
-      </section>
-
-      <section class="strategy-section" aria-labelledby="refs-title">
-        <div class="section-head">
-          <p class="eyebrow">Analyzed references</p>
-          <h2 id="refs-title">What Is This Based On?</h2>
-          <p>
-            Official patch data is separated from community and video impressions. The former is mechanical fact;
-            the latter is an early meta read.
-          </p>
-        </div>
-        <div class="reference-grid">
-          {referenceNotes.map((ref) => (
-            <a href={ref.href} target="_blank" rel="noreferrer" class="reference-card">
-              <span>{ref.kind}</span>
-              <strong>{ref.label}</strong>
-              <p>{ref.summary}</p>
-              <ArrowUpRight size={16} />
-            </a>
-          ))}
-        </div>
-      </section>
-
-      <section class="notes" aria-labelledby="notes-title">
-        <Info size={20} />
-        <div>
-          <h2 id="notes-title">Reliability Notes</h2>
-          <p>
-            This is not a settled win-rate tier list. It combines Blizzard's 36.2 Season 14 card
-            and mechanic data, HSBG's visual database, HearthstoneJSON image IDs, and early
-            community discussion. Expect this ordering to move after balance changes and larger tracker samples.
-          </p>
-          <div class="source-list">
-            {sources.map((source) => (
-              <a href={source.href} target="_blank" rel="noreferrer">
-                {source.label}
-                <ArrowUpRight size={14} />
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <script>
-      const buttons = Array.from(document.querySelectorAll<HTMLButtonElement>("[data-filter]"));
-      const filterTargets = Array.from(document.querySelectorAll<HTMLElement>("[data-tribe]"));
-      const allButton = buttons.find((button) => button.dataset.filter === "all");
-      const activeFilters = new Set<string>();
-
-      const syncFilters = () => {
-        const showAll = activeFilters.size === 0;
-
-        buttons.forEach((button) => {
-          const filter = button.dataset.filter ?? "all";
-          const active = filter === "all" ? showAll : activeFilters.has(filter);
-          button.classList.toggle("active", active);
-          button.setAttribute("aria-pressed", String(active));
-        });
-
-        filterTargets.forEach((target) => {
-          const tribe = target.dataset.tribe ?? "";
-          target.hidden = !showAll && !activeFilters.has(tribe);
-        });
-      };
-
-      buttons.forEach((button) => {
-        button.addEventListener("click", () => {
-          const filter = button.dataset.filter ?? "all";
-
-          if (filter === "all") {
-            activeFilters.clear();
-            syncFilters();
-            return;
-          }
-
-          if (activeFilters.has(filter)) {
-            activeFilters.delete(filter);
-          } else {
-            activeFilters.add(filter);
-          }
-
-          if (activeFilters.size === buttons.length - 1) {
-            activeFilters.clear();
-            allButton?.focus();
-          }
-
-          syncFilters();
-        });
-      });
-
-      document.querySelectorAll<HTMLImageElement>(".art-window img").forEach((image) => {
-        image.addEventListener("error", () => {
-          const fallback = document.createElement("div");
-          fallback.className = "render-fallback";
-          fallback.innerHTML = `<strong>${image.dataset.cardName ?? "Card"}</strong><span>${image.dataset.cardText ?? "Image unavailable"}</span>`;
-          image.replaceWith(fallback);
-        });
-      });
-    </script>
-  </body>
-</html>
+      </div>
+    </div>
+  </section>
+</PageFrame>

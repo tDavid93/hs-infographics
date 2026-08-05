@@ -1,0 +1,31 @@
+---
+import FilterToolbar from "../../components/FilterToolbar.astro";
+import PageFrame from "../../components/PageFrame.astro";
+import StrategySections from "../../components/StrategySections.astro";
+import { boardStates, buildRoutes, giftTimeline, glossary, playbook, tribes, updated } from "../../data/bg14";
+import { languageLinks, navItems, siteCopy } from "../../data/site";
+import "../../styles/global.css";
+
+const copy = siteCopy.hu;
+const links = languageLinks.strategy;
+const date = new Intl.DateTimeFormat("hu-HU", { month: "short", day: "numeric", year: "numeric" }).format(new Date(`${updated}T12:00:00Z`));
+---
+
+<PageFrame lang="hu" title={`Stratégia | ${copy.title}`} description={copy.description} eyebrow={copy.eyebrow} lede={copy.lede} updatedLabel={copy.updated} date={date} navItems={navItems("hu", "strategy")} language={{ label: copy.languageLabel, ...links }}>
+  <section class="strategy-section" aria-labelledby="gift-timing-title">
+    <div class="section-head">
+      <p class="eyebrow">Dark Gift timing</p>
+      <h2 id="gift-timing-title">Mikor milyen ajánlatot kapsz?</h2>
+      <p>A Dark Gift gomb a 3. körtől nyílik meg, és a felajánlott minion tierje körönként emelkedik.</p>
+    </div>
+    <div class="timeline-table">
+      <div class="timeline-row timeline-header"><span>Kör</span><span>Ajánlat</span><span>Használat</span></div>
+      {giftTimeline.map((row) => <div class="timeline-row"><strong>{row.turn}</strong><span>{row.offer}</span><p>{row.use}</p></div>)}
+    </div>
+  </section>
+  <section class="info-grid" aria-label="Játékterv és fogalomtár">
+    {[...playbook, ...glossary].map((block) => <article class="info-card"><h2>{block.title}</h2><p>{block.body}</p><ul>{block.points.map((point) => <li>{point}</li>)}</ul></article>)}
+  </section>
+  <FilterToolbar label="Szűrő" tribes={tribes} />
+  <StrategySections boardStates={boardStates} buildRoutes={buildRoutes} labels={{ boardsEyebrow: "Board state példák", boardsTitle: "Mit keress a boardon?", boardsBody: "Felismerhető középső állapotok és következő döntések.", boardLabel: "Board", handLabel: "Kéz / tartalék", nextLabel: "Következő döntések", routesAria: "Build route-ok", opener: "Opener", midgame: "Midgame", late: "Late game", pivots: "Pivot jelek" }} />
+</PageFrame>

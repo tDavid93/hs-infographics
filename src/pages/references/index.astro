@@ -1,0 +1,23 @@
+---
+import { ArrowUpRight, Info } from "@lucide/astro";
+import PageFrame from "../../components/PageFrame.astro";
+import StrategySections from "../../components/StrategySections.astro";
+import { referenceNotes, sources, updated } from "../../data/bg14";
+import { languageLinks, navItems, siteCopy } from "../../data/site";
+import "../../styles/global.css";
+
+const copy = siteCopy.hu;
+const links = languageLinks.references;
+const date = new Intl.DateTimeFormat("hu-HU", { month: "short", day: "numeric", year: "numeric" }).format(new Date(`${updated}T12:00:00Z`));
+---
+
+<PageFrame lang="hu" title={`Források | ${copy.title}`} description={copy.description} eyebrow={copy.eyebrow} lede={copy.lede} updatedLabel={copy.updated} date={date} navItems={navItems("hu", "references")} language={{ label: copy.languageLabel, ...links }}>
+  <StrategySections boardStates={[]} buildRoutes={[]} referenceNotes={referenceNotes} labels={{ boardsEyebrow: "", boardsTitle: "", boardsBody: "", boardLabel: "", handLabel: "", nextLabel: "", routesAria: "", opener: "", midgame: "", late: "", pivots: "", refsEyebrow: "Elemzett referenciák", refsTitle: "Mire épül az oldal?", refsBody: "A hivatalos patchadatot külön kezeljük a közösségi és videós tapasztalatoktól." }} />
+  <section class="notes" aria-labelledby="notes-title">
+    <Info size={20} />
+    <div>
+      <h2 id="notes-title">Forráslista</h2>
+      <div class="source-list">{sources.map((source) => <a href={source.href} target="_blank" rel="noreferrer">{source.label}<ArrowUpRight size={14} /></a>)}</div>
+    </div>
+  </section>
+</PageFrame>

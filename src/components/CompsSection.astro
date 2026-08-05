@@ -1,0 +1,90 @@
+---
+import type { Comp } from "../data/bg14";
+
+type Props = {
+  comps: Comp[];
+  ariaLabel: string;
+  cardAltSuffix: string;
+  metaLabel: string;
+  commitLabel: string;
+  avoidLabel: string;
+  statsJoiner: string;
+};
+
+const { comps, ariaLabel, cardAltSuffix, metaLabel, commitLabel, avoidLabel, statsJoiner } = Astro.props;
+const cardArt = (cardId: string) => `https://art.hearthstonejson.com/v1/512x/${cardId}.jpg`;
+---
+
+<section class="comps" aria-label={ariaLabel}>
+  {comps.map((comp) => (
+    <article class="comp-card" data-tribe={comp.tribe}>
+      <div class="comp-head">
+        <div>
+          <span class={`grade grade-${comp.grade.toLowerCase()}`}>{comp.grade}-tier</span>
+          <h2>{comp.name}</h2>
+          <p>{comp.why}</p>
+        </div>
+        <aside>
+          <strong>{comp.signal}</strong>
+        </aside>
+      </div>
+
+      <div class="card-strip" aria-label={`${comp.name} core cards`}>
+        {comp.cards.map((card) => (
+          <figure class="hs-card">
+            <div class="hs-card-face">
+              <div class="tier-gem" aria-label={`Tavern tier ${card.tier}`}>{card.tier}</div>
+              <div class="art-window">
+                <img
+                  src={cardArt(card.cardId)}
+                  alt={`${card.name} ${cardAltSuffix}`}
+                  loading="lazy"
+                  decoding="async"
+                  data-card-name={card.name}
+                  data-card-text={card.rules}
+                />
+              </div>
+              <div class="nameplate">{card.name}</div>
+              <div class="type-line">Tier {card.tier} · {card.type}</div>
+              <p class="rules" set:html={card.rules} />
+              <div class="stats" aria-label={`${card.attack} Attack ${statsJoiner} ${card.health} Health`}>
+                <span class="attack">{card.attack}</span>
+                <span class="health">{card.health}</span>
+              </div>
+            </div>
+            <figcaption class="meta-note">
+              <strong>{metaLabel}</strong>
+              <span>{card.note}</span>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+
+      <div class="decision-grid">
+        <section>
+          <h3>{commitLabel}</h3>
+          <ul>
+            {comp.commit.map((item) => <li>{item}</li>)}
+          </ul>
+        </section>
+        <section>
+          <h3>{avoidLabel}</h3>
+          <ul>
+            {comp.avoid.map((item) => <li>{item}</li>)}
+          </ul>
+        </section>
+      </div>
+    </article>
+  ))}
+</section>
+
+<script>
+  document.querySelectorAll<HTMLImageElement>(".art-window img").forEach((image) => {
+    image.addEventListener("error", () => {
+      const fallback = document.createElement("div");
+      fallback.className = "render-fallback";
+      fallback.innerHTML = `<strong>${image.dataset.cardName ?? "Card"}</strong><span>${image.dataset.cardText ?? "Image unavailable"}</span>`;
+      image.replaceWith(fallback);
+    });
+  });
+</script>

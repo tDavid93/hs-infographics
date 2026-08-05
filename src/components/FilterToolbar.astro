@@ -1,0 +1,78 @@
+---
+import { Filter } from "@lucide/astro";
+import type { Tribe } from "../data/bg14";
+
+type Props = {
+  label: string;
+  tribes: { key: Tribe | "all"; label: string }[];
+};
+
+const { label, tribes } = Astro.props;
+---
+
+<section class="toolbar" aria-label={label}>
+  <div>
+    <Filter size={18} />
+    <span>{label}</span>
+  </div>
+  <nav>
+    {tribes.map((tribe) => (
+      <button
+        type="button"
+        data-filter={tribe.key}
+        class={tribe.key === "all" ? "active" : ""}
+        aria-pressed={tribe.key === "all" ? "true" : "false"}
+      >
+        {tribe.label}
+      </button>
+    ))}
+  </nav>
+</section>
+
+<script>
+  const buttons = Array.from(document.querySelectorAll<HTMLButtonElement>("[data-filter]"));
+  const filterTargets = Array.from(document.querySelectorAll<HTMLElement>("[data-tribe]"));
+  const allButton = buttons.find((button) => button.dataset.filter === "all");
+  const activeFilters = new Set<string>();
+
+  const syncFilters = () => {
+    const showAll = activeFilters.size === 0;
+
+    buttons.forEach((button) => {
+      const filter = button.dataset.filter ?? "all";
+      const active = filter === "all" ? showAll : activeFilters.has(filter);
+      button.classList.toggle("active", active);
+      button.setAttribute("aria-pressed", String(active));
+    });
+
+    filterTargets.forEach((target) => {
+      const tribe = target.dataset.tribe ?? "";
+      target.hidden = !showAll && !activeFilters.has(tribe);
+    });
+  };
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const filter = button.dataset.filter ?? "all";
+
+      if (filter === "all") {
+        activeFilters.clear();
+        syncFilters();
+        return;
+      }
+
+      if (activeFilters.has(filter)) {
+        activeFilters.delete(filter);
+      } else {
+        activeFilters.add(filter);
+      }
+
+      if (activeFilters.size === buttons.length - 1) {
+        activeFilters.clear();
+        allButton?.focus();
+      }
+
+      syncFilters();
+    });
+  });
+</script>

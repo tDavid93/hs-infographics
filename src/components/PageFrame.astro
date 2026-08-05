@@ -1,0 +1,68 @@
+---
+import { CalendarClock } from "@lucide/astro";
+
+type NavItem = {
+  href: string;
+  label: string;
+  active?: boolean;
+};
+
+type Props = {
+  lang: "hu" | "en";
+  title: string;
+  description: string;
+  eyebrow: string;
+  lede: string;
+  updatedLabel: string;
+  date: string;
+  navItems: NavItem[];
+  language: {
+    label: string;
+    huHref: string;
+    enHref: string;
+  };
+};
+
+const { lang, title, description, eyebrow, lede, updatedLabel, date, navItems, language } = Astro.props;
+---
+
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <link rel="alternate" hreflang="hu" href={language.huHref} />
+    <link rel="alternate" hreflang="en" href={language.enHref} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <main class="shell">
+      <header class="masthead">
+        <div class="masthead-copy">
+          <p class="eyebrow">{eyebrow}</p>
+          <h1>Dark Gifts Meta Desk</h1>
+          <p class="lede">{lede}</p>
+        </div>
+        <div class="update-card" aria-label={`${updatedLabel}: ${date}`}>
+          <CalendarClock size={18} />
+          <span>{updatedLabel}</span>
+          <strong>{date}</strong>
+        </div>
+        <nav class="language-switch" aria-label={language.label}>
+          <a class={lang === "hu" ? "active" : ""} href={language.huHref} aria-current={lang === "hu" ? "page" : undefined}>HU</a>
+          <a class={lang === "en" ? "active" : ""} href={language.enHref} aria-current={lang === "en" ? "page" : undefined}>EN</a>
+        </nav>
+      </header>
+
+      <nav class="site-nav" aria-label={lang === "hu" ? "Oldal navigáció" : "Site navigation"}>
+        {navItems.map((item) => (
+          <a href={item.href} class={item.active ? "active" : ""} aria-current={item.active ? "page" : undefined}>
+            {item.label}
+          </a>
+        ))}
+      </nav>
+
+      <slot />
+    </main>
+  </body>
+</html>

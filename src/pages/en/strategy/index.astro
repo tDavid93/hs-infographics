@@ -1,0 +1,31 @@
+---
+import FilterToolbar from "../../../components/FilterToolbar.astro";
+import PageFrame from "../../../components/PageFrame.astro";
+import StrategySections from "../../../components/StrategySections.astro";
+import { boardStates, buildRoutes, giftTimeline, glossary, playbook, tribes, updated } from "../../../data/bg14-en";
+import { languageLinks, navItems, siteCopy } from "../../../data/site";
+import "../../../styles/global.css";
+
+const copy = siteCopy.en;
+const links = languageLinks.strategy;
+const date = new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", year: "numeric" }).format(new Date(`${updated}T12:00:00Z`));
+---
+
+<PageFrame lang="en" title={`Strategy | ${copy.title}`} description={copy.description} eyebrow={copy.eyebrow} lede={copy.lede} updatedLabel={copy.updated} date={date} navItems={navItems("en", "strategy")} language={{ label: copy.languageLabel, ...links }}>
+  <section class="strategy-section" aria-labelledby="gift-timing-title">
+    <div class="section-head">
+      <p class="eyebrow">Dark Gift timing</p>
+      <h2 id="gift-timing-title">What Offers Do You Get?</h2>
+      <p>The Dark Gift button unlocks on Turn 3, and eligible minion tiers rise as the game progresses.</p>
+    </div>
+    <div class="timeline-table">
+      <div class="timeline-row timeline-header"><span>Turn</span><span>Offer</span><span>Use</span></div>
+      {giftTimeline.map((row) => <div class="timeline-row"><strong>{row.turn}</strong><span>{row.offer}</span><p>{row.use}</p></div>)}
+    </div>
+  </section>
+  <section class="info-grid" aria-label="Playbook and glossary">
+    {[...playbook, ...glossary].map((block) => <article class="info-card"><h2>{block.title}</h2><p>{block.body}</p><ul>{block.points.map((point) => <li>{point}</li>)}</ul></article>)}
+  </section>
+  <FilterToolbar label="Filter" tribes={tribes} />
+  <StrategySections boardStates={boardStates} buildRoutes={buildRoutes} labels={{ boardsEyebrow: "Board state examples", boardsTitle: "What Should Your Board Look Like?", boardsBody: "Recognizable midgame states and next decisions.", boardLabel: "Board", handLabel: "Hand / reserve", nextLabel: "Next decisions", routesAria: "Build routes", opener: "Opener", midgame: "Midgame", late: "Late game", pivots: "Pivot signals" }} />
+</PageFrame>

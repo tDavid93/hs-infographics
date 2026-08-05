@@ -1,0 +1,17 @@
+---
+import CompsSection from "../../components/CompsSection.astro";
+import FilterToolbar from "../../components/FilterToolbar.astro";
+import PageFrame from "../../components/PageFrame.astro";
+import { comps, tribes, updated } from "../../data/bg14";
+import { languageLinks, navItems, siteCopy } from "../../data/site";
+import "../../styles/global.css";
+
+const copy = siteCopy.hu;
+const links = languageLinks.comps;
+const date = new Intl.DateTimeFormat("hu-HU", { month: "short", day: "numeric", year: "numeric" }).format(new Date(`${updated}T12:00:00Z`));
+---
+
+<PageFrame lang="hu" title={`Compok | ${copy.title}`} description={copy.description} eyebrow={copy.eyebrow} lede={copy.lede} updatedLabel={copy.updated} date={date} navItems={navItems("hu", "comps")} language={{ label: copy.languageLabel, ...links }}>
+  <FilterToolbar label="Szűrő" tribes={tribes} />
+  <CompsSection comps={comps} ariaLabel="Battlegrounds Season 14 compok" cardAltSuffix="Hearthstone kártyakép" metaLabel="Meta jegyzet" commitLabel="Commit jel" avoidLabel="Kerüld" statsJoiner="és" />
+</PageFrame>
