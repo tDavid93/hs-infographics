@@ -100,17 +100,29 @@ const date = new Intl.DateTimeFormat("en-US", {
             <div class="card-strip" aria-label={`${comp.name} core cards`}>
               {comp.cards.map((card) => (
                 <figure class="hs-card">
-                  <img
-                    src={cardArt(card.cardId)}
-                    alt={`${card.name} Hearthstone card art`}
-                    loading="lazy"
-                    decoding="async"
-                    data-card-name={card.name}
-                    data-card-text={card.text}
-                  />
-                  <figcaption>
-                    <strong>{card.name}</strong>
-                    <span>Tier {card.tier} · {card.type}</span>
+                  <div class="hs-card-face">
+                    <div class="tier-gem" aria-label={`Tavern tier ${card.tier}`}>{card.tier}</div>
+                    <div class="art-window">
+                      <img
+                        src={cardArt(card.cardId)}
+                        alt={`${card.name} Hearthstone card art`}
+                        loading="lazy"
+                        decoding="async"
+                        data-card-name={card.name}
+                        data-card-text={card.rules}
+                      />
+                    </div>
+                    <div class="nameplate">{card.name}</div>
+                    <div class="type-line">Tier {card.tier} · {card.type}</div>
+                    <p class="rules" set:html={card.rules} />
+                    <div class="stats" aria-label={`${card.attack} attack and ${card.health} health`}>
+                      <span class="attack">{card.attack}</span>
+                      <span class="health">{card.health}</span>
+                    </div>
+                  </div>
+                  <figcaption class="meta-note">
+                    <strong>Meta note</strong>
+                    <span>{card.note}</span>
                   </figcaption>
                 </figure>
               ))}
@@ -169,7 +181,7 @@ const date = new Intl.DateTimeFormat("en-US", {
         });
       });
 
-      document.querySelectorAll<HTMLImageElement>(".hs-card img").forEach((image) => {
+      document.querySelectorAll<HTMLImageElement>(".art-window img").forEach((image) => {
         image.addEventListener("error", () => {
           const fallback = document.createElement("div");
           fallback.className = "render-fallback";
