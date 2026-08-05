@@ -1,4 +1,4 @@
-import type { CardRef, Comp, InfoBlock, TimelineRow, Tribe } from "./bg14";
+import type { BoardState, BuildRoute, CardRef, Comp, InfoBlock, ReferenceNote, TimelineRow, Tribe } from "./bg14";
 
 export const updated = "2026-08-05";
 
@@ -223,5 +223,106 @@ export const glossary: InfoBlock[] = [
     title: "Lockbox and Fishbait",
     body: "Lockbox is delayed Golden value; Fishbait enables Recruit Phase attacks. Both need setup, not just stats.",
     points: ["Lockbox needs health to wait.", "Fishbait cares about attack order and target quality.", "Do not trade away a stable board for pure upside."],
+  },
+];
+
+export const boardStates: BoardState[] = [
+  {
+    title: "Mech Magnetic Engine",
+    stage: "Tavern 4-5 board",
+    tribe: "mech",
+    board: ["Spark Snapper", "Drone Duplicator", "Glambot", "two separate Magnetic targets", "tempo Divine Shield/taunt"],
+    hand: ["cheap targeted Tavern spell", "spare Mech or economy spell"],
+    goal: "Do not build one giant minion. The goal is multiple Magnetic stacks across bodies, later multiplied by Utility Drone or duplication effects.",
+    next: ["Cast spells on Mechs that can survive the next fight.", "Activate Drone Duplicator only before meaningful Magnetization.", "On T6, look for Utility Drone or another Magnetic payoff."],
+  },
+  {
+    title: "Quilboar Choose One Setup",
+    stage: "Tavern 4-6 board",
+    tribe: "quilboar",
+    board: ["Thorned Trailblazer", "Gem Rat", "Bramble Tunneler", "main Blood Gem target", "two flexible tempo slots"],
+    hand: ["Choose One card", "Blood Gems", "possible Gem Day"],
+    goal: "Build Gem quality and the Choose One engine first, then convert the board into wide stats.",
+    next: ["With Trailblazer, play the best Choose One card first.", "After Turbo Hogrider, targeted Gems become board-wide value.", "Do not keep too many weak support bodies without a carry."],
+  },
+  {
+    title: "Undead Reborn Trigger Board",
+    stage: "Tavern 5-6 board",
+    tribe: "undead",
+    board: ["Dead Bellringer", "Barrier Banshee", "Snazzy Phantom", "high-Attack Reborn target", "right-most Undead carry"],
+    hand: ["Reborn or stat spell", "scam/taunt tech"],
+    goal: "Trigger Reborn during Recruit Phase so Divine Shield and right-side Attack stats happen before combat.",
+    next: ["Do not use Bellringer on the payoff you need to keep.", "Check the right-most Undead because of Phantom.", "If you lack survivability, buy taunt/scam before more scaling."],
+  },
+  {
+    title: "Murloc Spell-Handbuff Board",
+    stage: "Tavern 4-5 board",
+    tribe: "murloc",
+    board: ["Twilight Tidehunter", "Shamanic Tidecaller", "Kelp Keeper", "Gearfin", "stable combat body"],
+    hand: ["left-most carry target", "1-Cost Tavern spells", "Battlecry minion"],
+    goal: "Control the left-most hand target and convert spell economy into repeated hand and board buffs.",
+    next: ["Check hand order before every spell.", "Repeat only real Battlecry value with Kelp Keeper.", "Without spell generation, do not force Murlocs."],
+  },
+];
+
+export const buildRoutes: BuildRoute[] = [
+  {
+    title: "Stabilizing Gift Route",
+    tribe: "mech",
+    opener: "Hold health with early tempo minions and cheap spells, then use a Turn 4-6 Gift to find direction.",
+    midgame: "If Glambot, Spark Snapper, or Drone Duplicator appears, start spreading Magnetic stacks across multiple bodies.",
+    late: "Utility Drone, Divine Shield, and scam tech finish the board. One oversized carry is vulnerable.",
+    pivots: ["Gearfin can bridge into Murloc spell lines.", "If Magnetic shops are weak, stay in tempo plus Gift discovery mode.", "Without targeted spells, do not commit to Glambot."],
+  },
+  {
+    title: "Greeded Tier 4-5 Engine Route",
+    tribe: "quilboar",
+    opener: "Do not just collect Gems: without Gem quality or Choose One setup, early Gems run out of impact.",
+    midgame: "Trailblazer, Gem Rat, and Bramble Tunneler open the real engine. Turbo Hogrider is the payoff.",
+    late: "Wide Blood Gem value plus Divine Shield and tech slots. The Gem engine still needs combat survivability.",
+    pivots: ["If you only have Gem Rat, play tempo.", "After Trailblazer, look for Choose One cards rather than random stats.", "Gift wants tribe reward or T6 payoff."],
+  },
+  {
+    title: "Trigger-First Undead Route",
+    tribe: "undead",
+    opener: "Do not cling to Undead early unless you have both a trigger source and payoff.",
+    midgame: "Dead Bellringer provides the Recruit Phase trigger; Barrier Banshee and Snazzy Phantom pay it off.",
+    late: "The board works when it has already made stats and shields before combat. The right-most carry must be intentional.",
+    pivots: ["Without Bellringer, do not keep too many medium Undead.", "Phantom is weak without a high-Attack target.", "Scam tech is needed against huge stat boards."],
+  },
+  {
+    title: "Spell Economy Murloc Route",
+    tribe: "murloc",
+    opener: "The Murloc engine needs cheap spells and a carry held in hand.",
+    midgame: "Twilight Tidehunter and Shamanic Tidecaller convert spell usage into hand and board buffs.",
+    late: "Kelp Keeper plus Battlecry value, Gearfin spell generation, then scam/poison-style tech against large stats.",
+    pivots: ["Gearfin also bridges into Mechs.", "If hand positioning is unstable, pivot to board scaling.", "A spell-less Murloc shop is tempo, not a comp."],
+  },
+];
+
+export const referenceNotes: ReferenceNote[] = [
+  {
+    label: "Blizzard 36.2 patch notes",
+    kind: "Official card-pool baseline",
+    summary: "Confirms Season 14's core additions: Dark Gifts, Activate, expanded Trinket pool, new heroes, Lockbox, Fishbait, and the large Battlegrounds pool refresh.",
+    href: "https://hearthstone.blizzard.com/en-gb/news/24290432/362-patch-notes",
+  },
+  {
+    label: "Season 14 announcement",
+    kind: "Official system explanation",
+    summary: "Explains that the Dark Gift button starts on Turn 3, costs 3 Gold, can be used once per turn and three times per game, and improves as turns pass.",
+    href: "https://playhearthstone.com/en-us/blog/24290433/",
+  },
+  {
+    label: "HSBG 36.2 database",
+    kind: "Visual card-pool reference",
+    summary: "The visual patch database shows major Season 14 pool churn with many new, returning, changed, and removed Battlegrounds cards.",
+    href: "https://hsbg.cards/patch-notes/36.2",
+  },
+  {
+    label: "Community and creator videos",
+    kind: "Early meta read",
+    summary: "Community/video discussion is currently focused on Dark Gift timing, Mech Magnetic lines, Undead Recruit triggers, and high Gift variance. Treat it as directional, not as win-rate data.",
+    href: "https://www.youtube.com/results?search_query=Hearthstone+Battlegrounds+Season+14+Dark+Gifts+guide",
   },
 ];

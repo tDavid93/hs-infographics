@@ -336,6 +336,160 @@ h1 {
   background: linear-gradient(145deg, #101a25, #0c1118);
 }
 
+.board-grid,
+.reference-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.board-card,
+.route-card,
+.reference-card {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: linear-gradient(145deg, #121a27, #0b1119);
+}
+
+.board-card {
+  display: grid;
+  gap: 14px;
+  padding: 18px;
+}
+
+.board-card[hidden],
+.route-card[hidden] {
+  display: none;
+}
+
+.board-card > div > span,
+.reference-card span {
+  display: inline-flex;
+  margin-bottom: 8px;
+  color: var(--gold);
+  font-size: 0.73rem;
+  font-weight: 900;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.board-card h3,
+.route-card h2,
+.reference-card strong {
+  display: block;
+  margin: 0 0 8px;
+  color: var(--ink);
+  font-size: 1.2rem;
+  line-height: 1.1;
+}
+
+.board-card p,
+.route-card dd,
+.reference-card p {
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.board-card section {
+  padding-top: 2px;
+}
+
+.board-card h4,
+.route-card h3 {
+  margin: 0 0 8px;
+  color: var(--cyan);
+  font-size: 0.76rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.token-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.token-list span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 5px 8px;
+  border: 1px solid rgb(242 193 78 / 0.24);
+  border-radius: 999px;
+  background: rgb(242 193 78 / 0.1);
+  color: #f3ddb7;
+  font-size: 0.8rem;
+  font-weight: 750;
+}
+
+.muted-tokens span {
+  border-color: var(--line);
+  background: rgb(255 255 255 / 0.04);
+  color: var(--muted);
+}
+
+.board-card ul,
+.route-card ul {
+  margin: 0;
+  padding-left: 18px;
+  color: #d8deeb;
+  font-size: 0.9rem;
+  line-height: 1.48;
+}
+
+.route-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.route-card {
+  padding: 18px;
+}
+
+.route-card dl {
+  display: grid;
+  gap: 10px;
+  margin: 0 0 14px;
+}
+
+.route-card dt {
+  margin-bottom: 3px;
+  color: var(--gold);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.route-card dd {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.reference-card {
+  position: relative;
+  display: grid;
+  gap: 4px;
+  min-height: 178px;
+  padding: 18px 42px 18px 18px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.reference-card svg {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  color: var(--cyan);
+}
+
+.reference-card:hover {
+  border-color: rgb(95 199 255 / 0.55);
+}
+
 .toolbar {
   position: sticky;
   top: 12px;
@@ -736,6 +890,10 @@ h1 {
   .info-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .route-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 700px) {
@@ -791,6 +949,12 @@ h1 {
   }
 
   .info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .board-grid,
+  .route-grid,
+  .reference-grid {
     grid-template-columns: 1fr;
   }
 

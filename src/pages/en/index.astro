@@ -1,6 +1,6 @@
 ---
 import { ArrowUpRight, CalendarClock, Filter, Info, Sparkles } from "@lucide/astro";
-import { comps, giftTimeline, glossary, mechanics, playbook, sources, tribes, updated } from "../../data/bg14-en";
+import { boardStates, buildRoutes, comps, giftTimeline, glossary, mechanics, playbook, referenceNotes, sources, tribes, updated } from "../../data/bg14-en";
 import "../../styles/global.css";
 
 const cardArt = (cardId: string) =>
@@ -203,6 +203,84 @@ const date = new Intl.DateTimeFormat("en-US", {
         ))}
       </section>
 
+      <section class="strategy-section" aria-labelledby="boards-title">
+        <div class="section-head">
+          <p class="eyebrow">Board state examples</p>
+          <h2 id="boards-title">What Should Your Board Look Like?</h2>
+          <p>
+            These are not final seven-minion boards. They are recognizable midgame states. If you have two or
+            three key pieces, you can start calling it a real build route.
+          </p>
+        </div>
+        <div class="board-grid">
+          {boardStates.map((state) => (
+            <article class="board-card" data-tribe={state.tribe}>
+              <div>
+                <span>{state.stage}</span>
+                <h3>{state.title}</h3>
+                <p>{state.goal}</p>
+              </div>
+              <section>
+                <h4>Board</h4>
+                <div class="token-list">
+                  {state.board.map((item) => <span>{item}</span>)}
+                </div>
+              </section>
+              <section>
+                <h4>Hand / reserve</h4>
+                <div class="token-list muted-tokens">
+                  {state.hand.map((item) => <span>{item}</span>)}
+                </div>
+              </section>
+              <section>
+                <h4>Next decisions</h4>
+                <ul>
+                  {state.next.map((item) => <li>{item}</li>)}
+                </ul>
+              </section>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="route-grid" aria-label="Build routes">
+        {buildRoutes.map((route) => (
+          <article class="route-card" data-tribe={route.tribe}>
+            <h2>{route.title}</h2>
+            <dl>
+              <div><dt>Opener</dt><dd>{route.opener}</dd></div>
+              <div><dt>Midgame</dt><dd>{route.midgame}</dd></div>
+              <div><dt>Late game</dt><dd>{route.late}</dd></div>
+            </dl>
+            <h3>Pivot signals</h3>
+            <ul>
+              {route.pivots.map((item) => <li>{item}</li>)}
+            </ul>
+          </article>
+        ))}
+      </section>
+
+      <section class="strategy-section" aria-labelledby="refs-title">
+        <div class="section-head">
+          <p class="eyebrow">Analyzed references</p>
+          <h2 id="refs-title">What Is This Based On?</h2>
+          <p>
+            Official patch data is separated from community and video impressions. The former is mechanical fact;
+            the latter is an early meta read.
+          </p>
+        </div>
+        <div class="reference-grid">
+          {referenceNotes.map((ref) => (
+            <a href={ref.href} target="_blank" rel="noreferrer" class="reference-card">
+              <span>{ref.kind}</span>
+              <strong>{ref.label}</strong>
+              <p>{ref.summary}</p>
+              <ArrowUpRight size={16} />
+            </a>
+          ))}
+        </div>
+      </section>
+
       <section class="notes" aria-labelledby="notes-title">
         <Info size={20} />
         <div>
@@ -226,7 +304,7 @@ const date = new Intl.DateTimeFormat("en-US", {
 
     <script>
       const buttons = Array.from(document.querySelectorAll<HTMLButtonElement>("[data-filter]"));
-      const cards = Array.from(document.querySelectorAll<HTMLElement>("[data-tribe]"));
+      const filterTargets = Array.from(document.querySelectorAll<HTMLElement>("[data-tribe]"));
       const allButton = buttons.find((button) => button.dataset.filter === "all");
       const activeFilters = new Set<string>();
 
@@ -240,9 +318,9 @@ const date = new Intl.DateTimeFormat("en-US", {
           button.setAttribute("aria-pressed", String(active));
         });
 
-        cards.forEach((card) => {
-          const tribe = card.dataset.tribe ?? "";
-          card.hidden = !showAll && !activeFilters.has(tribe);
+        filterTargets.forEach((target) => {
+          const tribe = target.dataset.tribe ?? "";
+          target.hidden = !showAll && !activeFilters.has(tribe);
         });
       };
 

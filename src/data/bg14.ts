@@ -44,6 +44,32 @@ export type InfoBlock = {
   points: string[];
 };
 
+export type BoardState = {
+  title: string;
+  stage: string;
+  tribe: Tribe;
+  board: string[];
+  hand: string[];
+  goal: string;
+  next: string[];
+};
+
+export type BuildRoute = {
+  title: string;
+  tribe: Tribe;
+  opener: string;
+  midgame: string;
+  late: string;
+  pivots: string[];
+};
+
+export type ReferenceNote = {
+  label: string;
+  kind: string;
+  summary: string;
+  href: string;
+};
+
 export const updated = "2026-08-05";
 
 export const sources = [
@@ -290,5 +316,106 @@ export const glossary: InfoBlock[] = [
     title: "Lockbox és Fishbait",
     body: "A Lockbox késleltetett Golden érték, a Fishbait pedig Recruit Phase támadásokat nyit. Mindkettő setupot kér, nem puszta statot.",
     points: ["Lockboxnál életerő kell a várakozáshoz.", "Fishbaitnél támadási sorrend és célpont számít.", "Ne áldozd fel a stabil boardot puszta upside-ért."],
+  },
+];
+
+export const boardStates: BoardState[] = [
+  {
+    title: "Mech Magnetic motor",
+    stage: "Tavern 4-5 board",
+    tribe: "mech",
+    board: ["Spark Snapper", "Drone Duplicator", "Glambot", "két külön Magnetic célpont", "tempo Divine Shield/taunt"],
+    hand: ["olcsó célzott Tavern spell", "tartalék Mech vagy economy spell"],
+    goal: "Ne egyetlen óriást építs. A cél több külön Magnetic stack, amelyet Utility Drone vagy duplication effekt később megsokszoroz.",
+    next: ["Használj spelleket olyan Mechre, amely túléli a következő fightot.", "Drone Duplicatort csak értelmes Magnetization előtt aktiváld.", "T6-on Utility Drone vagy további Magnetic payoff felé keress."],
+  },
+  {
+    title: "Quilboar Choose One setup",
+    stage: "Tavern 4-6 board",
+    tribe: "quilboar",
+    board: ["Thorned Trailblazer", "Gem Rat", "Bramble Tunneler", "egy fő Blood Gem célpont", "két rugalmas tempo slot"],
+    hand: ["Choose One lap", "Blood Gemek", "lehetséges Gem Day"],
+    goal: "Előbb a Gem-minőséget és a Choose One engine-t rakd össze, utána töltsd szélesen a boardot.",
+    next: ["Trailblazer mellett a legjobb Choose One lapot játszd el először.", "Turbo Hogrider után a célzott Gem már board-wide érték.", "Ne tarts túl sok gyenge supportot, ha nincs carry."],
+  },
+  {
+    title: "Undead Reborn trigger board",
+    stage: "Tavern 5-6 board",
+    tribe: "undead",
+    board: ["Dead Bellringer", "Barrier Banshee", "Snazzy Phantom", "magas Attackú Reborn célpont", "jobb szélső Undead carry"],
+    hand: ["Reborn vagy stat spell", "scam/taunt tech"],
+    goal: "Recruit Phase-ben indíts Reborn triggereket, hogy combat előtt megkapd a Divine Shieldet és a jobb oldali Attack statot.",
+    next: ["Bellringer célpontja ne a fontos payoff legyen.", "Phantom miatt ellenőrizd a jobb szélső Undeadet.", "Ha nincs túlélés, előbb taunt/scam slotot vegyél."],
+  },
+  {
+    title: "Murloc spell-handbuff board",
+    stage: "Tavern 4-5 board",
+    tribe: "murloc",
+    board: ["Twilight Tidehunter", "Shamanic Tidecaller", "Kelp Keeper", "Gearfin", "egy stabil combat test"],
+    hand: ["bal szélső carry célpont", "1 aranyas Tavern spellek", "Battlecry minion"],
+    goal: "A kéz bal szélső célpontját kontrollálva alakítsd a spell-gazdaságot folyamatos kéz- és boardbuffá.",
+    next: ["Minden spell előtt ellenőrizd a kéz sorrendjét.", "Kelp Keeperrel csak valódi Battlecry értéket ismételj.", "Ha nincs spellforrás, ne force-old Murlocra."],
+  },
+];
+
+export const buildRoutes: BuildRoute[] = [
+  {
+    title: "Stabilizáló Gift útvonal",
+    tribe: "mech",
+    opener: "Korai tempó minionokkal és olcsó spellekkel tartsd az HP-t, majd Turn 4-6 között Giftből keress directiont.",
+    midgame: "Ha Glambot/Spark Snapper/Drone Duplicator vonal jön, kezdd szétosztani a Magnetic stackeket több testre.",
+    late: "Utility Drone, Divine Shield és scam tech zárja le a boardot. A túl nagy single carry sebezhető.",
+    pivots: ["Gearfin Murloc spell-vonalba átvezethet.", "Gyenge Magnetic shop esetén maradj tempo + Gift discovery módban.", "Ha nincs célzott spell, ne commitolj Glambotra."],
+  },
+  {
+    title: "Greedelt Tier 4-5 engine route",
+    tribe: "quilboar",
+    opener: "Ne csak Gemet gyűjts: Gem-minőség vagy Choose One setup nélkül a korai Gemek elfogynak.",
+    midgame: "Trailblazer, Gem Rat és Bramble Tunneler együtt nyitják meg a valódi engine-t. Turbo Hogrider a payoff.",
+    late: "Wide board Gem value, Divine Shield és tech slotok. A Gem motor mellé kell combat túlélés.",
+    pivots: ["Ha csak Gem Rat van, játssz tempo irányt.", "Trailblazer után keress Choose One lapokat, ne random statot.", "Giftből tribe reward vagy T6 payoff az ideális."],
+  },
+  {
+    title: "Trigger-first Undead route",
+    tribe: "undead",
+    opener: "Korán ne ragaszkodj Undeadhez, amíg nincs trigger és payoff együtt.",
+    midgame: "Dead Bellringer adja a Recruit Phase triggert; Barrier Banshee és Snazzy Phantom fizet érte.",
+    late: "A board akkor működik, ha combat előtt már statot és shieldet generált. A jobb szélső carry legyen szándékos.",
+    pivots: ["Ha Bellringer nincs meg, ne tarts túl sok közepes Undeadet.", "Magas Attack célpont nélkül Phantom gyenge.", "Scam tech kell a nagy stat boardok ellen."],
+  },
+  {
+    title: "Spell economy Murloc route",
+    tribe: "murloc",
+    opener: "Olcsó spellek és kézben tartott carry nélkül a Murloc engine nem indul.",
+    midgame: "Twilight Tidehunter és Shamanic Tidecaller a spellhasználatot kéz- és boardbuffá alakítja.",
+    late: "Kelp Keeper + Battlecry, Gearfin spelltermelés, majd scam/poison jellegű tech a nagy statok ellen.",
+    pivots: ["Gearfin Mechhez is hidat ad.", "Ha kézpozíciót nem tudod tartani, válts board-scalingre.", "Spell nélküli Murloc shop csak tempo, nem comp."],
+  },
+];
+
+export const referenceNotes: ReferenceNote[] = [
+  {
+    label: "Blizzard 36.2 patch notes",
+    kind: "Hivatalos kártyapool",
+    summary: "Megerősíti a Season 14 alapjait: Dark Gifts, Activate, bővített Trinket pool, új hősök, Lockbox, Fishbait és a nagy Battlegrounds pool-frissítés.",
+    href: "https://hearthstone.blizzard.com/en-gb/news/24290432/362-patch-notes",
+  },
+  {
+    label: "Season 14 announcement",
+    kind: "Hivatalos rendszerleírás",
+    summary: "Leírja, hogy a Dark Gift gomb Turn 3-tól 3 aranyba kerül, körönként egyszer használható, összesen háromszor játék közben, és az ajánlatok erősödnek.",
+    href: "https://playhearthstone.com/en-us/blog/24290433/",
+  },
+  {
+    label: "HSBG 36.2 database",
+    kind: "Vizuális card-pool referencia",
+    summary: "A patch vizuális összesítése alapján a Season 14 nagy pool-csere: sok új, visszatérő, módosított és kivett Battlegrounds elem.",
+    href: "https://hsbg.cards/patch-notes/36.2",
+  },
+  {
+    label: "Community and creator videos",
+    kind: "Korai meta olvasat",
+    summary: "A közösségi és videós beszélgetések főleg a Dark Gift timingot, Mech Magnetic vonalat, Undead Recruit triggereket és a nagy Gift-variance-t emelik ki. Ezt irányjelként, nem win-rate adatként kezeljük.",
+    href: "https://www.youtube.com/results?search_query=Hearthstone+Battlegrounds+Season+14+Dark+Gifts+guide",
   },
 ];

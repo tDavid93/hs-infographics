@@ -1,6 +1,6 @@
 ---
 import { ArrowUpRight, CalendarClock, Filter, Info, Sparkles } from "@lucide/astro";
-import { comps, giftTimeline, glossary, mechanics, playbook, sources, tribes, updated } from "../data/bg14";
+import { boardStates, buildRoutes, comps, giftTimeline, glossary, mechanics, playbook, referenceNotes, sources, tribes, updated } from "../data/bg14";
 import "../styles/global.css";
 
 const cardArt = (cardId: string) =>
@@ -203,6 +203,84 @@ const date = new Intl.DateTimeFormat("hu-HU", {
         ))}
       </section>
 
+      <section class="strategy-section" aria-labelledby="boards-title">
+        <div class="section-head">
+          <p class="eyebrow">Board state példák</p>
+          <h2 id="boards-title">Mit keress a boardon?</h2>
+          <p>
+            Ezek nem végső hétlapos boardok, hanem felismerhető középső állapotok. Ha ezekből kettő-három kulcselem
+            megvan, már reális build route-ról beszélünk.
+          </p>
+        </div>
+        <div class="board-grid">
+          {boardStates.map((state) => (
+            <article class="board-card" data-tribe={state.tribe}>
+              <div>
+                <span>{state.stage}</span>
+                <h3>{state.title}</h3>
+                <p>{state.goal}</p>
+              </div>
+              <section>
+                <h4>Board</h4>
+                <div class="token-list">
+                  {state.board.map((item) => <span>{item}</span>)}
+                </div>
+              </section>
+              <section>
+                <h4>Kéz / tartalék</h4>
+                <div class="token-list muted-tokens">
+                  {state.hand.map((item) => <span>{item}</span>)}
+                </div>
+              </section>
+              <section>
+                <h4>Következő döntések</h4>
+                <ul>
+                  {state.next.map((item) => <li>{item}</li>)}
+                </ul>
+              </section>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="route-grid" aria-label="Build route-ok">
+        {buildRoutes.map((route) => (
+          <article class="route-card" data-tribe={route.tribe}>
+            <h2>{route.title}</h2>
+            <dl>
+              <div><dt>Opener</dt><dd>{route.opener}</dd></div>
+              <div><dt>Midgame</dt><dd>{route.midgame}</dd></div>
+              <div><dt>Late game</dt><dd>{route.late}</dd></div>
+            </dl>
+            <h3>Pivot jelek</h3>
+            <ul>
+              {route.pivots.map((item) => <li>{item}</li>)}
+            </ul>
+          </article>
+        ))}
+      </section>
+
+      <section class="strategy-section" aria-labelledby="refs-title">
+        <div class="section-head">
+          <p class="eyebrow">Elemzett referenciák</p>
+          <h2 id="refs-title">Mire épül az oldal?</h2>
+          <p>
+            A hivatalos patchadatot külön kezeljük a közösségi és videós tapasztalatoktól. Az előbbi mechanikai tény,
+            az utóbbi korai metaolvasat.
+          </p>
+        </div>
+        <div class="reference-grid">
+          {referenceNotes.map((ref) => (
+            <a href={ref.href} target="_blank" rel="noreferrer" class="reference-card">
+              <span>{ref.kind}</span>
+              <strong>{ref.label}</strong>
+              <p>{ref.summary}</p>
+              <ArrowUpRight size={16} />
+            </a>
+          ))}
+        </div>
+      </section>
+
       <section class="notes" aria-labelledby="notes-title">
         <Info size={20} />
         <div>
@@ -226,7 +304,7 @@ const date = new Intl.DateTimeFormat("hu-HU", {
 
     <script>
       const buttons = Array.from(document.querySelectorAll<HTMLButtonElement>("[data-filter]"));
-      const cards = Array.from(document.querySelectorAll<HTMLElement>("[data-tribe]"));
+      const filterTargets = Array.from(document.querySelectorAll<HTMLElement>("[data-tribe]"));
       const allButton = buttons.find((button) => button.dataset.filter === "all");
       const activeFilters = new Set<string>();
 
@@ -240,9 +318,9 @@ const date = new Intl.DateTimeFormat("hu-HU", {
           button.setAttribute("aria-pressed", String(active));
         });
 
-        cards.forEach((card) => {
-          const tribe = card.dataset.tribe ?? "";
-          card.hidden = !showAll && !activeFilters.has(tribe);
+        filterTargets.forEach((target) => {
+          const tribe = target.dataset.tribe ?? "";
+          target.hidden = !showAll && !activeFilters.has(tribe);
         });
       };
 
