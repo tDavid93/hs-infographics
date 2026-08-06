@@ -364,6 +364,16 @@ export const communityPulse: CommunityPulse[] = [
 export const changelog: ChangelogEntry[] = [
   {
     date: "2026-08-06",
+    title: "Tavern Scout Binder UI redesign",
+    summary: "The site now uses a faster-reading tactical binder look with light paper surfaces and tabbed navigation.",
+    changes: [
+      "Replaced the dark dashboard feel with a warmer notebook-style reading surface.",
+      "Unified navigation, filters, comp cards, references, and changelog around binder and stamp patterns.",
+      "Changed mobile navigation to a four-column tab grid and made subpage mastheads more compact.",
+    ],
+  },
+  {
+    date: "2026-08-06",
     title: "Changelog and community refresh",
     summary: "The site now has a trackable changelog, and the Season 14 community read has been refreshed.",
     changes: [

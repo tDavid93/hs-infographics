@@ -24,6 +24,7 @@ type Props = {
 };
 
 const { lang, title, description, eyebrow, lede, updatedLabel, date, navItems, language } = Astro.props;
+const isOverview = navItems.some((item) => item.active && (item.href === "/" || item.href === "/en/"));
 ---
 
 <html lang={lang}>
@@ -36,11 +37,19 @@ const { lang, title, description, eyebrow, lede, updatedLabel, date, navItems, l
     <title>{title}</title>
   </head>
   <body>
+    <!--
+      THESIS: A tactical Tavern Scout Binder turns Season 14 chaos into a coach's desk reference; it refuses the generic dark dashboard and oversized hero-card page.
+      OWN-WORLD: Warm paper, inked rules, tabbed binder navigation, stamped grades, clipped card specimens, and route diagrams carry the interface.
+      STORY: The reader identifies the season, scans the strongest engines, opens the needed tab, and checks source confidence before committing in-game.
+      FIRST VIEWPORT: Title and guide purpose sit left inside a broad paper sheet; update/language controls sit right like desk labels; tabs lock below as the binder spine.
+      FORM: Chosen direction is the fifth grounded read-mode direction, seed f4779ce7.
+      FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
+    -->
     <main class="shell">
-      <header class="masthead">
+      <header class={`masthead ${isOverview ? "" : "masthead-compact"}`}>
         <div class="masthead-copy">
-          <p class="eyebrow">{eyebrow}</p>
           <h1>Dark Gifts Meta Desk</h1>
+          <p class="eyebrow">{eyebrow}</p>
           <p class="lede">{lede}</p>
         </div>
         <div class="update-card" aria-label={`${updatedLabel}: ${date}`}>

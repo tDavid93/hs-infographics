@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-06T13:34:00+02:00",
+  "title": "Design System: BG14 Meta Desk",
+  "extensions": {
+    "colorMeta": {
+      "paper": { "role": "neutral", "displayName": "Desk Paper", "canonical": "#f3ead7", "tonalRamp": ["#2b2116", "#584a38", "#8a775c", "#b9a27f", "#d5c09a", "#e6d7bd", "#f3ead7", "#fff8e8"] },
+      "ink": { "role": "primary", "displayName": "Deep Ink", "canonical": "#21180f", "tonalRamp": ["#140e08", "#21180f", "#3a2d20", "#584a38", "#7a6a55", "#a08e74", "#c7b69a", "#f3ead7"] },
+      "blue": { "role": "secondary", "displayName": "Scout Blue", "canonical": "#1d5b81", "tonalRamp": ["#0b2231", "#123a53", "#1d5b81", "#2b7aa8", "#5797bd", "#8ab8d2", "#bfdae8", "#eaf5fa"] },
+      "red": { "role": "tertiary", "displayName": "Warning Red", "canonical": "#b63f31", "tonalRamp": ["#35110d", "#682016", "#913126", "#b63f31", "#cf6f5f", "#df9e91", "#efccc4", "#fff0ed"] },
+      "gold": { "role": "secondary", "displayName": "Highlighter Gold", "canonical": "#be7f22", "tonalRamp": ["#3e2607", "#70470f", "#9b6719", "#be7f22", "#daa14a", "#e9c47f", "#f6dfac", "#fff4d0"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Owns the page title and major section headlines." },
+      "body": { "displayName": "Body", "purpose": "Carries bilingual guide copy and long Hungarian strings." },
+      "label": { "displayName": "Binder Label", "purpose": "Used for stamps, filters, grades, route labels, and confidence markers." }
+    },
+    "shadows": [
+      { "name": "desk-lift", "value": "0 20px 42px rgb(60 38 14 / 0.16)", "purpose": "Major paper sheets lifted from the desk." },
+      { "name": "card-lift", "value": "0 10px 22px rgb(78 50 20 / 0.1)", "purpose": "Repeated cards at rest." }
+    ],
+    "motion": [
+      { "name": "state-ease", "value": "160ms ease", "purpose": "Small hover and active-state transitions." }
+    ],
+    "breakpoints": [
+      { "name": "tablet", "value": "980px" },
+      { "name": "mobile", "value": "700px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Binder Tab",
+      "kind": "nav",
+      "refersTo": "nav-tab",
+      "description": "Primary route navigation tab.",
+      "html": "<a class=\"ds-nav-tab ds-nav-tab-active\" href=\"#\">Comps</a>",
+      "css": ".ds-nav-tab { display:inline-grid; place-items:center; min-height:40px; padding:10px 14px; border:1px solid transparent; border-radius:10px; color:#584a38; font:900 1rem/1.1 Atkinson Hyperlegible, sans-serif; text-decoration:none; } .ds-nav-tab-active, .ds-nav-tab:hover { border-color:#2e2418; background:#fff8e8; color:#21180f; } .ds-nav-tab:focus-visible { outline:3px solid rgb(29 91 129 / 0.42); outline-offset:3px; }"
+    },
+    {
+      "name": "Active Filter Chip",
+      "kind": "chip",
+      "refersTo": "filter-active",
+      "description": "Selected tribe filter chip.",
+      "html": "<button class=\"ds-filter-chip\">Mech</button>",
+      "css": ".ds-filter-chip { min-height:38px; padding:8px 12px; border:1px solid rgb(243 234 215 / 0.34); border-radius:10px; background:#ffe28f; color:#21180f; font:900 0.95rem/1.1 Atkinson Hyperlegible, sans-serif; cursor:pointer; } .ds-filter-chip:focus-visible { outline:3px solid rgb(29 91 129 / 0.42); outline-offset:3px; }"
+    },
+    {
+      "name": "Filed Content Card",
+      "kind": "card",
+      "refersTo": "content-card",
+      "description": "Default repeated guide card.",
+      "html": "<article class=\"ds-card\"><span>Board state</span><h3>Mech Magnetic Engine</h3><p>Multiple Magnetic stacks across bodies, later multiplied by Utility Drone.</p></article>",
+      "css": ".ds-card { max-width:360px; padding:18px; border:1px solid #2e2418; border-radius:14px; background:#fbf2df; color:#21180f; box-shadow:0 10px 22px rgb(78 50 20 / 0.1); } .ds-card span { display:inline-flex; margin-bottom:8px; color:#b63f31; font:900 0.74rem/1.1 Atkinson Hyperlegible, sans-serif; letter-spacing:0.08em; text-transform:uppercase; } .ds-card h3 { margin:0 0 8px; font:800 1.22rem/1.1 Bricolage Grotesque, sans-serif; } .ds-card p { margin:0; color:#584a38; line-height:1.5; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Tavern Scout Binder",
+    "overview": "The site is a coach's desk reference for a volatile Battlegrounds season: warm paper, inked rules, stamped labels, tabbed navigation, and clipped card specimens. It is expressive enough to feel made for Hearthstone players, but it stays in Read mode: hierarchy, scan speed, and trust in source separation beat spectacle.",
+    "keyCharacteristics": [
+      "Warm paper surfaces with strong ink borders and visible reading structure.",
+      "Dense but legible cards that keep decision rules close to card identity.",
+      "Binder-tab navigation and stamp-like metadata for route and confidence context.",
+      "Light, tactile depth with soft shadows only where panels lift from the desk."
+    ],
+    "rules": [
+      { "name": "The Evidence Color Rule", "body": "Blue is for navigation or source action, red is for caution, and gold is for selected or highlighted state. Do not use them as arbitrary decoration.", "section": "colors" },
+      { "name": "The Binder Label Rule", "body": "Labels should sit beside or below a heading as metadata, never as a decorative kicker that delays the actual title.", "section": "typography" }
+    ],
+    "dos": [
+      "Do keep strategy text close to the card, route, or board state it explains.",
+      "Do use gold only for selected/highlight states or important stamps.",
+      "Do keep subpage mastheads compact so the user reaches the tool surface quickly.",
+      "Do preserve bilingual parity when adding visible content."
+    ],
+    "donts": [
+      "Don't return to a generic dark dashboard or glass-card visual system.",
+      "Don't use community evidence as win-rate proof.",
+      "Don't add decorative grids, glow effects, or large ornamental backgrounds without a product function.",
+      "Don't use color alone to communicate tier, confidence, or active state."
+    ]
+  }
+}
