@@ -78,6 +78,13 @@ export type CommunityPulse = {
   sources: string[];
 };
 
+export type ChangelogEntry = {
+  date: string;
+  title: string;
+  summary: string;
+  changes: string[];
+};
+
 export const updated = "2026-08-06";
 
 export const sources = [
@@ -468,5 +475,48 @@ export const communityPulse: CommunityPulse[] = [
     confidence: "low",
     takeaway: "Naga és Demon maradjon alacsonyabb biztonságú ajánlás: jó highroll/pivot lehet, de ne legyen elsődleges force terv.",
     sources: ["r/BobsTavern friss feed"],
+  },
+];
+
+export const changelog: ChangelogEntry[] = [
+  {
+    date: "2026-08-06",
+    title: "Changelog és közösségi frissítés",
+    summary: "Az oldal kapott egy követhető változásnaplót, és frissült a Season 14 közösségi olvasata.",
+    changes: [
+      "Új Közösségi pulzus szekció a Reddit és creator jelek bizalmi szintjeivel.",
+      "HearthPwn, r/BobsTavern friss feed és YouTube guide keresés bekerült a források közé.",
+      "A közösségi jeleket különválasztottuk a hivatalos patchadatoktól és win-rate adatként nem kezeljük.",
+    ],
+  },
+  {
+    date: "2026-08-05",
+    title: "Többoldalas Season 14 guide",
+    summary: "Az eredeti infografika teljes segédoldallá bővült külön áttekintés, comp, stratégia és forrás oldalakkal.",
+    changes: [
+      "A guide több oldalra váltott HU és EN útvonalakkal.",
+      "Bekerültek a board state-ek, build route-ok, stratégiai playbookok és referenciajegyzetek.",
+      "A fő navigáció és nyelvváltó minden oldalon elérhető lett.",
+    ],
+  },
+  {
+    date: "2026-08-05",
+    title: "Comp kártyák és szűrés",
+    summary: "A comp nézet teljes Battlegrounds-kártya jellegű lapokat és többválasztós tribe szűrést kapott.",
+    changes: [
+      "A kártyaképek mellé bekerült a Tavern tier, típus, attack/health, szabályszöveg és meta jegyzet.",
+      "A filter több tribe-ot tud egyszerre kijelölni.",
+      "A kártyaképek HearthstoneJSON render/art URL-ekből töltődnek.",
+    ],
+  },
+  {
+    date: "2026-08-05",
+    title: "Magyar és angol tartalom",
+    summary: "A site külön magyar és angol oldalakkal, lokalizált navigációval és szövegekkel indult el.",
+    changes: [
+      "Magyar fordítás készült az alap útmutatóhoz.",
+      "Angol route-ok és nyelvváltó kerültek a site-ra.",
+      "Az overview oldal gyors meta snapshotot és főoldal linkeket kapott.",
+    ],
   },
 ];

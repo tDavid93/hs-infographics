@@ -2,7 +2,7 @@
 import { ArrowUpRight, Info } from "@lucide/astro";
 import PageFrame from "../../../components/PageFrame.astro";
 import StrategySections from "../../../components/StrategySections.astro";
-import { communityPulse, referenceNotes, sources, updated } from "../../../data/bg14-en";
+import { changelog, communityPulse, referenceNotes, sources, updated } from "../../../data/bg14-en";
 import { languageLinks, navItems, siteCopy } from "../../../data/site";
 import "../../../styles/global.css";
 
@@ -35,6 +35,27 @@ const confidenceLabels = { high: "high", medium: "medium", low: "low" } as const
           </dl>
           <div class="pulse-sources" aria-label="Sources">
             {item.sources.map((source) => <span>{source}</span>)}
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+  <section class="strategy-section changelog-section" aria-labelledby="changelog-title">
+    <div class="section-head">
+      <p class="eyebrow">Changelog</p>
+      <h2 id="changelog-title">Site Updates</h2>
+      <p>Track when content, language, and strategy updates are added to the site.</p>
+    </div>
+    <div class="changelog-list">
+      {changelog.map((entry) => (
+        <article class="changelog-item">
+          <time datetime={entry.date}>{new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", year: "numeric" }).format(new Date(`${entry.date}T12:00:00Z`))}</time>
+          <div>
+            <h3>{entry.title}</h3>
+            <p>{entry.summary}</p>
+            <ul>
+              {entry.changes.map((change) => <li>{change}</li>)}
+            </ul>
           </div>
         </article>
       ))}

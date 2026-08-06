@@ -1,4 +1,4 @@
-import type { BoardState, BuildRoute, CardRef, CommunityPulse, Comp, InfoBlock, ReferenceNote, TimelineRow, Tribe } from "./bg14";
+import type { BoardState, BuildRoute, CardRef, ChangelogEntry, CommunityPulse, Comp, InfoBlock, ReferenceNote, TimelineRow, Tribe } from "./bg14";
 
 export const updated = "2026-08-06";
 
@@ -358,5 +358,48 @@ export const communityPulse: CommunityPulse[] = [
     confidence: "low",
     takeaway: "Naga and Demon stay lower-confidence recommendations: playable highrolls or pivots, not primary force plans.",
     sources: ["r/BobsTavern live feed"],
+  },
+];
+
+export const changelog: ChangelogEntry[] = [
+  {
+    date: "2026-08-06",
+    title: "Changelog and community refresh",
+    summary: "The site now has a trackable changelog, and the Season 14 community read has been refreshed.",
+    changes: [
+      "Added a Community Pulse section with confidence levels for Reddit and creator signals.",
+      "Added HearthPwn, the live r/BobsTavern feed, and YouTube guide search to the source list.",
+      "Separated community signals from official patch data and avoided treating them as win-rate evidence.",
+    ],
+  },
+  {
+    date: "2026-08-05",
+    title: "Multipage Season 14 guide",
+    summary: "The original infographic expanded into a full helper site with separate overview, comps, strategy, and references pages.",
+    changes: [
+      "Split the guide into multiple HU and EN routes.",
+      "Added board states, build routes, strategy playbooks, and analyzed references.",
+      "Made the main navigation and language switch available across the site.",
+    ],
+  },
+  {
+    date: "2026-08-05",
+    title: "Comp cards and filtering",
+    summary: "The comps view gained full Battlegrounds-style card panels and multi-select tribe filtering.",
+    changes: [
+      "Added Tavern tier, type, attack/health, rules text, and meta notes beside card art.",
+      "Allowed multiple tribe filters to be selected at once.",
+      "Loaded card art through HearthstoneJSON render/art URLs.",
+    ],
+  },
+  {
+    date: "2026-08-05",
+    title: "Hungarian and English content",
+    summary: "The site launched with separate Hungarian and English pages, localized navigation, and localized guide copy.",
+    changes: [
+      "Added the Hungarian translation for the core guide.",
+      "Added English routes and the language switcher.",
+      "Added a quick meta snapshot and main page links to the overview.",
+    ],
   },
 ];
