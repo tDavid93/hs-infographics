@@ -121,6 +121,10 @@ export const sources = [
     href: "https://www.youtube.com/results?search_query=Hearthstone+Battlegrounds+Season+14+Dark+Gifts+guide",
   },
   {
+    label: "JeefHS Dark Gift videó",
+    href: "https://www.youtube.com/watch?v=Z-16suf9KZY",
+  },
+  {
     label: "dogdog Tasty Lobster Beast videó",
     href: "https://www.youtube.com/watch?v=wi_nvouGX0Y",
   },
@@ -139,6 +143,14 @@ export const sources = [
   {
     label: "HSReplay Tasty Lobstah comp oldal",
     href: "https://hsreplay.net/battlegrounds/comps/87/beasts-tasty-lobstah",
+  },
+  {
+    label: "HSReplay Season 14 Battlegrounds statok",
+    href: "https://hsreplay.net/battlegrounds/",
+  },
+  {
+    label: "r/BobsTavern Dark Gift stratégia",
+    href: "https://www.reddit.com/r/BobsTavern/comments/1vfsa9m/thoughts_on_dark_gift_strategy/",
   },
 ];
 
@@ -332,8 +344,8 @@ export const playbook: InfoBlock[] = [
     body: "A Gift nem ingyenes tempo: 3 aranyért miniont és hatást veszel, ezért mindig a köröd legjobb három aranyas play-ével hasonlítsd össze.",
     points: [
       "Korán akkor jó, ha megállítja a vérzést vagy irányt ad egy üres boardnak.",
-      "Középen akkor jó, ha létező engine-hez ad payoffot, nem csak új ötletet nyit.",
-      "Későn akkor jó, ha T5/T6 payoffot, scamet vagy célzott techet keresel.",
+      "Középen akkor jó, ha létező engine-hez ad payoffot, nem csak új ötletet nyit; a közösségi kérdések is főleg ezt a döntési ablakot feszegetik.",
+      "Későn akkor jó, ha T5/T6 payoffot, scamet vagy célzott techet keresel; ne tartsd mindhárom használatot csak Turn 10+ highrollra.",
     ],
   },
   {
@@ -504,8 +516,14 @@ export const referenceNotes: ReferenceNote[] = [
   {
     label: "Community and creator videos",
     kind: "Korai meta olvasat",
-    summary: "A közösségi és videós beszélgetések főleg a Dark Gift timingot, Mech Magnetic vonalat, Quilboar/Undead highrollokat és a nagy Gift-variance-t emelik ki. Ezt irányjelként, nem win-rate adatként kezeljük.",
+    summary: "A friss videók és Reddit beszélgetések főleg a Dark Gift timingot, a Beast/Rally és Lockbox irányokat, illetve a kliens/időnyomás miatti döntési hibákat emelik ki. Ezt irányjelként, nem önálló win-rate adatként kezeljük.",
     href: "https://www.youtube.com/results?search_query=Hearthstone+Battlegrounds+Season+14+Dark+Gifts+guide",
+  },
+  {
+    label: "HSReplay live Season 14 stats",
+    kind: "Élő statisztikai ellenőrzés",
+    summary: "A HSReplay már Season 14 élő Battlegrounds statokat és comp guide-okat listáz, ezért a creator/Reddit jeleket érdemes ezen keresztül validálni, amikor elég minta gyűlik össze.",
+    href: "https://hsreplay.net/battlegrounds/",
   },
   {
     label: "Tasty Lobster creator cluster",
@@ -523,22 +541,29 @@ export const referenceNotes: ReferenceNote[] = [
 
 export const communityPulse: CommunityPulse[] = [
   {
-    title: "A Tasty Lobster Beast most már valódi route",
-    signal: "Friss creator videók, a HSReplay Tasty Lobstah oldala és a HSBG card pool ugyanarra mutat: ismételt Lobster Deathrattle, Hoarding Hyena és Deathstrider.",
+    title: "A friss Dark Gift videók a középső Gift ablakot erősítik",
+    signal: "JeefHS és Sevel friss Dark Gift tartalma, valamint a Reddit stratégiai thread is arról szól, hogy a Gift akkor a legerősebb, amikor már van irányod, de még nem csak T6 mentőövet keresel.",
     confidence: "medium",
-    takeaway: "A Beast Fishbait-jegyzetből A-tier route lett, de csak akkor ajánlott, ha ismételni tudod a Lobster triggereket és kontrollálod a bal szélső pozíciót.",
-    sources: ["dogdog Tasty Lobster Beast videó", "HSReplay Tasty Lobstah comp oldal", "HSBG 36.2 vizuális adatbázis"],
+    takeaway: "A stratégia oldalon a Turn 6-8 Gift marad a fő döntési pont: engine-darabot vagy payoffot keress, ne csak késői highrollra tartogasd a gombot.",
+    sources: ["JeefHS Dark Gift videó", "Sevel Dark Gifts videó", "r/BobsTavern Dark Gift stratégia"],
   },
   {
-    title: "Quilboar, Beast és Undead kapja a legtöbb hype-ot",
-    signal: "A creator/video találatok és Reddit beszélgetések alapján a Beast Lobster, Quilboar és Undead a legláthatóbb high-ceiling csomag.",
+    title: "A Tasty Lobster Beast most már valódi route",
+    signal: "Friss creator videók, a HSReplay Tasty Lobstah oldala, a HSReplay comp lista és a HSBG card pool ugyanarra mutat: ismételt Lobster Deathrattle, Hoarding Hyena és Deathstrider.",
     confidence: "medium",
-    takeaway: "A Mech és Quilboar marad felül engine-tisztaság miatt, de a Beast teljesebb route-ot kapott, mert creator és comp-page jel is támogatja.",
-    sources: ["YouTube Season 14 guide keresés", "r/BobsTavern friss feed"],
+    takeaway: "A főoldali snapshot is A-tierként kezeli a Beastet, de csak akkor ajánlott, ha ismételni tudod a Lobster triggereket és kontrollálod a bal szélső pozíciót.",
+    sources: ["dogdog Tasty Lobster Beast videó", "HSReplay Tasty Lobstah comp oldal", "HSReplay Season 14 Battlegrounds statok", "HSBG 36.2 vizuális adatbázis"],
+  },
+  {
+    title: "Quilboar, Beast, Undead és Elemental kapja a legtöbb korai figyelmet",
+    signal: "A creator/video találatok és Reddit kommentek alapján a Beast Lobster, Quilboar, Undead és Elemental a legtöbbet emlegetett high-ceiling csomag, miközben Pirate Lockboxra is sokan kíváncsiak.",
+    confidence: "medium",
+    takeaway: "A Mech és Quilboar marad felül engine-tisztaság miatt; Beast A-tier, Elemental A-tier, Pirate pedig továbbra is B-tier greed route, mert még payoff és tempo együtt kell hozzá.",
+    sources: ["YouTube Season 14 guide keresés", "r/BobsTavern friss feed", "r/BobsTavern Dark Gift stratégia"],
   },
   {
     title: "A Reddit feed inkább highrollokat mutat, nem stabil tierlistát",
-    signal: "A friss r/BobsTavern feedben sok Final Board / Highlight poszt látszik: óriás minionok, Naga highlightok, trinket/bug beszélgetések és extrém boardok.",
+    signal: "A friss r/BobsTavern feedben sok Final Board / Highlight poszt látszik: óriás minionok, Naga és Dragon highrollok, trinket/bug beszélgetések, klienspanaszok és extrém boardok.",
     confidence: "high",
     takeaway: "A közösségi screenshotokból ne olvassunk win-rate adatot. Hasznosak board-state és ceiling példának, de nem elégségesek comp erősorrendhez.",
     sources: ["r/BobsTavern friss feed"],
@@ -567,6 +592,17 @@ export const communityPulse: CommunityPulse[] = [
 ];
 
 export const changelog: ChangelogEntry[] = [
+  {
+    date: "2026-08-06",
+    title: "Friss videó és közösségi feedback update",
+    summary: "A főoldali snapshot, a community pulse és a stratégiai Gift tanács frissült új Dark Gift videók, HSReplay élő Season 14 oldalak és Reddit feedback alapján.",
+    changes: [
+      "A főoldali rangsor Beastet A-tierként mutatja, összhangban a comp oldallal.",
+      "Bekerült JeefHS Dark Gift videója, HSReplay Season 14 stat oldala és a Dark Gift stratégiai Reddit thread.",
+      "A Gift tanács hangsúlyosabban kezeli a Turn 6-8 engine/payoff ablakot, és óv a túl késői három Gift highroll tervtől.",
+      "A community pulse külön jelöli a live stat ellenőrzést, a Reddit highroll-zajt és a kliens/időnyomás feedbacket.",
+    ],
+  },
   {
     date: "2026-08-06",
     title: "Mélyebb creator és card-pool pass",

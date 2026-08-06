@@ -11,11 +11,14 @@ export const sources = [
   { label: "r/BobsTavern early discussion", href: "https://www.reddit.com/r/BobsTavern/comments/1v8664a/announcing_battlegrounds_season_14_dark_gifts_of/" },
   { label: "r/BobsTavern live feed", href: "https://www.reddit.com/r/BobsTavern/" },
   { label: "YouTube Season 14 guide search", href: "https://www.youtube.com/results?search_query=Hearthstone+Battlegrounds+Season+14+Dark+Gifts+guide" },
+  { label: "JeefHS Dark Gift video", href: "https://www.youtube.com/watch?v=Z-16suf9KZY" },
   { label: "dogdog Tasty Lobster Beast video", href: "https://www.youtube.com/watch?v=wi_nvouGX0Y" },
   { label: "Sevel Dark Gifts video", href: "https://www.youtube.com/watch?v=WiCIJmfi6IY" },
   { label: "Sevel Dragon build video", href: "https://www.youtube.com/watch?v=dCwe93sXIiM" },
   { label: "Shadybunny Season 14 mechanics review", href: "https://www.youtube.com/watch?v=6IezL5pKS1I" },
   { label: "HSReplay Tasty Lobstah comp page", href: "https://hsreplay.net/battlegrounds/comps/87/beasts-tasty-lobstah" },
+  { label: "HSReplay Season 14 Battlegrounds stats", href: "https://hsreplay.net/battlegrounds/" },
+  { label: "r/BobsTavern Dark Gift strategy", href: "https://www.reddit.com/r/BobsTavern/comments/1vfsa9m/thoughts_on_dark_gift_strategy/" },
 ];
 
 export const tribes: { key: Tribe | "all"; label: string }[] = [
@@ -205,8 +208,8 @@ export const playbook: InfoBlock[] = [
     body: "A Gift is not free tempo: you are spending 3 Gold for a minion plus an effect, so compare it to your best normal 3-Gold play.",
     points: [
       "Early Gifts are good when they stop bleeding or give direction to an empty board.",
-      "Midgame Gifts are good when they add payoff to an engine you already have, not just a new idea.",
-      "Late Gifts are good when you are searching for a T5/T6 payoff, scam, or specific tech.",
+      "Midgame Gifts are good when they add payoff to an engine you already have, not just a new idea; community strategy questions are clustering around this window.",
+      "Late Gifts are good when you are searching for a T5/T6 payoff, scam, or specific tech; do not save all three uses only for a Turn 10+ highroll.",
     ],
   },
   {
@@ -377,8 +380,14 @@ export const referenceNotes: ReferenceNote[] = [
   {
     label: "Community and creator videos",
     kind: "Early meta read",
-    summary: "Community/video discussion is currently focused on Dark Gift timing, Mech Magnetic lines, Quilboar/Undead highrolls, and high Gift variance. Treat it as directional, not as win-rate data.",
+    summary: "Fresh videos and Reddit discussion are focused on Dark Gift timing, Beast/Rally and Lockbox lines, plus client/timer pressure that can cause missed recruit-phase decisions. Treat this as directional, not standalone win-rate data.",
     href: "https://www.youtube.com/results?search_query=Hearthstone+Battlegrounds+Season+14+Dark+Gifts+guide",
+  },
+  {
+    label: "HSReplay live Season 14 stats",
+    kind: "Live statistical check",
+    summary: "HSReplay is now listing Season 14 Battlegrounds live stats and comp guides, so creator and Reddit signals should be validated there as the sample grows.",
+    href: "https://hsreplay.net/battlegrounds/",
   },
   {
     label: "Tasty Lobster creator cluster",
@@ -396,22 +405,29 @@ export const referenceNotes: ReferenceNote[] = [
 
 export const communityPulse: CommunityPulse[] = [
   {
-    title: "Tasty Lobster Beasts are a real route now",
-    signal: "Recent creator videos, HSReplay's named Tasty Lobstah page, and the HSBG card pool all line up around repeated Lobster Deathrattles, Hoarding Hyena, and Deathstrider.",
+    title: "New Dark Gift videos reinforce the midgame Gift window",
+    signal: "Fresh JeefHS and Sevel Dark Gift content, plus the Reddit strategy thread, all point to Gift being strongest when you already have direction but are not only fishing for a T6 rescue.",
     confidence: "medium",
-    takeaway: "Beast moves from a low-context Fishbait note to an A-tier route, but the recommendation is conditional on repeated Lobster triggers and correct left-most positioning.",
-    sources: ["dogdog Tasty Lobster Beast video", "HSReplay Tasty Lobstah comp page", "HSBG 36.2 visual database"],
+    takeaway: "The strategy page keeps Turn 6-8 as the key Gift decision point: look for engine pieces or payoffs instead of saving every button press for a late highroll.",
+    sources: ["JeefHS Dark Gift video", "Sevel Dark Gifts video", "r/BobsTavern Dark Gift strategy"],
   },
   {
-    title: "Quilboar, Beast, and Undead are getting the loudest hype",
-    signal: "Creator/video search results and Reddit discussion now show Beast Lobster, Quilboar, and Undead as the most visibly discussed high-ceiling packages.",
+    title: "Tasty Lobster Beasts are a real route now",
+    signal: "Recent creator videos, HSReplay's named Tasty Lobstah page, the HSReplay comps listing, and the HSBG card pool all line up around repeated Lobster Deathrattles, Hoarding Hyena, and Deathstrider.",
     confidence: "medium",
-    takeaway: "The site keeps Mech and Quilboar at the top for engine clarity, but Beast now gets a fuller route because it has both creator and comp-page support.",
-    sources: ["YouTube Season 14 guide search", "r/BobsTavern live feed"],
+    takeaway: "The overview snapshot now treats Beast as A-tier, but only when you can repeat Lobster triggers and manage left-most positioning.",
+    sources: ["dogdog Tasty Lobster Beast video", "HSReplay Tasty Lobstah comp page", "HSReplay Season 14 Battlegrounds stats", "HSBG 36.2 visual database"],
+  },
+  {
+    title: "Quilboar, Beast, Undead, and Elemental are drawing the most early attention",
+    signal: "Creator/video results and Reddit comments are making Beast Lobster, Quilboar, Undead, and Elemental the most visible high-ceiling packages, while plenty of players are also curious about Pirate Lockbox.",
+    confidence: "medium",
+    takeaway: "Mech and Quilboar stay on top for engine clarity; Beast is A-tier, Elemental remains A-tier, and Pirate stays a B-tier greed route because it still needs payoff and tempo together.",
+    sources: ["YouTube Season 14 guide search", "r/BobsTavern live feed", "r/BobsTavern Dark Gift strategy"],
   },
   {
     title: "The Reddit feed is better for highroll examples than tier lists",
-    signal: "The current r/BobsTavern feed shows many Final Board / Highlight posts: huge minions, Naga highlights, trinket/bug discussion, and extreme boards.",
+    signal: "The current r/BobsTavern feed shows many Final Board / Highlight posts: huge minions, Naga and Dragon highrolls, trinket/bug discussion, client complaints, and extreme boards.",
     confidence: "high",
     takeaway: "Community screenshots should not be read as win-rate evidence. They are useful for board-state and ceiling examples, not for ranking comps by themselves.",
     sources: ["r/BobsTavern live feed"],
@@ -440,6 +456,17 @@ export const communityPulse: CommunityPulse[] = [
 ];
 
 export const changelog: ChangelogEntry[] = [
+  {
+    date: "2026-08-06",
+    title: "Fresh video and community feedback update",
+    summary: "The overview snapshot, Community Pulse, and Dark Gift strategy advice were updated using new Dark Gift videos, HSReplay live Season 14 pages, and Reddit feedback.",
+    changes: [
+      "Moved Beast to A-tier on the overview so it matches the comp page.",
+      "Added JeefHS's Dark Gift video, HSReplay's Season 14 stats page, and the Dark Gift strategy Reddit thread.",
+      "Made Turn 6-8 engine/payoff Gifts more prominent and warned against saving every Gift for a late highroll.",
+      "Separated live stat validation, Reddit highroll noise, and client/timer feedback in the Community Pulse.",
+    ],
+  },
   {
     date: "2026-08-06",
     title: "Deeper creator and card-pool pass",
