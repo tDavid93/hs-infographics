@@ -4,11 +4,11 @@
   "title": "Design System: BG14 Meta Desk",
   "extensions": {
     "colorMeta": {
-      "bg": { "role": "neutral", "displayName": "Void Background", "canonical": "#070a0f", "tonalRamp": ["#030406", "#070a0f", "#0c1119", "#172130", "#2d394b", "#46566e", "#7e8a9c", "#b5c0cf"] },
-      "panel": { "role": "neutral", "displayName": "Tavern Panel", "canonical": "#111823", "tonalRamp": ["#070a0f", "#0c1119", "#111823", "#172130", "#202b3b", "#2d394b", "#46566e", "#b5c0cf"] },
+      "bg": { "role": "neutral", "displayName": "Void Background", "canonical": "#080706", "tonalRamp": ["#040302", "#080706", "#0f0d0b", "#17130f", "#211a14", "#403528", "#5b4a38", "#b5c0cf"] },
+      "panel": { "role": "neutral", "displayName": "Tavern Panel", "canonical": "#17130f", "tonalRamp": ["#080706", "#0f0d0b", "#17130f", "#211a14", "#2b2219", "#403528", "#5b4a38", "#b5c0cf"] },
       "ink": { "role": "primary", "displayName": "Warm Ink", "canonical": "#f7efe2", "tonalRamp": ["#2b2116", "#584a38", "#7e7164", "#a79b8d", "#cabfb2", "#e5dcce", "#f7efe2", "#fff8ef"] },
       "gold": { "role": "secondary", "displayName": "Amber Signal", "canonical": "#f2b84b", "tonalRamp": ["#2f1d04", "#5c390b", "#8a5a16", "#bd8229", "#f2b84b", "#ffd889", "#ffe8b5", "#fff5db"] },
-      "cyan": { "role": "secondary", "displayName": "Arcane Cyan", "canonical": "#56c7ff", "tonalRamp": ["#062337", "#0c4163", "#14618f", "#2487bd", "#56c7ff", "#91dcff", "#c6edff", "#eefaff"] }
+      "steel": { "role": "secondary", "displayName": "Muted Steel", "canonical": "#9eb8c6", "tonalRamp": ["#151b1e", "#2c383e", "#465760", "#647984", "#9eb8c6", "#bdd0d8", "#d9e5ea", "#f0f6f8"] }
     },
     "typographyMeta": {
       "display": { "displayName": "Display", "purpose": "Compact site title and major section headlines." },
@@ -34,7 +34,7 @@
       "refersTo": "nav-tab-active",
       "description": "Primary sticky route navigation tab.",
       "html": "<a class=\"ds-route-tab ds-route-tab-active\" href=\"#\">Comps</a>",
-      "css": ".ds-route-tab { display:inline-grid; place-items:center; min-height:36px; padding:8px 12px; border:1px solid transparent; border-radius:8px; color:#b5c0cf; font:850 0.95rem/1.1 Atkinson Hyperlegible, sans-serif; text-decoration:none; } .ds-route-tab-active, .ds-route-tab:hover { border-color:rgb(242 184 75 / 0.36); background:rgb(242 184 75 / 0.12); color:#f7efe2; } .ds-route-tab:focus-visible { outline:3px solid rgb(86 199 255 / 0.5); outline-offset:3px; }"
+      "css": ".ds-route-tab { display:inline-grid; place-items:center; min-height:36px; padding:8px 12px; border:1px solid transparent; border-radius:8px; color:#b5c0cf; font:850 0.95rem/1.1 Atkinson Hyperlegible, sans-serif; text-decoration:none; } .ds-route-tab-active, .ds-route-tab:hover { border-color:rgb(242 184 75 / 0.36); background:rgb(242 184 75 / 0.12); color:#f7efe2; } .ds-route-tab:focus-visible { outline:3px solid rgb(242 184 75 / 0.5); outline-offset:3px; }"
     },
     {
       "name": "Active Filter Chip",
@@ -42,7 +42,7 @@
       "refersTo": "filter-active",
       "description": "Selected tribe filter chip.",
       "html": "<button class=\"ds-filter-chip\">Mech</button>",
-      "css": ".ds-filter-chip { min-height:36px; padding:8px 12px; border:1px solid rgb(242 184 75 / 0.5); border-radius:8px; background:#f2b84b; color:#1c1204; font:850 0.95rem/1.1 Atkinson Hyperlegible, sans-serif; cursor:pointer; } .ds-filter-chip:focus-visible { outline:3px solid rgb(86 199 255 / 0.5); outline-offset:3px; }"
+      "css": ".ds-filter-chip { min-height:36px; padding:8px 12px; border:1px solid rgb(242 184 75 / 0.5); border-radius:8px; background:#f2b84b; color:#1c1204; font:850 0.95rem/1.1 Atkinson Hyperlegible, sans-serif; cursor:pointer; } .ds-filter-chip:focus-visible { outline:3px solid rgb(242 184 75 / 0.5); outline-offset:3px; }"
     },
     {
       "name": "Tavern Content Card",
@@ -50,31 +50,32 @@
       "refersTo": "content-card",
       "description": "Default repeated dark guide card.",
       "html": "<article class=\"ds-card\"><span>Board state</span><h3>Mech Magnetic Engine</h3><p>Multiple Magnetic stacks across bodies, later multiplied by Utility Drone.</p></article>",
-      "css": ".ds-card { max-width:360px; padding:16px; border:1px solid #2d394b; border-radius:12px; background:#111823; color:#f7efe2; box-shadow:0 12px 28px rgb(0 0 0 / 0.18); } .ds-card span { display:inline-flex; margin-bottom:8px; color:#f2b84b; font:900 0.74rem/1.1 Atkinson Hyperlegible, sans-serif; letter-spacing:0.08em; text-transform:uppercase; } .ds-card h3 { margin:0 0 8px; font:700 1.22rem/1.1 Rajdhani, sans-serif; } .ds-card p { margin:0; color:#b5c0cf; line-height:1.5; }"
+      "css": ".ds-card { max-width:360px; padding:16px; border:1px solid #403528; border-radius:12px; background:#17130f; color:#f7efe2; box-shadow:0 12px 28px rgb(0 0 0 / 0.18); } .ds-card span { display:inline-flex; margin-bottom:8px; color:#f2b84b; font:900 0.74rem/1.1 Atkinson Hyperlegible, sans-serif; letter-spacing:0.08em; text-transform:uppercase; } .ds-card h3 { margin:0 0 8px; font:700 1.22rem/1.1 Rajdhani, sans-serif; } .ds-card p { margin:0; color:#b5c0cf; line-height:1.5; }"
     }
   ],
   "narrative": {
     "northStar": "Compact Tavern Strategy Desk",
-    "overview": "The interface should feel like a polished in-game scouting tool: dark carved panels, restrained amber and cyan accents, crisp tabs, and dense guide cards. The successful version is not a landing page and not a decorative notebook. It gets players from page load to comp decisions quickly.",
+    "overview": "The interface should feel like a polished in-game scouting tool: dark charcoal tavern panels, restrained amber and muted steel accents, crisp tabs, and dense guide cards. The successful version is not a landing page and not a decorative notebook. It gets players from page load to comp decisions quickly.",
     "keyCharacteristics": [
       "Compact header with season identity, update date, language switch, and immediate navigation.",
-      "Dark panels with clear borders and restrained amber/cyan accents.",
-      "Desktop comp cards use a responsive internal card grid instead of cramped horizontal scrollbars.",
+      "Dark charcoal panels with clear borders and restrained amber/steel accents.",
+      "Desktop comp cards use fixed-width card specimens instead of stretched cards or cramped horizontal scrollbars.",
       "Sticky behavior is limited to primary navigation; filters remain in flow."
     ],
     "rules": [
-      { "name": "The Two Accent Rule", "body": "Amber marks selected or important state; cyan marks navigation, links, and tactical headings. Do not scatter both colors across the same component without a role.", "section": "colors" }
+      { "name": "The Two Accent Rule", "body": "Amber marks selected or important state; muted steel marks links and tactical headings. Do not scatter both colors across the same component without a role.", "section": "colors" }
     ],
     "dos": [
       "Do keep hero/header height low enough that real guide content appears quickly.",
       "Do keep filters in flow so they do not cover card titles or card art.",
-      "Do use amber for selected state and cyan for source/action emphasis.",
+      "Do use amber for selected state and muted steel for source/action emphasis.",
       "Do keep comp cards dense but readable."
     ],
     "donts": [
       "Don't use parchment, notebook, or fake paper styling for this site.",
       "Don't use oversized empty hero blocks.",
       "Don't make desktop comp cards depend on horizontal scroll when a grid can fit.",
+      "Don't let one-card or two-card comps stretch their Hearthstone card specimens.",
       "Don't let sticky bars overlap content."
     ]
   }

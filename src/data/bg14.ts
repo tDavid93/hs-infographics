@@ -482,11 +482,12 @@ export const changelog: ChangelogEntry[] = [
   {
     date: "2026-08-06",
     title: "Kompakt tavern strategy UI redesign",
-    summary: "Az oldal kompaktabb, sötét strategy-desk megjelenést kapott kevesebb üres térrel és tisztább comp nézettel.",
+    summary: "Az oldal kompaktabb, sötét strategy-desk megjelenést kapott kevesebb üres térrel, fix szélességű card specimenekkel és kék gradient nélkül.",
     changes: [
       "A túl nagy, üres hero és a világos papír gimmick kikerült.",
+      "A kékes panel/hero gradient kikerült, a felület charcoal tavern tónusra váltott.",
       "A filter többé nem takarja ki a comp tartalmat scroll közben.",
-      "A desktop comp kártyák gridbe rendeződnek, így kevesebb a szűk, vízszintes görgetés.",
+      "A desktop comp kártyák fix szélességű gridbe rendeződnek, ezért az egykártyás compok sem nyúlnak szét.",
     ],
   },
   {

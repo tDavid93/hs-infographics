@@ -365,11 +365,12 @@ export const changelog: ChangelogEntry[] = [
   {
     date: "2026-08-06",
     title: "Compact tavern strategy UI redesign",
-    summary: "The site now uses a tighter dark strategy-desk look with less empty space and a cleaner comps view.",
+    summary: "The site now uses a tighter dark strategy-desk look with less empty space, fixed-width card specimens, and no blue gradient treatment.",
     changes: [
       "Removed the oversized empty hero and the light paper gimmick.",
+      "Removed the blue panel/hero gradient and shifted the UI to a charcoal tavern tone.",
       "Stopped the filter toolbar from covering comp content while scrolling.",
-      "Changed desktop comp cards to a grid layout to reduce cramped horizontal scrolling.",
+      "Changed desktop comp cards to a fixed-width grid so one-card comps cannot stretch.",
     ],
   },
   {

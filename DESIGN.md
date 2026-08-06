@@ -2,18 +2,18 @@
 name: BG14 Meta Desk
 description: A compact dark tavern strategy desk for Hearthstone Battlegrounds Season 14 decisions.
 colors:
-  bg: "#070a0f"
-  bg-2: "#0c1119"
-  panel: "#111823"
-  panel-2: "#172130"
-  panel-3: "#202b3b"
+  bg: "#080706"
+  bg-2: "#0f0d0b"
+  panel: "#17130f"
+  panel-2: "#211a14"
+  panel-3: "#2b2219"
   ink: "#f7efe2"
   muted: "#b5c0cf"
   faint: "#7e8a9c"
-  line: "#2d394b"
-  line-strong: "#46566e"
+  line: "#403528"
+  line-strong: "#5b4a38"
   gold: "#f2b84b"
-  cyan: "#56c7ff"
+  steel: "#9eb8c6"
   green: "#68d99a"
   red: "#ff7d72"
 typography:
@@ -68,14 +68,14 @@ components:
 
 **Creative North Star: "Compact Tavern Strategy Desk"**
 
-The interface should feel like a polished in-game scouting tool: dark carved panels, restrained amber and cyan accents, crisp tabs, and dense guide cards. The successful version is not a landing page and not a decorative notebook. It gets players from page load to comp decisions quickly.
+The interface should feel like a polished in-game scouting tool: dark charcoal tavern panels, restrained amber and muted steel accents, crisp tabs, and dense guide cards. The successful version is not a landing page and not a decorative notebook. It gets players from page load to comp decisions quickly.
 
 The system keeps Hearthstone atmosphere through dark tavern surfaces and card specimens, while preserving a practical guide hierarchy. Empty hero space is a failure state. Controls must never cover the content the player is trying to inspect.
 
 **Key Characteristics:**
 - Compact header with season identity, update date, language switch, and immediate navigation.
-- Dark panels with clear borders and restrained amber/cyan accents.
-- Desktop comp cards use a responsive internal card grid instead of cramped horizontal scrollbars.
+- Dark charcoal panels with clear borders and restrained amber/steel accents.
+- Desktop comp cards use fixed-width card specimens instead of stretched cards or cramped horizontal scrollbars.
 - Sticky behavior is limited to primary navigation; filters remain in flow.
 
 ## Colors
@@ -89,7 +89,7 @@ The palette is dark tavern UI with tactical accents.
 
 ### Secondary
 - **Amber Signal**: selected filters, tier highlights, comp grades, and important labels.
-- **Arcane Cyan**: links, tactical subheads, source actions, and focus support.
+- **Muted Steel**: links, tactical subheads, source actions, and secondary focus support.
 - **Combat Green / Damage Red**: positive confidence/grades and low-confidence or warning states.
 
 ### Neutral
@@ -98,7 +98,7 @@ The palette is dark tavern UI with tactical accents.
 
 ### Named Rules
 
-**The Two Accent Rule.** Amber marks selected or important state; cyan marks navigation, links, and tactical headings. Do not scatter both colors across the same component without a role.
+**The Two Accent Rule.** Amber marks selected or important state; muted steel marks links and tactical headings. Do not scatter both colors across the same component without a role.
 
 ## Typography
 
@@ -118,7 +118,7 @@ The palette is dark tavern UI with tactical accents.
 
 ## Layout
 
-The shell is a 1320px app-width container. The masthead is compact, not theatrical. Primary nav may stick near the top; secondary filters must stay in document flow. Comps use a two-column page grid when space allows, and each comp card lays its core cards out in a responsive grid on desktop. Mobile collapses to one column and allows horizontal card scrolling only where needed.
+The shell is a 1320px app-width container. The masthead is compact, not theatrical. Primary nav may stick near the top; secondary filters must stay in document flow. Comps use a two-column page grid when space allows, and each comp card lays its core cards out as fixed-width specimens on desktop. Mobile collapses to one column and allows horizontal card scrolling only where needed.
 
 ## Elevation & Depth
 
@@ -137,7 +137,7 @@ Use modest radii: 8px for buttons and tabs, 12px for cards, 14px for sections. A
 ### Buttons
 - **Shape:** compact rounded rectangle (8px).
 - **Primary / Active:** amber fill with dark text.
-- **Hover / Focus:** border and background shift with visible cyan focus outline.
+- **Hover / Focus:** border and background shift with visible amber focus outline.
 
 ### Chips
 - **Style:** compact dark chip with steel border.
@@ -154,18 +154,19 @@ Use modest radii: 8px for buttons and tabs, 12px for cards, 14px for sections. A
 
 ### Hearthstone Card Specimens
 
-Card art stays from HearthstoneJSON. Desktop card specimens are smaller and arranged as a grid inside each comp, reducing horizontal scroll. Mobile may scroll horizontally to preserve card readability.
+Card art stays from HearthstoneJSON. Desktop card specimens are fixed-width and arranged as a grid inside each comp; they must never stretch to fill a row. Mobile may scroll horizontally to preserve card readability.
 
 ## Do's and Don'ts
 
 ### Do:
 - **Do** keep hero/header height low enough that real guide content appears quickly.
 - **Do** keep filters in flow so they do not cover card titles or card art.
-- **Do** use amber for selected state and cyan for source/action emphasis.
+- **Do** use amber for selected state and muted steel for source/action emphasis.
 - **Do** keep comp cards dense but readable.
 
 ### Don't:
 - **Don't** use parchment, notebook, or fake paper styling for this site.
 - **Don't** use oversized empty hero blocks.
 - **Don't** make desktop comp cards depend on horizontal scroll when a grid can fit.
+- **Don't** let one-card or two-card comps stretch their Hearthstone card specimens.
 - **Don't** let sticky bars overlap content.
