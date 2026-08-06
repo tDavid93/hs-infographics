@@ -120,6 +120,26 @@ export const sources = [
     label: "YouTube Season 14 guide keresés",
     href: "https://www.youtube.com/results?search_query=Hearthstone+Battlegrounds+Season+14+Dark+Gifts+guide",
   },
+  {
+    label: "dogdog Tasty Lobster Beast videó",
+    href: "https://www.youtube.com/watch?v=wi_nvouGX0Y",
+  },
+  {
+    label: "Sevel Dark Gifts videó",
+    href: "https://www.youtube.com/watch?v=WiCIJmfi6IY",
+  },
+  {
+    label: "Sevel Dragon build videó",
+    href: "https://www.youtube.com/watch?v=dCwe93sXIiM",
+  },
+  {
+    label: "Shadybunny Season 14 mechanika review",
+    href: "https://www.youtube.com/watch?v=6IezL5pKS1I",
+  },
+  {
+    label: "HSReplay Tasty Lobstah comp oldal",
+    href: "https://hsreplay.net/battlegrounds/comps/87/beasts-tasty-lobstah",
+  },
 ];
 
 export const tribes: { key: Tribe | "all"; label: string }[] = [
@@ -227,42 +247,50 @@ export const comps: Comp[] = [
   {
     tribe: "pirate",
     grade: "B",
-    name: "Lockbox Tempo Pirate",
-    signal: "Késleltetett Golden payoffra és tempómenedzsmentre játszik.",
-    why: "A Season 14 Pirate-ok Lockboxokat találhatnak, amelyek később nyílnak, hacsak nem töröd fel őket korán; a dual-type darabok, mint a Treasure Parrot és Captain Cookie, rugalmas értéket adnak.",
+    name: "Lockbox Golden Pirate",
+    signal: "Akkor jó, ha Golden értéket tudsz bankolni anélkül, hogy a következő két fightot elbuknád.",
+    why: "A Bilgewater Breakout, Locked-up Mutineer és Enterprising Escapee Lockboxokat gyárt; a Maritime Extortionist és Hooktusk a kinyílt Golden lényeket valódi skálázássá alakítja.",
     cards: [
-      { name: "Treasure Parrot", cardId: "BG36_763", tier: 3, type: "Beast/Pirate", attack: 5, health: 5, rules: "Miután ez 40 sebzést kioszt, kapsz egy Golden Touchot. <i>(40 maradt!)</i>", note: "Sebzésquest, ami Golden Touch jutalmat ad." },
-      { name: "Captain Cookie", cardId: "BG36_760", tier: 4, type: "Murloc/Pirate", attack: 5, health: 3, rules: "<b>Deathrattle:</b> Kapsz egy Chef's Choice-ot.", note: "Deathrattle: Chef's Choice érték." },
+      { name: "Bilgewater Breakout", cardId: "BG36_520", tier: 2, type: "Pirate", attack: 3, health: 2, rules: "<b>Battlecry:</b> Kapsz egy Lockboxot. Ha már van, 1 körrel hamarabb nyílik.", note: "Korai Lockbox hozzáférés és gyorsítás." },
+      { name: "Locked-up Mutineer", cardId: "BG36_521", tier: 3, type: "Pirate", attack: 6, health: 3, rules: "<b>Deathrattle:</b> Kapsz egy Lockboxot. Ha már van, 1 körrel hamarabb nyílik.", note: "Tempo test, ami a Lockbox időzítést is gyorsítja." },
+      { name: "Enterprising Escapee", cardId: "BG36_523", tier: 4, type: "Pirate", attack: 6, health: 6, rules: "Miután elköltesz 5 aranyat, kapsz egy Lockboxot. Ha már van, 1 körrel hamarabb nyílik. <i>(5 Gold maradt!)</i>", note: "A normál economy köröket késleltetett Golden értékké alakítja." },
+      { name: "Maritime Extortionist", cardId: "BG36_524", tier: 4, type: "Pirate", attack: 8, health: 8, rules: "+8/+8-a van minden kijátszott Golden lényed után <i>(bárhol is van)</i>.", note: "Payoff test, amikor a Lockbox Golden lények elkezdenek kinyílni." },
+      { name: "Hooktusk, Master Marauder", cardId: "BG36_344", tier: 6, type: "Pirate", attack: 4, health: 4, rules: "Miután <b>Discover</b>ölsz egy lapot, adj a többi Pirate-odnak +1/+1-et. <i>(A kijátszott Golden lények javítják!)</i>", note: "Késői Pirate scaling, ami jutalmazza a Golden-count tervet." },
     ],
-    commit: ["Korai tempó, ami hagyja beérni a Lockboxokat.", "A lobby nem bünteti túl a késleltetett Golden értéket.", "Dual-type szinergiák Murloc vagy Beast shopokból."],
-    avoid: ["Túl korán feltörni a késleltetett értéket nyomás nélkül.", "A Lockbox értéket azonnali statként kezelni.", "Várakozás közben elhanyagolni a harci erőt."],
+    commit: ["Két Lockbox forrás megvan hard roll előtt.", "Van elég tempó kivárni a késleltetett Golden lényeket.", "Van Golden-count payoff: Maritime Extortionist, Hooktusk vagy erős Discover/Trinket érték."],
+    avoid: ["A ki nem nyílt Lockboxot jelenlegi combat statnak számolni.", "Nyomás vagy triple line nélkül túl korán feltörni az értéket.", "Pirate-ot force-olni gyors, büntető lobbyban."],
   },
   {
     tribe: "beast",
-    grade: "B",
-    name: "Fishbait Recruit Támadás",
-    signal: "Nagy upside, ha kontrollálni tudod a Recruit Phase támadásokat.",
-    why: "A Fishbait lehetővé teszi, hogy Beastek Recruit Phase-ben támadjanak, ami szokatlan combat előtti jutalmakat nyit, és a Venomous szöveg csak combatban számít.",
+    grade: "A",
+    name: "Tasty Lobster Fishbait Beast",
+    signal: "Az egyik legtisztább creator-backed új build, ha ismételni tudod a Lobster Deathrattle-t.",
+    why: "A Tasty Lobster javítja a jövőbeli Lobstereket, a Lurking Lionfish és Snarky Shark pedig Recruit Phase támadásokat kényszerít Fishbaitbe. A Hoarding Hyena és Deathstrider adja azt a Rally/Deathrattle loopot, amitől a build nem csak tempo, hanem scaling.",
     cards: [
-      { name: "Treasure Parrot", cardId: "BG36_763", tier: 3, type: "Beast/Pirate", attack: 5, health: 5, rules: "Miután ez 40 sebzést kioszt, kapsz egy Golden Touchot. <i>(40 maradt!)</i>", note: "Beast/Pirate híd Golden értékhez." },
+      { name: "Tasty Lobster", cardId: "BG36_202", tier: 3, type: "Beast", attack: 1, health: 1, rules: "<b>Taunt.</b> <b>Deathrattle:</b> Adj két baráti Beastnek +1/+1-et. Javítsd a jövőbeli Tasty Lobstereidet.", note: "A scaling Deathrattle célpont, amire a creator buildek épülnek." },
+      { name: "Lurking Lionfish", cardId: "BG36_201", tier: 2, type: "Beast", attack: 3, health: 4, rules: "<b>Activate (2):</b> Válassz egy lapot a Tavernben. Cseréld Fishbaitre, hogy a bal szélső Beasted megtámadja.", note: "Kontrollált bal szélső Beast támadás Recruit Phase-ben." },
+      { name: "Snarky Shark", cardId: "BG36_206", tier: 4, type: "Beast", attack: 4, health: 5, rules: "Amikor eladod ezt, <b>Refresh</b>eli a Tavernt egy Fishbaittel. A bal szélső Beasted megtámadja.", note: "Eladás triggerből újabb kontrollált Fishbait támadás." },
+      { name: "Hoarding Hyena", cardId: "BG36_210", tier: 5, type: "Beast", attack: 5, health: 6, rules: "<b>Rally:</b> Megidéz egy Tasty Lobstert.", note: "Rallyból Lobstert ad shop slot költés nélkül." },
+      { name: "Deathstrider", cardId: "BG36_208", tier: 6, type: "Beast", attack: 10, health: 11, rules: "Miután egy baráti <b>Rally</b> lény támad, aktiváld a bal szélső <b>Deathrattle</b>-ödet.", note: "A Rally támadásokat ismételt bal szélső Deathrattle értékké alakítja." },
     ],
-    commit: ["Fishbait hozzáférés plusz erős támadó célpont.", "Deathrattle vagy sebzés-alapú jutalmak.", "Elég életerő a setup körök túlélésére."],
-    avoid: ["Kontrollálatlan támadási sorrend.", "Azt feltételezni, hogy a Venomous combaton kívül is működik.", "Payoff előtt túl erősen commitolni."],
+    commit: ["A korai Lobsterek már javultak vagy könnyen újraidézhetők.", "A bal szélső Beast szándékosan van pozicionálva Lionfish/Shark előtt.", "A Deathstrider értelmes bal szélső Deathrattle-t talál el, nem random utility testet."],
+    avoid: ["Fishbait támadásokat rossz Beasttel megindítani laza board sorrend miatt.", "Lobstert egyszeri Tauntnak kezelni ismételt Deathrattle engine helyett.", "Azt hinni, hogy Venomous vagy combat-only szöveg viszi a Recruit Phase támadásokat."],
   },
   {
     tribe: "dragon",
     grade: "B",
     name: "Rally Dragonbreath",
-    signal: "Stabil, ha megjönnek a Rally payoffok; kevésbé robbanékony, mint a Mech vagy Quilboar.",
-    why: "A Season 14 Dragon támogatás Rallyra, Dragon-generálásra és Divine Shield átfedésre épít. A Warpwing továbbra is hiteles combat carry.",
+    signal: "Creator jelek alapján jobb, mint az első olvasat; de továbbra is Rally retrigger kell a hard force-hoz.",
+    why: "A Bronze Timewalker és Sky-hatch Runaway Chromadrake értéket generál és ismétel; a Crimson Vindicator adja a késői Mighty Dragonbreath payoffot, a Runic Arcanist pedig extra spell/combat scaling szöget nyit.",
     cards: [
       { name: "Bronze Timewalker", cardId: "BG36_242", tier: 4, type: "Dragon", attack: 2, health: 9, rules: "<b>Rally:</b> Kapsz egy véletlen <b>Chromadrake</b>-et.", note: "Season 14 Dragon setup darab." },
       { name: "Sky-hatch Runaway", cardId: "BG36_243", tier: 4, type: "Dragon", attack: 4, health: 7, rules: "<b>Activate (1):</b> Aktiváld egy baráti lény <b>Rally</b>-ját.", note: "Season 14 Dragon payoff darab." },
       { name: "Runic Arcanist", cardId: "BG36_245", tier: 4, type: "Dragon", attack: 3, health: 5, rules: "<b>Start of Combat:</b> Elcastolja a Shiny Ringet.", note: "Késői Dragon spell/Rally támogatás." },
+      { name: "Crimson Vindicator", cardId: "BG36_241", tier: 6, type: "Dragon", attack: 8, health: 9, rules: "<b>Divine Shield</b>. <b>Rally:</b> Elcastolja a Mighty Dragonbreathet.", note: "Valódi T6 payoff Dragon/Rally spell boardokhoz." },
       { name: "Warpwing", cardId: "BG24_004", tier: 6, type: "Dragon", attack: 12, health: 4, rules: "<b>Immune</b>, amíg támad.", note: "Immune támadó carry." },
     ],
-    commit: ["Több Rally trigger vagy Dragon spell érték.", "Védett carry Divine Shield támogatással.", "Trinket vagy Gift közvetlen Dragon jutalommal."],
-    avoid: ["Egy korai Dragonből force-olni.", "Túl sok generátor, kevés combat stat.", "Elrontani a bal/jobb oldali board pozíciókat."],
+    commit: ["Rally trigger plusz ismétlési mód.", "Dragonbreath vagy Divine Shield átfedés már jelen van.", "Valódi late carry: Crimson Vindicator, Warpwing vagy erősen buffolt Chromadrake lánc."],
+    avoid: ["Minden Dragon openert compnak nevezni.", "Túl sok generátor, kevés combat stat.", "Nem felismerni, mikor kell Runawaynek Rallyt másolnia közepes testként állás helyett."],
   },
   {
     tribe: "demon",
@@ -383,6 +411,24 @@ export const boardStates: BoardState[] = [
     goal: "A kéz bal szélső célpontját kontrollálva alakítsd a spell-gazdaságot folyamatos kéz- és boardbuffá.",
     next: ["Minden spell előtt ellenőrizd a kéz sorrendjét.", "Kelp Keeperrel csak valódi Battlecry értéket ismételj.", "Ha nincs spellforrás, ne force-old Murlocra."],
   },
+  {
+    title: "Beast Lobster Deathrattle board",
+    stage: "Tavern 4-6 board",
+    tribe: "beast",
+    board: ["Tasty Lobster", "Lurking Lionfish", "Snarky Shark", "Hoarding Hyena", "bal szélső Beast támadó célpont", "Deathstrider setup"],
+    hand: ["extra Beast", "Reborn/Deathrattle support", "Fishbaitnek fenntartott shop slot"],
+    goal: "Javított Lobster Deathrattle-öket ismételj kontrollált Recruit Phase támadásokkal, majd Deathstriderrel alakítsd a Rally támadásokat további bal szélső Deathrattle triggerekké.",
+    next: ["Minden Lionfish vagy Shark trigger előtt ellenőrizd, hogy a bal szélső Beast a tervezett támadó.", "Deathstrider után a legjobb Deathrattle legyen bal szélen.", "Ha a Lobster lánc még nem elég nagy, vegyél tempót scaling helyett."],
+  },
+  {
+    title: "Lockbox Pirate bank",
+    stage: "Tavern 3-5 board",
+    tribe: "pirate",
+    board: ["Bilgewater Breakout", "Locked-up Mutineer", "Enterprising Escapee", "ideiglenes taunt/scam", "Maritime Extortionist watch slot"],
+    hand: ["ki nem nyílt Lockbox", "Golden payoff jelölt", "Discover vagy Tavern spell support"],
+    goal: "Golden lényeket bankolj halál nélkül, majd a Golden countot Maritime Extortionist statba vagy Hooktusk scalingbe fordítsd.",
+    next: ["Számold, hány kör van még, mire a Lockbox tényleg számít.", "Ne adj el combat statot csak egy második késleltetett boxért.", "Amint a Golden lények kinyílnak, bankolásból azonnal válts harci erőre."],
+  },
 ];
 
 export const buildRoutes: BuildRoute[] = [
@@ -418,6 +464,22 @@ export const buildRoutes: BuildRoute[] = [
     late: "Kelp Keeper + Battlecry, Gearfin spelltermelés, majd scam/poison jellegű tech a nagy statok ellen.",
     pivots: ["Gearfin Mechhez is hidat ad.", "Ha kézpozíciót nem tudod tartani, válts board-scalingre.", "Spell nélküli Murloc shop csak tempo, nem comp."],
   },
+  {
+    title: "Tasty Lobster Beast route",
+    tribe: "beast",
+    opener: "Korai Tasty Lobstert akkor vegyél, ha közben tudod tartani az HP-t; az első példányok számítanak, mert javítják a jövőbeli Lobstereket.",
+    midgame: "Lurking Lionfish és Snarky Shark a shop/Fishbait döntéseket ismételhető Recruit Phase támadássá alakítja. A bal szélső Beast pozíciója legyen szándékos.",
+    late: "Hoarding Hyena Lobstert ad, Deathstrider ismétli a bal szélső Deathrattle-t, Cage Gnawer vagy combat tech pedig ölő nyomássá alakítja a láncot.",
+    pivots: ["Ha a Lobsterek nem javultak, játssz Beast tempót Deathstrider force helyett.", "Treasure Parrot Beast/Pirate Golden-value hidat ad.", "Nagy cleave/scam ellen előbb a Deathrattle sorrendet védd, csak utána vegyél több scalinget."],
+  },
+  {
+    title: "Lockbox Golden Pirate route",
+    tribe: "pirate",
+    opener: "Bilgewater Breakout vagy Mutineer tempo plusz jövőbeli érték; a ki nem nyílt Lockbox nem board strength.",
+    midgame: "Enterprising Escapee jutalmazza a normál költési köröket. Maritime Extortionist az első valódi payoff, amikor a Golden lények kinyílnak.",
+    late: "Hooktusk és Discover láncok a Golden-count scalinget boarddá alakítják, de az útvonalnak azonnali combat stat vagy scam slot is kell.",
+    pivots: ["Ha gyors a lobby, korábban cashoutolj.", "Captain Cookie/Gearfin átvezethet Murloc spell economyba.", "Golden payoff nélkül hagyd abba a Pirate rollt, és játszd a legerősebb discovered testeket."],
+  },
 ];
 
 export const referenceNotes: ReferenceNote[] = [
@@ -445,14 +507,33 @@ export const referenceNotes: ReferenceNote[] = [
     summary: "A közösségi és videós beszélgetések főleg a Dark Gift timingot, Mech Magnetic vonalat, Quilboar/Undead highrollokat és a nagy Gift-variance-t emelik ki. Ezt irányjelként, nem win-rate adatként kezeljük.",
     href: "https://www.youtube.com/results?search_query=Hearthstone+Battlegrounds+Season+14+Dark+Gifts+guide",
   },
+  {
+    label: "Tasty Lobster creator cluster",
+    kind: "Videó + stat irányjel",
+    summary: "A dogdog Beast videó és a HSReplay Tasty Lobstah comp oldala egyaránt arra mutat, hogy az ismételt Lobster Deathrattle valódi Season 14 route, nem csak Fishbait gimmick.",
+    href: "https://www.youtube.com/watch?v=wi_nvouGX0Y",
+  },
+  {
+    label: "Dragon és Mech creator check",
+    kind: "Creator route validáció",
+    summary: "Friss Sevel videók alapján a Mech továbbra is hiteles Magnetic engine, a Dragon pedig kapott egy új Rally/Dragonbreath vonalat, de mindkettő pontos engine-darabokat kér.",
+    href: "https://www.youtube.com/watch?v=dCwe93sXIiM",
+  },
 ];
 
 export const communityPulse: CommunityPulse[] = [
   {
-    title: "Quilboar és Undead kapja a legtöbb hype-ot",
-    signal: "A creator/video találatokban külön Quilboar és Undead stratégia videók jelennek meg „broken” jellegű címekkel, miközben Redditen is aktív az Undead balance beszélgetés.",
+    title: "A Tasty Lobster Beast most már valódi route",
+    signal: "Friss creator videók, a HSReplay Tasty Lobstah oldala és a HSBG card pool ugyanarra mutat: ismételt Lobster Deathrattle, Hoarding Hyena és Deathstrider.",
     confidence: "medium",
-    takeaway: "A site S/A sorrendje marad, de a Quilboar és Undead route-oknál érdemes a highroll ceilinget hangsúlyosabban kezelni, nem csak stabil compként.",
+    takeaway: "A Beast Fishbait-jegyzetből A-tier route lett, de csak akkor ajánlott, ha ismételni tudod a Lobster triggereket és kontrollálod a bal szélső pozíciót.",
+    sources: ["dogdog Tasty Lobster Beast videó", "HSReplay Tasty Lobstah comp oldal", "HSBG 36.2 vizuális adatbázis"],
+  },
+  {
+    title: "Quilboar, Beast és Undead kapja a legtöbb hype-ot",
+    signal: "A creator/video találatok és Reddit beszélgetések alapján a Beast Lobster, Quilboar és Undead a legláthatóbb high-ceiling csomag.",
+    confidence: "medium",
+    takeaway: "A Mech és Quilboar marad felül engine-tisztaság miatt, de a Beast teljesebb route-ot kapott, mert creator és comp-page jel is támogatja.",
     sources: ["YouTube Season 14 guide keresés", "r/BobsTavern friss feed"],
   },
   {
@@ -470,8 +551,15 @@ export const communityPulse: CommunityPulse[] = [
     sources: ["Blizzard Season 14 bejelentés", "HearthPwn 36.2 patch jegyzetek", "r/BobsTavern friss feed"],
   },
   {
+    title: "A Dragon játszhatóbb, mint az első pass mutatta",
+    signal: "Egy friss Dragon fókuszú creator videó és a hivatalos card pool is támogatja a Rally retrigger + Mighty Dragonbreath vonalat.",
+    confidence: "low",
+    takeaway: "Dragon marad B-tier erősebb adat nélkül, de a route szövege már valódi Crimson Vindicator vonalként kezeli, nem generic Warpwing fallbackként.",
+    sources: ["Sevel Dragon build videó", "HSBG 36.2 vizuális adatbázis"],
+  },
+  {
     title: "Naga és Demon inkább polarizált, mint stabil",
-    signal: "A feedben Naga highlightok és Demon/Elemental balance jellegű beszélgetések is látszanak, de kevesebb stabil route bizonyíték van, mint Mech/Quilboar/Undead esetén.",
+    signal: "A feedben Naga highlightok és Demon/Elemental balance jellegű beszélgetések is látszanak, de kevesebb stabil route bizonyíték van, mint Mech/Quilboar/Beast/Undead esetén.",
     confidence: "low",
     takeaway: "Naga és Demon maradjon alacsonyabb biztonságú ajánlás: jó highroll/pivot lehet, de ne legyen elsődleges force terv.",
     sources: ["r/BobsTavern friss feed"],
@@ -479,6 +567,17 @@ export const communityPulse: CommunityPulse[] = [
 ];
 
 export const changelog: ChangelogEntry[] = [
+  {
+    date: "2026-08-06",
+    title: "Mélyebb creator és card-pool pass",
+    summary: "A guide frissült friss Season 14 videók, HSReplay Tasty Lobstah oldal, HSBG kártyaszövegek és aktuális közösségi feed alapján.",
+    changes: [
+      "A Beast Fishbait jegyzetből Tasty Lobster Deathrattle route lett Lionfish, Shark, Hyena és Deathstrider darabokkal.",
+      "A Pirate két dual-type lap helyett valódi Lockbox Golden route-ot kapott.",
+      "A Dragon tanács Crimson Vindicator és Rally/Dragonbreath pozicionálással frissült.",
+      "Bekerült Beast és Pirate board state, valamint build route.",
+    ],
+  },
   {
     date: "2026-08-06",
     title: "Kompakt tavern strategy UI redesign",

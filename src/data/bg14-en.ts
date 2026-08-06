@@ -11,6 +11,11 @@ export const sources = [
   { label: "r/BobsTavern early discussion", href: "https://www.reddit.com/r/BobsTavern/comments/1v8664a/announcing_battlegrounds_season_14_dark_gifts_of/" },
   { label: "r/BobsTavern live feed", href: "https://www.reddit.com/r/BobsTavern/" },
   { label: "YouTube Season 14 guide search", href: "https://www.youtube.com/results?search_query=Hearthstone+Battlegrounds+Season+14+Dark+Gifts+guide" },
+  { label: "dogdog Tasty Lobster Beast video", href: "https://www.youtube.com/watch?v=wi_nvouGX0Y" },
+  { label: "Sevel Dark Gifts video", href: "https://www.youtube.com/watch?v=WiCIJmfi6IY" },
+  { label: "Sevel Dragon build video", href: "https://www.youtube.com/watch?v=dCwe93sXIiM" },
+  { label: "Shadybunny Season 14 mechanics review", href: "https://www.youtube.com/watch?v=6IezL5pKS1I" },
+  { label: "HSReplay Tasty Lobstah comp page", href: "https://hsreplay.net/battlegrounds/comps/87/beasts-tasty-lobstah" },
 ];
 
 export const tribes: { key: Tribe | "all"; label: string }[] = [
@@ -49,11 +54,24 @@ const cards = {
   livingPrison: { name: "Living Prison", cardId: "BG36_180", tier: 4, type: "Elemental", attack: 4, health: 5, rules: "<b>Activate (1):</b> Gain the stats of the next minion you buy this turn.", note: "Activate copies the next buy's stats." },
   cageyConjurer: { name: "Cagey Conjurer", cardId: "BG36_508", tier: 3, type: "Naga", attack: 6, health: 4, rules: "<b>Activate (1):</b> Cast a random Tavern spell <i>(targets this if possible)</i>.", note: "Activate casts a random Tavern spell." },
   torrentialRuiner: { name: "Torrential Ruiner", cardId: "BG36_622", tier: 6, type: "Naga", attack: 3, health: 3, rules: "Whenever you cast a spell on a Naga, give your minions +3/+3.", note: "Naga-targeted spells become board-wide stats." },
+  fishbait: { name: "Fishbait", cardId: "BG36_205", tier: 2, type: "Beast", attack: 0, health: 1, rules: "<i>This can't gain stats.</i> <b>Deathrattle:</b> Give the minion that killed this +5/+5.", note: "Recruit attacks convert Fishbait deaths into permanent Beast stats." },
+  lurkingLionfish: { name: "Lurking Lionfish", cardId: "BG36_201", tier: 2, type: "Beast", attack: 3, health: 4, rules: "<b>Activate (2):</b> Choose a card in the Tavern. Replace it with a Fishbait for your left-most Beast to attack.", note: "Controls the left-most Beast attack during Recruit Phase." },
+  tastyLobster: { name: "Tasty Lobster", cardId: "BG36_202", tier: 3, type: "Beast", attack: 1, health: 1, rules: "<b>Taunt.</b> <b>Deathrattle:</b> Give two friendly Beasts +1/+1. Improve your future Tasty Lobsters.", note: "The scaling Deathrattle target creators are building around." },
+  snarkyShark: { name: "Snarky Shark", cardId: "BG36_206", tier: 4, type: "Beast", attack: 4, health: 5, rules: "When you sell this, <b>Refresh</b> the Tavern with a Fishbait. Your left-most Beast attacks it.", note: "Sell trigger gives another controlled Fishbait attack." },
+  hoardingHyena: { name: "Hoarding Hyena", cardId: "BG36_210", tier: 5, type: "Beast", attack: 5, health: 6, rules: "<b>Rally:</b> Summon a Tasty Lobster.", note: "Rally supplies the Lobster body without spending shop slots." },
+  deathstrider: { name: "Deathstrider", cardId: "BG36_208", tier: 6, type: "Beast", attack: 10, health: 11, rules: "After a friendly <b>Rally</b> minion attacks, trigger your left-most <b>Deathrattle</b>.", note: "Turns Rally attacks into repeated left-most Deathrattle value." },
+  cageGnawer: { name: "Cage Gnawer", cardId: "BG36_211", tier: 4, type: "Beast", attack: 2, health: 7, rules: "Whenever a friendly Beast attacks, give your Beasts +2/+1.", note: "Pays off both combat attacks and Recruit Phase attacks." },
   treasureParrot: { name: "Treasure Parrot", cardId: "BG36_763", tier: 3, type: "Beast/Pirate", attack: 5, health: 5, rules: "Once this deals 40 damage, get a Golden Touch. <i>(40 left!)</i>", note: "Damage quest that pays out with Golden Touch." },
   captainCookie: { name: "Captain Cookie", cardId: "BG36_760", tier: 4, type: "Murloc/Pirate", attack: 5, health: 3, rules: "<b>Deathrattle:</b> Get a Chef's Choice.", note: "Deathrattle value through Chef's Choice." },
+  bilgewaterBreakout: { name: "Bilgewater Breakout", cardId: "BG36_520", tier: 2, type: "Pirate", attack: 3, health: 2, rules: "<b>Battlecry:</b> Get a Lockbox. If you already have one, it opens 1 turn sooner.", note: "Early Lockbox access and acceleration." },
+  lockedUpMutineer: { name: "Locked-up Mutineer", cardId: "BG36_521", tier: 3, type: "Pirate", attack: 6, health: 3, rules: "<b>Deathrattle:</b> Get a Lockbox. If you already have one, it opens 1 turn sooner.", note: "Tempo body that also advances Lockbox timing." },
+  enterprisingEscapee: { name: "Enterprising Escapee", cardId: "BG36_523", tier: 4, type: "Pirate", attack: 6, health: 6, rules: "After you spend 5 Gold, get a Lockbox. If you already have one, it opens 1 turn sooner. <i>(5 Gold left!)</i>", note: "Turns normal economy turns into repeated delayed Golden value." },
+  maritimeExtortionist: { name: "Maritime Extortionist", cardId: "BG36_524", tier: 4, type: "Pirate", attack: 8, health: 8, rules: "Has +8/+8 for each Golden minion you've played this game <i>(wherever this is)</i>.", note: "The payoff body once Lockbox Golden minions start resolving." },
+  hooktusk: { name: "Hooktusk, Master Marauder", cardId: "BG36_344", tier: 6, type: "Pirate", attack: 4, health: 4, rules: "After you <b>Discover</b> a card, give your other Pirates +1/+1. <i>(Improved by Golden minions you played this game!)</i>", note: "Late Pirate scaling that rewards the Golden-count plan." },
   bronzeTimewalker: { name: "Bronze Timewalker", cardId: "BG36_242", tier: 4, type: "Dragon", attack: 2, health: 9, rules: "<b>Rally:</b> Get a random <b>Chromadrake</b>.", note: "Season 14 Dragon setup piece." },
   skyHatchRunaway: { name: "Sky-hatch Runaway", cardId: "BG36_243", tier: 4, type: "Dragon", attack: 4, health: 7, rules: "<b>Activate (1):</b> Trigger a friendly minion's <b>Rally</b>.", note: "Season 14 Dragon payoff piece." },
   runicArcanist: { name: "Runic Arcanist", cardId: "BG36_245", tier: 4, type: "Dragon", attack: 3, health: 5, rules: "<b>Start of Combat:</b> Cast Shiny Ring.", note: "Late Dragon spell/Rally support." },
+  crimsonVindicator: { name: "Crimson Vindicator", cardId: "BG36_241", tier: 6, type: "Dragon", attack: 8, health: 9, rules: "<b>Divine Shield</b>. <b>Rally:</b> Cast Mighty Dragonbreath.", note: "Real T6 payoff for Dragon/Rally spell boards." },
   warpwing: { name: "Warpwing", cardId: "BG24_004", tier: 6, type: "Dragon", attack: 12, health: 4, rules: "<b>Immune</b> while attacking.", note: "Immune attacking carry." },
   deftDeserter: { name: "Deft Deserter", cardId: "BG36_621", tier: 5, type: "Demon", attack: 8, health: 8, rules: "<b>Activate (1):</b> Give all minions in the Tavern +8/+8 and <b>Taunt</b>, <b>Divine Shield</b>, or <b>Windfury</b>.", note: "Season 14 Demon setup piece." },
   impLusionist: { name: "Imp-lusionist", cardId: "BG36_731", tier: 5, type: "Demon", attack: 6, health: 3, rules: "<b>Deathrattle:</b> Get 2 copies of Methodical Madness.", note: "Season 14 Demon value piece." },
@@ -124,32 +142,32 @@ export const comps: Comp[] = [
   {
     tribe: "pirate",
     grade: "B",
-    name: "Lockbox Tempo Pirate",
-    signal: "Plays for delayed Golden payoff and tempo management.",
-    why: "Season 14 Pirates can uncover Lockboxes that unlock later unless you break them open early; dual-type pieces add flexible value.",
-    cards: [cards.treasureParrot, cards.captainCookie],
-    commit: ["Early tempo that lets Lockboxes mature.", "A lobby where delayed Golden value is not punished.", "Dual-type synergies from Murloc or Beast shops."],
-    avoid: ["Breaking delayed value too early without pressure.", "Treating Lockbox value as immediate stats.", "Ignoring combat strength while waiting."],
+    name: "Lockbox Golden Pirate",
+    signal: "Good when you can bank Golden value without losing the next two fights.",
+    why: "Bilgewater Breakout, Locked-up Mutineer, and Enterprising Escapee create Lockboxes; Maritime Extortionist and Hooktusk turn resolved Golden minions into real scaling.",
+    cards: [cards.bilgewaterBreakout, cards.lockedUpMutineer, cards.enterprisingEscapee, cards.maritimeExtortionist, cards.hooktusk],
+    commit: ["Two Lockbox sources before spending hard rolls.", "Enough tempo to wait for delayed Golden minions.", "A payoff for Golden count: Maritime Extortionist, Hooktusk, or strong Discover/Trinket value."],
+    avoid: ["Treating unopened Lockboxes as current combat stats.", "Opening value early without pressure or a triple line.", "Forcing Pirates when the lobby is punishing greed."],
   },
   {
     tribe: "beast",
-    grade: "B",
-    name: "Fishbait Recruit Attacks",
-    signal: "High upside when Recruit Phase attacks are controllable.",
-    why: "Fishbait lets Beasts attack in the Recruit Phase, creating unusual pre-combat rewards and making Venomous wording matter only once combat begins.",
-    cards: [{ ...cards.treasureParrot, note: "A Beast/Pirate bridge into Golden value." }],
-    commit: ["Fishbait access plus strong attack target.", "Deathrattle or on-damage rewards.", "Enough health to spend turns assembling setup."],
-    avoid: ["Uncontrolled attack order.", "Assuming Venomous works outside combat.", "Overcommitting before payoff is visible."],
+    grade: "A",
+    name: "Tasty Lobster Fishbait Beast",
+    signal: "One of the clearest creator-backed new builds when you can repeat Lobster Deathrattles.",
+    why: "Tasty Lobster improves future Lobsters, while Lurking Lionfish and Snarky Shark force Recruit Phase attacks into Fishbait. Hoarding Hyena and Deathstrider add the Rally/Deathrattle loop that makes the build scale instead of just tempoing.",
+    cards: [cards.tastyLobster, cards.lurkingLionfish, cards.snarkyShark, cards.hoardingHyena, cards.deathstrider],
+    commit: ["Early Lobsters are already improved or easy to resummon.", "Left-most Beast is intentionally positioned before Lionfish/Shark triggers.", "Deathstrider can hit a meaningful left-most Deathrattle, not a random utility body."],
+    avoid: ["Letting Fishbait attacks hit the wrong Beast because board order was casual.", "Keeping Lobster as a one-off Taunt instead of a repeated Deathrattle engine.", "Assuming Venomous or combat-only text carries Recruit Phase attacks."],
   },
   {
     tribe: "dragon",
     grade: "B",
     name: "Rally Dragonbreath",
-    signal: "Stable if you hit Rally payoffs; less explosive than Mech or Quilboar.",
-    why: "Season 14 Dragon support leans into Rally, Dragon generation, and Divine Shield overlap. Warpwing remains a credible combat carry.",
-    cards: [cards.bronzeTimewalker, cards.skyHatchRunaway, cards.runicArcanist, cards.warpwing],
-    commit: ["Multiple Rally triggers or Dragon spell value.", "A protected carry with Divine Shield support.", "Trinket or Gift that rewards Dragons directly."],
-    avoid: ["Forcing from one early Dragon.", "Too many generators and no combat stats.", "Missing board order for left/right effects."],
+    signal: "Improved by creator evidence, but still needs the Rally retrigger pieces before it is a hard force.",
+    why: "Bronze Timewalker and Sky-hatch Runaway generate and retrigger Chromadrake value; Crimson Vindicator gives the late Mighty Dragonbreath payoff, while Runic Arcanist adds another spell/combat scaling angle.",
+    cards: [cards.bronzeTimewalker, cards.skyHatchRunaway, cards.runicArcanist, cards.crimsonVindicator, cards.warpwing],
+    commit: ["Rally trigger plus a way to repeat it.", "Dragonbreath or Divine Shield overlap already present.", "A real late carry: Crimson Vindicator, Warpwing, or heavily buffed Chromadrake chain."],
+    avoid: ["Calling every Dragon opener a comp.", "Too many generators and no combat stats.", "Missing when Runaway should copy Rally instead of sitting as a medium body."],
   },
   {
     tribe: "demon",
@@ -266,6 +284,24 @@ export const boardStates: BoardState[] = [
     goal: "Control the left-most hand target and convert spell economy into repeated hand and board buffs.",
     next: ["Check hand order before every spell.", "Repeat only real Battlecry value with Kelp Keeper.", "Without spell generation, do not force Murlocs."],
   },
+  {
+    title: "Beast Lobster Deathrattle Board",
+    stage: "Tavern 4-6 board",
+    tribe: "beast",
+    board: ["Tasty Lobster", "Lurking Lionfish", "Snarky Shark", "Hoarding Hyena", "left-most Beast attack target", "Deathstrider setup"],
+    hand: ["extra Beast", "Reborn/Deathrattle support", "shop slot saved for Fishbait"],
+    goal: "Repeat improved Lobster Deathrattles through controlled Recruit Phase attacks, then let Deathstrider convert Rally attacks into more left-most Deathrattle triggers.",
+    next: ["Before every Lionfish or Shark trigger, confirm the left-most Beast is the intended attacker.", "Keep the best Deathrattle left-most once Deathstrider is online.", "Buy tempo if the Lobster chain has not improved enough to survive combat."],
+  },
+  {
+    title: "Lockbox Pirate Bank",
+    stage: "Tavern 3-5 board",
+    tribe: "pirate",
+    board: ["Bilgewater Breakout", "Locked-up Mutineer", "Enterprising Escapee", "temporary taunt/scam", "Maritime Extortionist watch slot"],
+    hand: ["unopened Lockbox", "Golden payoff candidate", "Discover or Tavern spell support"],
+    goal: "Bank Golden minions without dying, then convert the Golden count into Maritime Extortionist stats or Hooktusk scaling.",
+    next: ["Count how many turns remain before the Lockbox matters.", "Do not sell combat stats just to chase a second delayed box.", "Once Golden minions resolve, pivot from banking to fighting immediately."],
+  },
 ];
 
 export const buildRoutes: BuildRoute[] = [
@@ -301,6 +337,22 @@ export const buildRoutes: BuildRoute[] = [
     late: "Kelp Keeper plus Battlecry value, Gearfin spell generation, then scam/poison-style tech against large stats.",
     pivots: ["Gearfin also bridges into Mechs.", "If hand positioning is unstable, pivot to board scaling.", "A spell-less Murloc shop is tempo, not a comp."],
   },
+  {
+    title: "Tasty Lobster Beast Route",
+    tribe: "beast",
+    opener: "Take early Tasty Lobsters when you can preserve health; the first copies matter because future Lobsters improve.",
+    midgame: "Lurking Lionfish and Snarky Shark turn shop/Fishbait decisions into repeatable Recruit Phase attacks. Position the left-most Beast deliberately.",
+    late: "Hoarding Hyena supplies Lobsters, Deathstrider repeats the left-most Deathrattle, and Cage Gnawer or combat tech converts the chain into lethal pressure.",
+    pivots: ["If Lobsters are not improved, play Beast tempo instead of forcing Deathstrider.", "Treasure Parrot gives Beast/Pirate Golden-value overlap.", "If opponents have huge cleave/scam, protect the Deathrattle order before buying more scaling."],
+  },
+  {
+    title: "Lockbox Golden Pirate Route",
+    tribe: "pirate",
+    opener: "Use Bilgewater Breakout or Mutineer as tempo plus future value; do not count unopened Lockboxes as board strength.",
+    midgame: "Enterprising Escapee rewards normal spending turns. Maritime Extortionist becomes the first real payoff when Golden minions have resolved.",
+    late: "Hooktusk and Discover chains turn Golden-count scaling into a board, but the route still needs immediate combat stats or scam slots.",
+    pivots: ["If the lobby is fast, cash out value earlier.", "Captain Cookie/Gearfin can bridge into Murloc spell economy.", "Without Golden payoff, stop rolling Pirates and play the strongest discovered bodies."],
+  },
 ];
 
 export const referenceNotes: ReferenceNote[] = [
@@ -328,14 +380,33 @@ export const referenceNotes: ReferenceNote[] = [
     summary: "Community/video discussion is currently focused on Dark Gift timing, Mech Magnetic lines, Quilboar/Undead highrolls, and high Gift variance. Treat it as directional, not as win-rate data.",
     href: "https://www.youtube.com/results?search_query=Hearthstone+Battlegrounds+Season+14+Dark+Gifts+guide",
   },
+  {
+    label: "Tasty Lobster creator cluster",
+    kind: "Video + stats direction",
+    summary: "dogdog's early Beast video and HSReplay's named Tasty Lobstah comp both point to Lobster Deathrattle repetition as a real Season 14 route, not just a Fishbait novelty.",
+    href: "https://www.youtube.com/watch?v=wi_nvouGX0Y",
+  },
+  {
+    label: "Dragon and Mech creator checks",
+    kind: "Creator route validation",
+    summary: "Recent Sevel videos highlight that Mech remains a credible Magnetic engine and Dragon has a revived Rally/Dragonbreath line, but both still require exact engine pieces.",
+    href: "https://www.youtube.com/watch?v=dCwe93sXIiM",
+  },
 ];
 
 export const communityPulse: CommunityPulse[] = [
   {
-    title: "Quilboar and Undead are getting the loudest hype",
-    signal: "Creator/video search results include separate Quilboar and Undead strategy videos with highroll-heavy framing, while Reddit also has active Undead balance discussion.",
+    title: "Tasty Lobster Beasts are a real route now",
+    signal: "Recent creator videos, HSReplay's named Tasty Lobstah page, and the HSBG card pool all line up around repeated Lobster Deathrattles, Hoarding Hyena, and Deathstrider.",
     confidence: "medium",
-    takeaway: "The site keeps the S/A ordering, but Quilboar and Undead routes now call out ceiling more clearly instead of treating them only as stable comps.",
+    takeaway: "Beast moves from a low-context Fishbait note to an A-tier route, but the recommendation is conditional on repeated Lobster triggers and correct left-most positioning.",
+    sources: ["dogdog Tasty Lobster Beast video", "HSReplay Tasty Lobstah comp page", "HSBG 36.2 visual database"],
+  },
+  {
+    title: "Quilboar, Beast, and Undead are getting the loudest hype",
+    signal: "Creator/video search results and Reddit discussion now show Beast Lobster, Quilboar, and Undead as the most visibly discussed high-ceiling packages.",
+    confidence: "medium",
+    takeaway: "The site keeps Mech and Quilboar at the top for engine clarity, but Beast now gets a fuller route because it has both creator and comp-page support.",
     sources: ["YouTube Season 14 guide search", "r/BobsTavern live feed"],
   },
   {
@@ -353,8 +424,15 @@ export const communityPulse: CommunityPulse[] = [
     sources: ["Blizzard Season 14 announcement", "HearthPwn 36.2 patch notes", "r/BobsTavern live feed"],
   },
   {
+    title: "Dragon is more playable than the first pass implied",
+    signal: "A recent Dragon-focused creator video and the official card pool both support Rally retrigger plus Mighty Dragonbreath as a coherent line.",
+    confidence: "low",
+    takeaway: "Dragon stays B-tier until stronger data appears, but the route text now treats it as a real build with Crimson Vindicator rather than a generic Warpwing fallback.",
+    sources: ["Sevel Dragon build video", "HSBG 36.2 visual database"],
+  },
+  {
     title: "Naga and Demon look more polarized than stable",
-    signal: "The feed contains Naga highlights and Demon/Elemental balance chatter, but less evidence of reliable routes than Mech, Quilboar, or Undead.",
+    signal: "The feed contains Naga highlights and Demon/Elemental balance chatter, but less evidence of reliable routes than Mech, Quilboar, Beast, or Undead.",
     confidence: "low",
     takeaway: "Naga and Demon stay lower-confidence recommendations: playable highrolls or pivots, not primary force plans.",
     sources: ["r/BobsTavern live feed"],
@@ -362,6 +440,17 @@ export const communityPulse: CommunityPulse[] = [
 ];
 
 export const changelog: ChangelogEntry[] = [
+  {
+    date: "2026-08-06",
+    title: "Deeper creator and card-pool pass",
+    summary: "The guide was updated after checking recent Season 14 videos, HSReplay's Tasty Lobstah page, HSBG card text, and the current community feed.",
+    changes: [
+      "Promoted Beast from a Fishbait note into a Tasty Lobster Deathrattle route with Lionfish, Shark, Hyena, and Deathstrider.",
+      "Expanded Pirate from two dual-type cards into a real Lockbox Golden route.",
+      "Updated Dragon advice with Crimson Vindicator and Rally/Dragonbreath positioning.",
+      "Added Beast and Pirate board states plus build routes.",
+    ],
+  },
   {
     date: "2026-08-06",
     title: "Compact tavern strategy UI redesign",
