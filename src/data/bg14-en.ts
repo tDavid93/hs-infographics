@@ -1,13 +1,16 @@
-import type { BoardState, BuildRoute, CardRef, Comp, InfoBlock, ReferenceNote, TimelineRow, Tribe } from "./bg14";
+import type { BoardState, BuildRoute, CardRef, CommunityPulse, Comp, InfoBlock, ReferenceNote, TimelineRow, Tribe } from "./bg14";
 
-export const updated = "2026-08-05";
+export const updated = "2026-08-06";
 
 export const sources = [
   { label: "Blizzard 36.2 patch notes", href: "https://hearthstone.blizzard.com/en-gb/news/24290432/362-patch-notes" },
   { label: "Blizzard Season 14 announcement", href: "https://playhearthstone.com/en-us/blog/24290433/" },
+  { label: "HearthPwn 36.2 patch notes", href: "https://www.hearthpwn.com/news/12583-36-2-patch-notes-battlegrounds-season-14-in-game" },
   { label: "HSBG 36.2 visual database", href: "https://hsbg.cards/patch-notes/36.2" },
   { label: "HearthstoneJSON image API", href: "https://hearthstonejson.com/docs/images.html" },
   { label: "r/BobsTavern early discussion", href: "https://www.reddit.com/r/BobsTavern/comments/1v8664a/announcing_battlegrounds_season_14_dark_gifts_of/" },
+  { label: "r/BobsTavern live feed", href: "https://www.reddit.com/r/BobsTavern/" },
+  { label: "YouTube Season 14 guide search", href: "https://www.youtube.com/results?search_query=Hearthstone+Battlegrounds+Season+14+Dark+Gifts+guide" },
 ];
 
 export const tribes: { key: Tribe | "all"; label: string }[] = [
@@ -322,7 +325,38 @@ export const referenceNotes: ReferenceNote[] = [
   {
     label: "Community and creator videos",
     kind: "Early meta read",
-    summary: "Community/video discussion is currently focused on Dark Gift timing, Mech Magnetic lines, Undead Recruit triggers, and high Gift variance. Treat it as directional, not as win-rate data.",
+    summary: "Community/video discussion is currently focused on Dark Gift timing, Mech Magnetic lines, Quilboar/Undead highrolls, and high Gift variance. Treat it as directional, not as win-rate data.",
     href: "https://www.youtube.com/results?search_query=Hearthstone+Battlegrounds+Season+14+Dark+Gifts+guide",
+  },
+];
+
+export const communityPulse: CommunityPulse[] = [
+  {
+    title: "Quilboar and Undead are getting the loudest hype",
+    signal: "Creator/video search results include separate Quilboar and Undead strategy videos with highroll-heavy framing, while Reddit also has active Undead balance discussion.",
+    confidence: "medium",
+    takeaway: "The site keeps the S/A ordering, but Quilboar and Undead routes now call out ceiling more clearly instead of treating them only as stable comps.",
+    sources: ["YouTube Season 14 guide search", "r/BobsTavern live feed"],
+  },
+  {
+    title: "The Reddit feed is better for highroll examples than tier lists",
+    signal: "The current r/BobsTavern feed shows many Final Board / Highlight posts: huge minions, Naga highlights, trinket/bug discussion, and extreme boards.",
+    confidence: "high",
+    takeaway: "Community screenshots should not be read as win-rate evidence. They are useful for board-state and ceiling examples, not for ranking comps by themselves.",
+    sources: ["r/BobsTavern live feed"],
+  },
+  {
+    title: "Dark Gift variance and turn timer pressure are central topics",
+    signal: "Official and community sources both emphasize the 3-Gold, three-use Gift decision; Reddit also shows parallel complaints about client time and animation pressure.",
+    confidence: "high",
+    takeaway: "The strategy page should keep prioritizing board cleanup before Gift, gold counting, and fast decision-making as the main general advice.",
+    sources: ["Blizzard Season 14 announcement", "HearthPwn 36.2 patch notes", "r/BobsTavern live feed"],
+  },
+  {
+    title: "Naga and Demon look more polarized than stable",
+    signal: "The feed contains Naga highlights and Demon/Elemental balance chatter, but less evidence of reliable routes than Mech, Quilboar, or Undead.",
+    confidence: "low",
+    takeaway: "Naga and Demon stay lower-confidence recommendations: playable highrolls or pivots, not primary force plans.",
+    sources: ["r/BobsTavern live feed"],
   },
 ];

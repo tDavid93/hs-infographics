@@ -70,7 +70,15 @@ export type ReferenceNote = {
   href: string;
 };
 
-export const updated = "2026-08-05";
+export type CommunityPulse = {
+  title: string;
+  signal: string;
+  confidence: "high" | "medium" | "low";
+  takeaway: string;
+  sources: string[];
+};
+
+export const updated = "2026-08-06";
 
 export const sources = [
   {
@@ -80,6 +88,10 @@ export const sources = [
   {
     label: "Blizzard Season 14 bejelentés",
     href: "https://playhearthstone.com/en-us/blog/24290433/",
+  },
+  {
+    label: "HearthPwn 36.2 patch jegyzetek",
+    href: "https://www.hearthpwn.com/news/12583-36-2-patch-notes-battlegrounds-season-14-in-game",
   },
   {
     label: "HSBG 36.2 vizuális adatbázis",
@@ -92,6 +104,14 @@ export const sources = [
   {
     label: "r/BobsTavern korai beszélgetés",
     href: "https://www.reddit.com/r/BobsTavern/comments/1v8664a/announcing_battlegrounds_season_14_dark_gifts_of/",
+  },
+  {
+    label: "r/BobsTavern friss feed",
+    href: "https://www.reddit.com/r/BobsTavern/",
+  },
+  {
+    label: "YouTube Season 14 guide keresés",
+    href: "https://www.youtube.com/results?search_query=Hearthstone+Battlegrounds+Season+14+Dark+Gifts+guide",
   },
 ];
 
@@ -415,7 +435,38 @@ export const referenceNotes: ReferenceNote[] = [
   {
     label: "Community and creator videos",
     kind: "Korai meta olvasat",
-    summary: "A közösségi és videós beszélgetések főleg a Dark Gift timingot, Mech Magnetic vonalat, Undead Recruit triggereket és a nagy Gift-variance-t emelik ki. Ezt irányjelként, nem win-rate adatként kezeljük.",
+    summary: "A közösségi és videós beszélgetések főleg a Dark Gift timingot, Mech Magnetic vonalat, Quilboar/Undead highrollokat és a nagy Gift-variance-t emelik ki. Ezt irányjelként, nem win-rate adatként kezeljük.",
     href: "https://www.youtube.com/results?search_query=Hearthstone+Battlegrounds+Season+14+Dark+Gifts+guide",
+  },
+];
+
+export const communityPulse: CommunityPulse[] = [
+  {
+    title: "Quilboar és Undead kapja a legtöbb hype-ot",
+    signal: "A creator/video találatokban külön Quilboar és Undead stratégia videók jelennek meg „broken” jellegű címekkel, miközben Redditen is aktív az Undead balance beszélgetés.",
+    confidence: "medium",
+    takeaway: "A site S/A sorrendje marad, de a Quilboar és Undead route-oknál érdemes a highroll ceilinget hangsúlyosabban kezelni, nem csak stabil compként.",
+    sources: ["YouTube Season 14 guide keresés", "r/BobsTavern friss feed"],
+  },
+  {
+    title: "A Reddit feed inkább highrollokat mutat, nem stabil tierlistát",
+    signal: "A friss r/BobsTavern feedben sok Final Board / Highlight poszt látszik: óriás minionok, Naga highlightok, trinket/bug beszélgetések és extrém boardok.",
+    confidence: "high",
+    takeaway: "A közösségi screenshotokból ne olvassunk win-rate adatot. Hasznosak board-state és ceiling példának, de nem elégségesek comp erősorrendhez.",
+    sources: ["r/BobsTavern friss feed"],
+  },
+  {
+    title: "Dark Gift variance és döntési idő központi téma",
+    signal: "A hivatalos és közösségi források is a 3 aranyas, háromszor használható Gift döntést emelik ki; Redditen párhuzamosan megjelennek kliens/idő/animáció panaszok.",
+    confidence: "high",
+    takeaway: "A stratégia oldalon továbbra is a Gift előtti boardtisztítás, gold számolás és gyors döntéshozatal a legfontosabb általános tanács.",
+    sources: ["Blizzard Season 14 bejelentés", "HearthPwn 36.2 patch jegyzetek", "r/BobsTavern friss feed"],
+  },
+  {
+    title: "Naga és Demon inkább polarizált, mint stabil",
+    signal: "A feedben Naga highlightok és Demon/Elemental balance jellegű beszélgetések is látszanak, de kevesebb stabil route bizonyíték van, mint Mech/Quilboar/Undead esetén.",
+    confidence: "low",
+    takeaway: "Naga és Demon maradjon alacsonyabb biztonságú ajánlás: jó highroll/pivot lehet, de ne legyen elsődleges force terv.",
+    sources: ["r/BobsTavern friss feed"],
   },
 ];

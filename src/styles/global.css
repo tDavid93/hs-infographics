@@ -396,7 +396,8 @@ h1 {
 }
 
 .board-grid,
-.reference-grid {
+.reference-grid,
+.pulse-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
@@ -404,7 +405,8 @@ h1 {
 
 .board-card,
 .route-card,
-.reference-card {
+.reference-card,
+.pulse-card {
   border: 1px solid var(--line);
   border-radius: 8px;
   background: linear-gradient(145deg, #121a27, #0b1119);
@@ -547,6 +549,101 @@ h1 {
 
 .reference-card:hover {
   border-color: rgb(95 199 255 / 0.55);
+}
+
+.pulse-section {
+  background: rgb(12 16 24 / 0.95);
+}
+
+.pulse-card {
+  display: grid;
+  gap: 13px;
+  min-height: 290px;
+  padding: 18px;
+}
+
+.pulse-topline {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.confidence {
+  display: inline-flex;
+  align-items: center;
+  min-height: 26px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  letter-spacing: 0;
+}
+
+.confidence-high {
+  background: rgb(109 227 163 / 0.14);
+  color: var(--green);
+}
+
+.confidence-medium {
+  background: rgb(242 193 78 / 0.14);
+  color: var(--gold);
+}
+
+.confidence-low {
+  background: rgb(255 119 119 / 0.14);
+  color: var(--red);
+}
+
+.pulse-card h3 {
+  margin: 0;
+  color: var(--ink);
+  font-size: 1.22rem;
+  line-height: 1.15;
+}
+
+.pulse-card dl {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+}
+
+.pulse-card dt {
+  color: var(--cyan);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.pulse-card dd {
+  margin: 0 0 7px;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.pulse-sources {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-self: end;
+}
+
+.pulse-sources span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 5px 8px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.04);
+  color: #d8deeb;
+  font-size: 0.78rem;
+  font-weight: 750;
 }
 
 .toolbar {
@@ -1017,7 +1114,8 @@ h1 {
 
   .board-grid,
   .route-grid,
-  .reference-grid {
+  .reference-grid,
+  .pulse-grid {
     grid-template-columns: 1fr;
   }
 

@@ -2,16 +2,44 @@
 import { ArrowUpRight, Info } from "@lucide/astro";
 import PageFrame from "../../../components/PageFrame.astro";
 import StrategySections from "../../../components/StrategySections.astro";
-import { referenceNotes, sources, updated } from "../../../data/bg14-en";
+import { communityPulse, referenceNotes, sources, updated } from "../../../data/bg14-en";
 import { languageLinks, navItems, siteCopy } from "../../../data/site";
 import "../../../styles/global.css";
 
 const copy = siteCopy.en;
 const links = languageLinks.references;
 const date = new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", year: "numeric" }).format(new Date(`${updated}T12:00:00Z`));
+const confidenceLabels = { high: "high", medium: "medium", low: "low" } as const;
 ---
 
 <PageFrame lang="en" title={`References | ${copy.title}`} description={copy.description} eyebrow={copy.eyebrow} lede={copy.lede} updatedLabel={copy.updated} date={date} navItems={navItems("en", "references")} language={{ label: copy.languageLabel, ...links }}>
+  <section class="strategy-section pulse-section" aria-labelledby="community-pulse-title">
+    <div class="section-head">
+      <p class="eyebrow">Community Pulse</p>
+      <h2 id="community-pulse-title">What Changed In The Community Read?</h2>
+      <p>Last checked: {date}. Reddit and creator signals show highrolls, debates, and decision patterns; they do not replace official patch data or real win-rate statistics.</p>
+    </div>
+    <div class="pulse-grid">
+      {communityPulse.map((item) => (
+        <article class="pulse-card">
+          <div class="pulse-topline">
+            <span class={`confidence confidence-${item.confidence}`}>{confidenceLabels[item.confidence]}</span>
+            <span>Confidence</span>
+          </div>
+          <h3>{item.title}</h3>
+          <dl>
+            <dt>Signal</dt>
+            <dd>{item.signal}</dd>
+            <dt>Takeaway</dt>
+            <dd>{item.takeaway}</dd>
+          </dl>
+          <div class="pulse-sources" aria-label="Sources">
+            {item.sources.map((source) => <span>{source}</span>)}
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
   <StrategySections boardStates={[]} buildRoutes={[]} referenceNotes={referenceNotes} labels={{ boardsEyebrow: "", boardsTitle: "", boardsBody: "", boardLabel: "", handLabel: "", nextLabel: "", routesAria: "", opener: "", midgame: "", late: "", pivots: "", refsEyebrow: "Analyzed references", refsTitle: "What Is This Based On?", refsBody: "Official patch data is separated from community and video impressions." }} />
   <section class="notes" aria-labelledby="notes-title">
     <Info size={20} />
