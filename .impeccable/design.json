@@ -1,23 +1,23 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-08-06T13:34:00+02:00",
+  "generatedAt": "2026-08-06T14:05:00+02:00",
   "title": "Design System: BG14 Meta Desk",
   "extensions": {
     "colorMeta": {
-      "paper": { "role": "neutral", "displayName": "Desk Paper", "canonical": "#f3ead7", "tonalRamp": ["#2b2116", "#584a38", "#8a775c", "#b9a27f", "#d5c09a", "#e6d7bd", "#f3ead7", "#fff8e8"] },
-      "ink": { "role": "primary", "displayName": "Deep Ink", "canonical": "#21180f", "tonalRamp": ["#140e08", "#21180f", "#3a2d20", "#584a38", "#7a6a55", "#a08e74", "#c7b69a", "#f3ead7"] },
-      "blue": { "role": "secondary", "displayName": "Scout Blue", "canonical": "#1d5b81", "tonalRamp": ["#0b2231", "#123a53", "#1d5b81", "#2b7aa8", "#5797bd", "#8ab8d2", "#bfdae8", "#eaf5fa"] },
-      "red": { "role": "tertiary", "displayName": "Warning Red", "canonical": "#b63f31", "tonalRamp": ["#35110d", "#682016", "#913126", "#b63f31", "#cf6f5f", "#df9e91", "#efccc4", "#fff0ed"] },
-      "gold": { "role": "secondary", "displayName": "Highlighter Gold", "canonical": "#be7f22", "tonalRamp": ["#3e2607", "#70470f", "#9b6719", "#be7f22", "#daa14a", "#e9c47f", "#f6dfac", "#fff4d0"] }
+      "bg": { "role": "neutral", "displayName": "Void Background", "canonical": "#070a0f", "tonalRamp": ["#030406", "#070a0f", "#0c1119", "#172130", "#2d394b", "#46566e", "#7e8a9c", "#b5c0cf"] },
+      "panel": { "role": "neutral", "displayName": "Tavern Panel", "canonical": "#111823", "tonalRamp": ["#070a0f", "#0c1119", "#111823", "#172130", "#202b3b", "#2d394b", "#46566e", "#b5c0cf"] },
+      "ink": { "role": "primary", "displayName": "Warm Ink", "canonical": "#f7efe2", "tonalRamp": ["#2b2116", "#584a38", "#7e7164", "#a79b8d", "#cabfb2", "#e5dcce", "#f7efe2", "#fff8ef"] },
+      "gold": { "role": "secondary", "displayName": "Amber Signal", "canonical": "#f2b84b", "tonalRamp": ["#2f1d04", "#5c390b", "#8a5a16", "#bd8229", "#f2b84b", "#ffd889", "#ffe8b5", "#fff5db"] },
+      "cyan": { "role": "secondary", "displayName": "Arcane Cyan", "canonical": "#56c7ff", "tonalRamp": ["#062337", "#0c4163", "#14618f", "#2487bd", "#56c7ff", "#91dcff", "#c6edff", "#eefaff"] }
     },
     "typographyMeta": {
-      "display": { "displayName": "Display", "purpose": "Owns the page title and major section headlines." },
-      "body": { "displayName": "Body", "purpose": "Carries bilingual guide copy and long Hungarian strings." },
-      "label": { "displayName": "Binder Label", "purpose": "Used for stamps, filters, grades, route labels, and confidence markers." }
+      "display": { "displayName": "Display", "purpose": "Compact site title and major section headlines." },
+      "body": { "displayName": "Body", "purpose": "Bilingual strategy copy and card explanations." },
+      "label": { "displayName": "Tactical Label", "purpose": "Grades, filters, confidence, source metadata." }
     },
     "shadows": [
-      { "name": "desk-lift", "value": "0 20px 42px rgb(60 38 14 / 0.16)", "purpose": "Major paper sheets lifted from the desk." },
-      { "name": "card-lift", "value": "0 10px 22px rgb(78 50 20 / 0.1)", "purpose": "Repeated cards at rest." }
+      { "name": "panel-lift", "value": "0 22px 60px rgb(0 0 0 / 0.38)", "purpose": "Masthead and major comp panels." },
+      { "name": "card-lift", "value": "0 12px 28px rgb(0 0 0 / 0.18)", "purpose": "Repeated guide cards." }
     ],
     "motion": [
       { "name": "state-ease", "value": "160ms ease", "purpose": "Small hover and active-state transitions." }
@@ -29,12 +29,12 @@
   },
   "components": [
     {
-      "name": "Binder Tab",
+      "name": "Route Tab",
       "kind": "nav",
-      "refersTo": "nav-tab",
-      "description": "Primary route navigation tab.",
-      "html": "<a class=\"ds-nav-tab ds-nav-tab-active\" href=\"#\">Comps</a>",
-      "css": ".ds-nav-tab { display:inline-grid; place-items:center; min-height:40px; padding:10px 14px; border:1px solid transparent; border-radius:10px; color:#584a38; font:900 1rem/1.1 Atkinson Hyperlegible, sans-serif; text-decoration:none; } .ds-nav-tab-active, .ds-nav-tab:hover { border-color:#2e2418; background:#fff8e8; color:#21180f; } .ds-nav-tab:focus-visible { outline:3px solid rgb(29 91 129 / 0.42); outline-offset:3px; }"
+      "refersTo": "nav-tab-active",
+      "description": "Primary sticky route navigation tab.",
+      "html": "<a class=\"ds-route-tab ds-route-tab-active\" href=\"#\">Comps</a>",
+      "css": ".ds-route-tab { display:inline-grid; place-items:center; min-height:36px; padding:8px 12px; border:1px solid transparent; border-radius:8px; color:#b5c0cf; font:850 0.95rem/1.1 Atkinson Hyperlegible, sans-serif; text-decoration:none; } .ds-route-tab-active, .ds-route-tab:hover { border-color:rgb(242 184 75 / 0.36); background:rgb(242 184 75 / 0.12); color:#f7efe2; } .ds-route-tab:focus-visible { outline:3px solid rgb(86 199 255 / 0.5); outline-offset:3px; }"
     },
     {
       "name": "Active Filter Chip",
@@ -42,41 +42,40 @@
       "refersTo": "filter-active",
       "description": "Selected tribe filter chip.",
       "html": "<button class=\"ds-filter-chip\">Mech</button>",
-      "css": ".ds-filter-chip { min-height:38px; padding:8px 12px; border:1px solid rgb(243 234 215 / 0.34); border-radius:10px; background:#ffe28f; color:#21180f; font:900 0.95rem/1.1 Atkinson Hyperlegible, sans-serif; cursor:pointer; } .ds-filter-chip:focus-visible { outline:3px solid rgb(29 91 129 / 0.42); outline-offset:3px; }"
+      "css": ".ds-filter-chip { min-height:36px; padding:8px 12px; border:1px solid rgb(242 184 75 / 0.5); border-radius:8px; background:#f2b84b; color:#1c1204; font:850 0.95rem/1.1 Atkinson Hyperlegible, sans-serif; cursor:pointer; } .ds-filter-chip:focus-visible { outline:3px solid rgb(86 199 255 / 0.5); outline-offset:3px; }"
     },
     {
-      "name": "Filed Content Card",
+      "name": "Tavern Content Card",
       "kind": "card",
       "refersTo": "content-card",
-      "description": "Default repeated guide card.",
+      "description": "Default repeated dark guide card.",
       "html": "<article class=\"ds-card\"><span>Board state</span><h3>Mech Magnetic Engine</h3><p>Multiple Magnetic stacks across bodies, later multiplied by Utility Drone.</p></article>",
-      "css": ".ds-card { max-width:360px; padding:18px; border:1px solid #2e2418; border-radius:14px; background:#fbf2df; color:#21180f; box-shadow:0 10px 22px rgb(78 50 20 / 0.1); } .ds-card span { display:inline-flex; margin-bottom:8px; color:#b63f31; font:900 0.74rem/1.1 Atkinson Hyperlegible, sans-serif; letter-spacing:0.08em; text-transform:uppercase; } .ds-card h3 { margin:0 0 8px; font:800 1.22rem/1.1 Bricolage Grotesque, sans-serif; } .ds-card p { margin:0; color:#584a38; line-height:1.5; }"
+      "css": ".ds-card { max-width:360px; padding:16px; border:1px solid #2d394b; border-radius:12px; background:#111823; color:#f7efe2; box-shadow:0 12px 28px rgb(0 0 0 / 0.18); } .ds-card span { display:inline-flex; margin-bottom:8px; color:#f2b84b; font:900 0.74rem/1.1 Atkinson Hyperlegible, sans-serif; letter-spacing:0.08em; text-transform:uppercase; } .ds-card h3 { margin:0 0 8px; font:700 1.22rem/1.1 Rajdhani, sans-serif; } .ds-card p { margin:0; color:#b5c0cf; line-height:1.5; }"
     }
   ],
   "narrative": {
-    "northStar": "The Tavern Scout Binder",
-    "overview": "The site is a coach's desk reference for a volatile Battlegrounds season: warm paper, inked rules, stamped labels, tabbed navigation, and clipped card specimens. It is expressive enough to feel made for Hearthstone players, but it stays in Read mode: hierarchy, scan speed, and trust in source separation beat spectacle.",
+    "northStar": "Compact Tavern Strategy Desk",
+    "overview": "The interface should feel like a polished in-game scouting tool: dark carved panels, restrained amber and cyan accents, crisp tabs, and dense guide cards. The successful version is not a landing page and not a decorative notebook. It gets players from page load to comp decisions quickly.",
     "keyCharacteristics": [
-      "Warm paper surfaces with strong ink borders and visible reading structure.",
-      "Dense but legible cards that keep decision rules close to card identity.",
-      "Binder-tab navigation and stamp-like metadata for route and confidence context.",
-      "Light, tactile depth with soft shadows only where panels lift from the desk."
+      "Compact header with season identity, update date, language switch, and immediate navigation.",
+      "Dark panels with clear borders and restrained amber/cyan accents.",
+      "Desktop comp cards use a responsive internal card grid instead of cramped horizontal scrollbars.",
+      "Sticky behavior is limited to primary navigation; filters remain in flow."
     ],
     "rules": [
-      { "name": "The Evidence Color Rule", "body": "Blue is for navigation or source action, red is for caution, and gold is for selected or highlighted state. Do not use them as arbitrary decoration.", "section": "colors" },
-      { "name": "The Binder Label Rule", "body": "Labels should sit beside or below a heading as metadata, never as a decorative kicker that delays the actual title.", "section": "typography" }
+      { "name": "The Two Accent Rule", "body": "Amber marks selected or important state; cyan marks navigation, links, and tactical headings. Do not scatter both colors across the same component without a role.", "section": "colors" }
     ],
     "dos": [
-      "Do keep strategy text close to the card, route, or board state it explains.",
-      "Do use gold only for selected/highlight states or important stamps.",
-      "Do keep subpage mastheads compact so the user reaches the tool surface quickly.",
-      "Do preserve bilingual parity when adding visible content."
+      "Do keep hero/header height low enough that real guide content appears quickly.",
+      "Do keep filters in flow so they do not cover card titles or card art.",
+      "Do use amber for selected state and cyan for source/action emphasis.",
+      "Do keep comp cards dense but readable."
     ],
     "donts": [
-      "Don't return to a generic dark dashboard or glass-card visual system.",
-      "Don't use community evidence as win-rate proof.",
-      "Don't add decorative grids, glow effects, or large ornamental backgrounds without a product function.",
-      "Don't use color alone to communicate tier, confidence, or active state."
+      "Don't use parchment, notebook, or fake paper styling for this site.",
+      "Don't use oversized empty hero blocks.",
+      "Don't make desktop comp cards depend on horizontal scroll when a grid can fit.",
+      "Don't let sticky bars overlap content."
     ]
   }
 }

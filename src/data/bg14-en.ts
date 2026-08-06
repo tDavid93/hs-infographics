@@ -364,12 +364,12 @@ export const communityPulse: CommunityPulse[] = [
 export const changelog: ChangelogEntry[] = [
   {
     date: "2026-08-06",
-    title: "Tavern Scout Binder UI redesign",
-    summary: "The site now uses a faster-reading tactical binder look with light paper surfaces and tabbed navigation.",
+    title: "Compact tavern strategy UI redesign",
+    summary: "The site now uses a tighter dark strategy-desk look with less empty space and a cleaner comps view.",
     changes: [
-      "Replaced the dark dashboard feel with a warmer notebook-style reading surface.",
-      "Unified navigation, filters, comp cards, references, and changelog around binder and stamp patterns.",
-      "Changed mobile navigation to a four-column tab grid and made subpage mastheads more compact.",
+      "Removed the oversized empty hero and the light paper gimmick.",
+      "Stopped the filter toolbar from covering comp content while scrolling.",
+      "Changed desktop comp cards to a grid layout to reduce cramped horizontal scrolling.",
     ],
   },
   {

@@ -481,12 +481,12 @@ export const communityPulse: CommunityPulse[] = [
 export const changelog: ChangelogEntry[] = [
   {
     date: "2026-08-06",
-    title: "Tavern Scout Binder UI redesign",
-    summary: "Az oldal új, gyorsabban olvasható taktikai binder megjelenést kapott világos papír felületekkel és tabos navigációval.",
+    title: "Kompakt tavern strategy UI redesign",
+    summary: "Az oldal kompaktabb, sötét strategy-desk megjelenést kapott kevesebb üres térrel és tisztább comp nézettel.",
     changes: [
-      "A sötét dashboard jelleg helyett melegebb, jegyzetfüzetes olvasófelület készült.",
-      "A navigáció, filterek, comp kártyák, források és changelog egységes binder/stamp rendszerbe kerültek.",
-      "A mobil navigáció négyoszlopos tabrácsot kapott, az aloldalak fejléce kompaktabb lett.",
+      "A túl nagy, üres hero és a világos papír gimmick kikerült.",
+      "A filter többé nem takarja ki a comp tartalmat scroll közben.",
+      "A desktop comp kártyák gridbe rendeződnek, így kevesebb a szűk, vízszintes görgetés.",
     ],
   },
   {
