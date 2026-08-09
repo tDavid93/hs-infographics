@@ -1,11 +1,13 @@
 import type { BoardState, BuildRoute, CardRef, ChangelogEntry, CommunityPulse, Comp, InfoBlock, ReferenceNote, TimelineRow, Tribe } from "./bg14";
 
-export const updated = "2026-08-06";
+export const updated = "2026-08-09";
 
 export const sources = [
   { label: "Blizzard 36.2 patch notes", href: "https://hearthstone.blizzard.com/en-gb/news/24290432/362-patch-notes" },
   { label: "Blizzard Season 14 announcement", href: "https://playhearthstone.com/en-us/blog/24290433/" },
   { label: "HearthPwn 36.2 patch notes", href: "https://www.hearthpwn.com/news/12583-36-2-patch-notes-battlegrounds-season-14-in-game" },
+  { label: "Blizzard 36.2.1 hotfix forum", href: "https://us.forums.blizzard.com/en/hearthstone/t/3621-hotfix-patch/164300" },
+  { label: "HSBG 36.2.1 hotfix summary", href: "https://hsbg.cards/patch-notes/36.2.1" },
   { label: "HSBG 36.2 visual database", href: "https://hsbg.cards/patch-notes/36.2" },
   { label: "HearthstoneJSON image API", href: "https://hearthstonejson.com/docs/images.html" },
   { label: "r/BobsTavern early discussion", href: "https://www.reddit.com/r/BobsTavern/comments/1v8664a/announcing_battlegrounds_season_14_dark_gifts_of/" },
@@ -13,9 +15,13 @@ export const sources = [
   { label: "YouTube Season 14 guide search", href: "https://www.youtube.com/results?search_query=Hearthstone+Battlegrounds+Season+14+Dark+Gifts+guide" },
   { label: "JeefHS Dark Gift video", href: "https://www.youtube.com/watch?v=Z-16suf9KZY" },
   { label: "dogdog Tasty Lobster Beast video", href: "https://www.youtube.com/watch?v=wi_nvouGX0Y" },
+  { label: "dogdog Fish of N'Zoth Dark Gift video", href: "https://www.youtube.com/watch?v=caFAHGy_ebE" },
   { label: "Sevel Dark Gifts video", href: "https://www.youtube.com/watch?v=WiCIJmfi6IY" },
   { label: "Sevel Dragon build video", href: "https://www.youtube.com/watch?v=dCwe93sXIiM" },
   { label: "Shadybunny Season 14 mechanics review", href: "https://www.youtube.com/watch?v=6IezL5pKS1I" },
+  { label: "Shadybunny Undead/BeterBabbit video", href: "https://www.youtube.com/watch?v=JGU9TeaO6VE" },
+  { label: "Shadybunny Titus/BeterBabbit video", href: "https://www.youtube.com/watch?v=EB2vT38AEPQ" },
+  { label: "dogdog Quilboar video", href: "https://www.youtube.com/watch?v=FZWbxeaiq-w" },
   { label: "HSReplay Tasty Lobstah comp page", href: "https://hsreplay.net/battlegrounds/comps/87/beasts-tasty-lobstah" },
   { label: "HSReplay Season 14 Battlegrounds stats", href: "https://hsreplay.net/battlegrounds/" },
   { label: "r/BobsTavern Dark Gift strategy", href: "https://www.reddit.com/r/BobsTavern/comments/1vfsa9m/thoughts_on_dark_gift_strategy/" },
@@ -37,7 +43,7 @@ export const tribes: { key: Tribe | "all"; label: string }[] = [
 
 const cards = {
   glambot: { name: "Glambot", cardId: "BG36_853", tier: 5, type: "Mech", attack: 6, health: 6, rules: "Whenever you cast a spell on a Mech, <b>Magnetize</b> a 6/6 Satellite to it.", note: "A spell on a Mech creates a 6/6 Satellite." },
-  sparkSnapper: { name: "Spark Snapper", cardId: "BG36_851", tier: 4, type: "Mech", attack: 3, health: 3, rules: "Whenever you play a Mech, <b>Magnetize</b> a 3/3 Satellite to it and improve this.", note: "Mech plays create Satellites and improve future ones." },
+  sparkSnapper: { name: "Spark Snapper", cardId: "BG36_851", tier: 5, type: "Mech", attack: 3, health: 3, rules: "Whenever you play a Mech, <b>Magnetize</b> a 3/3 Satellite to it and improve this.", note: "Tier 5 after 36.2.1; Mech plays create Satellites and improve future ones." },
   droneDuplicator: { name: "Drone Duplicator", cardId: "BG36_506", tier: 4, type: "Mech", attack: 4, health: 4, rules: "<b>Activate (1):</b> The next <b>Magnetization</b> to this minion this turn is doubled.", note: "Activate doubles the next Magnetization." },
   utilityDrone: { name: "Utility Drone", cardId: "BG26_152", tier: 6, type: "Mech", attack: 4, health: 6, rules: "At the end of your turn, give your minions +4/+4 for each <b>Magnetization</b> they have.", note: "End-of-turn scaling for every Magnetic stack." },
   thornedTrailblazer: { name: "Thorned Trailblazer", cardId: "BG31_327", tier: 4, type: "Quilboar", attack: 4, health: 5, rules: "One <b>Choose One</b> card each turn has both effects combined. <i>(1 left!)</i>", note: "Choose One cards can get both effects." },
@@ -84,13 +90,13 @@ const cards = {
 export const comps: Comp[] = [
   {
     tribe: "mech",
-    grade: "S",
+    grade: "A",
     name: "Spell Magnetize Mech",
-    signal: "Best when the lobby gives cheap targeted Tavern spells.",
-    why: "Glambot and Spark Snapper turn normal spell or Mech actions into separate Magnetic bodies, then Utility Drone multiplies the end-of-turn stats.",
+    signal: "Slower after the 36.2.1 hotfix: Spark Snapper is now Tier 5, so the line needs stable spell economy instead of just an early Mech tag.",
+    why: "Glambot and Spark Snapper turn normal spell or Mech actions into separate Magnetic bodies, then Utility Drone multiplies the end-of-turn stats. The Snapper tier nerf keeps the line powerful but makes it less of a clean early S-tier force.",
     cards: [cards.glambot, cards.sparkSnapper, cards.droneDuplicator, cards.utilityDrone],
-    commit: ["Two real Magnetize payoffs by Tavern 4-5.", "Spell economy or Gearfin-style spell generation.", "A board that can split Magnetic buffs across several bodies."],
-    avoid: ["Stacking every Magnetic on one minion into hard removal.", "Taking Glambot without spell access.", "Skipping economy for a perfect T6 search."],
+    commit: ["Two real Magnetize payoffs around Tavern 5.", "Spell economy or Gearfin-style spell generation.", "A board that can split Magnetic buffs across several bodies."],
+    avoid: ["Rolling for Spark Snapper on Tavern 4 after the hotfix.", "Stacking every Magnetic on one minion into hard removal.", "Taking Glambot without spell access."],
   },
   {
     tribe: "quilboar",
@@ -199,7 +205,7 @@ export const giftTimeline: TimelineRow[] = [
   { turn: "7", offer: "Tier 4", use: "Many comps find their first real engine here. Do not greed past board strength." },
   { turn: "8", offer: "Tier 4-5", use: "Strong power-spike window; most lobbies expect top-four stabilization from here." },
   { turn: "9", offer: "Tier 4-6", use: "High-roll search for T6 payoff, but only if your health allows it." },
-  { turn: "10+", offer: "Tier 5-6", use: "Finisher or tech search; it usually will not rescue weak scaling by itself." },
+  { turn: "10+", offer: "Tier 5-6", use: "Finisher or tech search; after 36.2.1, several conditional Gifts no longer appear after Turn 10, so do not rely on infinite late rescue options." },
 ];
 
 export const playbook: InfoBlock[] = [
@@ -208,8 +214,8 @@ export const playbook: InfoBlock[] = [
     body: "A Gift is not free tempo: you are spending 3 Gold for a minion plus an effect, so compare it to your best normal 3-Gold play.",
     points: [
       "Early Gifts are good when they stop bleeding or give direction to an empty board.",
-      "Midgame Gifts are good when they add payoff to an engine you already have, not just a new idea; community strategy questions are clustering around this window.",
-      "Late Gifts are good when you are searching for a T5/T6 payoff, scam, or specific tech; do not save all three uses only for a Turn 10+ highroll.",
+      "Midgame Gifts are good when they add payoff to an engine you already have, not just a new idea; Charisma now lives in the Turn 6-9 window.",
+      "Late Gifts are good when you are searching for a T5/T6 payoff, scam, or specific tech; Battle Scars, Death's Embrace, and Spell Siphon are no longer a default post-Turn 10 plan.",
     ],
   },
   {
@@ -255,10 +261,10 @@ export const boardStates: BoardState[] = [
     title: "Mech Magnetic Engine",
     stage: "Tavern 4-5 board",
     tribe: "mech",
-    board: ["Spark Snapper", "Drone Duplicator", "Glambot", "two separate Magnetic targets", "tempo Divine Shield/taunt"],
+    board: ["Drone Duplicator", "Glambot", "Spark Snapper only after T5", "two separate Magnetic targets", "tempo Divine Shield/taunt"],
     hand: ["cheap targeted Tavern spell", "spare Mech or economy spell"],
     goal: "Do not build one giant minion. The goal is multiple Magnetic stacks across bodies, later multiplied by Utility Drone or duplication effects.",
-    next: ["Cast spells on Mechs that can survive the next fight.", "Activate Drone Duplicator only before meaningful Magnetization.", "On T6, look for Utility Drone or another Magnetic payoff."],
+    next: ["Cast spells on Mechs that can survive the next fight.", "Activate Drone Duplicator only before meaningful Magnetization.", "On T5, look for Snapper/Glambot; on T6, look for Utility Drone or another Magnetic payoff."],
   },
   {
     title: "Quilboar Choose One Setup",
@@ -311,8 +317,8 @@ export const buildRoutes: BuildRoute[] = [
   {
     title: "Stabilizing Gift Route",
     tribe: "mech",
-    opener: "Hold health with early tempo minions and cheap spells, then use a Turn 4-6 Gift to find direction.",
-    midgame: "If Glambot, Spark Snapper, or Drone Duplicator appears, start spreading Magnetic stacks across multiple bodies.",
+    opener: "Hold health with early tempo minions and cheap spells, then use a Turn 4-6 Gift to find direction; no longer plan on a T4 Spark Snapper spike.",
+    midgame: "If Glambot, Spark Snapper, or Drone Duplicator appears around T5, start spreading Magnetic stacks across multiple bodies.",
     late: "Utility Drone, Divine Shield, and scam tech finish the board. One oversized carry is vulnerable.",
     pivots: ["Gearfin can bridge into Murloc spell lines.", "If Magnetic shops are weak, stay in tempo plus Gift discovery mode.", "Without targeted spells, do not commit to Glambot."],
   },
@@ -378,6 +384,12 @@ export const referenceNotes: ReferenceNote[] = [
     href: "https://hsbg.cards/patch-notes/36.2",
   },
   {
+    label: "36.2.1 hotfix",
+    kind: "Hotfix and balance baseline",
+    summary: "The hotfix moved Spark Snapper to Tier 5, narrowed several Dark Gift offer windows, and added bans/bug fixes that make some early highroll shortcuts less reliable.",
+    href: "https://hsbg.cards/patch-notes/36.2.1",
+  },
+  {
     label: "Community and creator videos",
     kind: "Early meta read",
     summary: "Fresh videos and Reddit discussion are focused on Dark Gift timing, Beast/Rally and Lockbox lines, plus client/timer pressure that can cause missed recruit-phase decisions. Treat this as directional, not standalone win-rate data.",
@@ -405,25 +417,32 @@ export const referenceNotes: ReferenceNote[] = [
 
 export const communityPulse: CommunityPulse[] = [
   {
+    title: "Mech is slower after 36.2.1",
+    signal: "The hotfix moved Spark Snapper from Tier 4 to Tier 5, while also changing several Dark Gift offer windows and bans.",
+    confidence: "high",
+    takeaway: "Mech is still a strong engine, but the overview and comp page now list it as A-tier until new stats or creator consensus justify moving it back to S.",
+    sources: ["Blizzard 36.2.1 hotfix forum", "HSBG 36.2.1 hotfix summary"],
+  },
+  {
     title: "New Dark Gift videos reinforce the midgame Gift window",
-    signal: "Fresh JeefHS and Sevel Dark Gift content, plus the Reddit strategy thread, all point to Gift being strongest when you already have direction but are not only fishing for a T6 rescue.",
+    signal: "JeefHS and Sevel Dark Gift content, plus the 36.2.1 Gift-window changes, point to Gift being strongest when you already have direction but are not only fishing for a T6 rescue.",
     confidence: "medium",
     takeaway: "The strategy page keeps Turn 6-8 as the key Gift decision point: look for engine pieces or payoffs instead of saving every button press for a late highroll.",
-    sources: ["JeefHS Dark Gift video", "Sevel Dark Gifts video", "r/BobsTavern Dark Gift strategy"],
+    sources: ["JeefHS Dark Gift video", "Sevel Dark Gifts video", "Blizzard 36.2.1 hotfix forum"],
   },
   {
     title: "Tasty Lobster Beasts are a real route now",
-    signal: "Recent creator videos, HSReplay's named Tasty Lobstah page, the HSReplay comps listing, and the HSBG card pool all line up around repeated Lobster Deathrattles, Hoarding Hyena, and Deathstrider.",
+    signal: "dogdog's fresh Fish of N'Zoth/Dark Gift video, the earlier Tasty Lobster route, HSReplay's Tasty Lobstah page, and the HSBG card pool all keep pointing toward repeated Deathrattle/Rally value as a real Beast direction.",
     confidence: "medium",
     takeaway: "The overview snapshot now treats Beast as A-tier, but only when you can repeat Lobster triggers and manage left-most positioning.",
-    sources: ["dogdog Tasty Lobster Beast video", "HSReplay Tasty Lobstah comp page", "HSReplay Season 14 Battlegrounds stats", "HSBG 36.2 visual database"],
+    sources: ["dogdog Fish of N'Zoth Dark Gift video", "dogdog Tasty Lobster Beast video", "HSReplay Tasty Lobstah comp page", "HSBG 36.2 visual database"],
   },
   {
-    title: "Quilboar, Beast, Undead, and Elemental are drawing the most early attention",
-    signal: "Creator/video results and Reddit comments are making Beast Lobster, Quilboar, Undead, and Elemental the most visible high-ceiling packages, while plenty of players are also curious about Pirate Lockbox.",
+    title: "Quilboar, Beast, and Undead have the clearest creator-backed signals",
+    signal: "dogdog's new Quilboar video, Shadybunny/BeterBabbit Undead and Titus videos, and Beast videos give those packages the most repeated high-ceiling signals across multiple creators.",
     confidence: "medium",
-    takeaway: "Mech and Quilboar stay on top for engine clarity; Beast is A-tier, Elemental remains A-tier, and Pirate stays a B-tier greed route because it still needs payoff and tempo together.",
-    sources: ["YouTube Season 14 guide search", "r/BobsTavern live feed", "r/BobsTavern Dark Gift strategy"],
+    takeaway: "Quilboar is now the only clean S-tier in the snapshot; Beast and Undead stay A-tier, and Mech moves to A after the Snapper nerf.",
+    sources: ["dogdog Quilboar video", "Shadybunny Undead/BeterBabbit video", "Shadybunny Titus/BeterBabbit video", "YouTube Season 14 guide search"],
   },
   {
     title: "The Reddit feed is better for highroll examples than tier lists",
@@ -456,6 +475,17 @@ export const communityPulse: CommunityPulse[] = [
 ];
 
 export const changelog: ChangelogEntry[] = [
+  {
+    date: "2026-08-09",
+    title: "36.2.1 hotfix and wider creator check",
+    summary: "The guide was updated using the 36.2.1 hotfix, Blizzard forum post, HSBG hotfix page, and fresh dogdog plus Shadybunny/BeterBabbit videos.",
+    changes: [
+      "Updated Spark Snapper to Tier 5 and moved Mech to A-tier because its midgame spike is slower.",
+      "Updated Dark Gift timing advice for the 36.2.1 offer-window changes.",
+      "Added 36.2.1 hotfix sources and newer dogdog/Shadybunny/BeterBabbit creator videos.",
+      "Separated hotfix impact, Beast Deathrattle/Rally signals, and Quilboar/Undead creator consensus in Community Pulse.",
+    ],
+  },
   {
     date: "2026-08-06",
     title: "Fresh video and community feedback update",

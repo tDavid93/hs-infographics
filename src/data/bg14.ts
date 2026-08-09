@@ -85,7 +85,7 @@ export type ChangelogEntry = {
   changes: string[];
 };
 
-export const updated = "2026-08-06";
+export const updated = "2026-08-09";
 
 export const sources = [
   {
@@ -99,6 +99,14 @@ export const sources = [
   {
     label: "HearthPwn 36.2 patch jegyzetek",
     href: "https://www.hearthpwn.com/news/12583-36-2-patch-notes-battlegrounds-season-14-in-game",
+  },
+  {
+    label: "Blizzard 36.2.1 hotfix fórum",
+    href: "https://us.forums.blizzard.com/en/hearthstone/t/3621-hotfix-patch/164300",
+  },
+  {
+    label: "HSBG 36.2.1 hotfix összefoglaló",
+    href: "https://hsbg.cards/patch-notes/36.2.1",
   },
   {
     label: "HSBG 36.2 vizuális adatbázis",
@@ -129,6 +137,10 @@ export const sources = [
     href: "https://www.youtube.com/watch?v=wi_nvouGX0Y",
   },
   {
+    label: "dogdog Fish of N'Zoth Dark Gift videó",
+    href: "https://www.youtube.com/watch?v=caFAHGy_ebE",
+  },
+  {
     label: "Sevel Dark Gifts videó",
     href: "https://www.youtube.com/watch?v=WiCIJmfi6IY",
   },
@@ -139,6 +151,18 @@ export const sources = [
   {
     label: "Shadybunny Season 14 mechanika review",
     href: "https://www.youtube.com/watch?v=6IezL5pKS1I",
+  },
+  {
+    label: "Shadybunny Undead/BeterBabbit videó",
+    href: "https://www.youtube.com/watch?v=JGU9TeaO6VE",
+  },
+  {
+    label: "Shadybunny Titus/BeterBabbit videó",
+    href: "https://www.youtube.com/watch?v=EB2vT38AEPQ",
+  },
+  {
+    label: "dogdog Quilboar videó",
+    href: "https://www.youtube.com/watch?v=FZWbxeaiq-w",
   },
   {
     label: "HSReplay Tasty Lobstah comp oldal",
@@ -171,18 +195,18 @@ export const tribes: { key: Tribe | "all"; label: string }[] = [
 export const comps: Comp[] = [
   {
     tribe: "mech",
-    grade: "S",
+    grade: "A",
     name: "Spell Magnetize Mech",
-    signal: "Akkor a legjobb, ha a lobby olcsó célzott Tavern spelleket ad.",
-    why: "A Glambot és a Spark Snapper a normál spell- vagy Mech-akciókat külön Magnetic testekké alakítja, majd a Utility Drone megsokszorozza a kör végi statokat.",
+    signal: "A 36.2.1 hotfix után lassabb: Spark Snapper már Tier 5, ezért stabil spell-gazdaság kell, nem csak korai Mech tag.",
+    why: "A Glambot és a Spark Snapper a normál spell- vagy Mech-akciókat külön Magnetic testekké alakítja, majd a Utility Drone megsokszorozza a kör végi statokat. A Snapper tier nerf miatt a vonal erős maradt, de kevésbé tiszta korai S-tier force.",
     cards: [
       { name: "Glambot", cardId: "BG36_853", tier: 5, type: "Mech", attack: 6, health: 6, rules: "Amikor spell-t használsz egy Mechen, <b>Magnetize</b> egy 6/6-os Satellite-et rá.", note: "A Mechre célzott spellből 6/6-os Satellite lesz." },
-      { name: "Spark Snapper", cardId: "BG36_851", tier: 4, type: "Mech", attack: 3, health: 3, rules: "Amikor kijátszol egy Mechet, <b>Magnetize</b> egy 3/3-as Satellite-et rá, és ezt javítja.", note: "A Mech kijátszások Satellite-eket és további javulást adnak." },
+      { name: "Spark Snapper", cardId: "BG36_851", tier: 5, type: "Mech", attack: 3, health: 3, rules: "Amikor kijátszol egy Mechet, <b>Magnetize</b> egy 3/3-as Satellite-et rá, és ezt javítja.", note: "36.2.1 után Tier 5; a Mech kijátszások Satellite-eket és további javulást adnak." },
       { name: "Drone Duplicator", cardId: "BG36_506", tier: 4, type: "Mech", attack: 4, health: 4, rules: "<b>Activate (1):</b> A következő <b>Magnetization</b> erre a lényre ebben a körben duplázódik.", note: "Az Activate megduplázza a következő Magnetizationt." },
       { name: "Utility Drone", cardId: "BG26_152", tier: 6, type: "Mech", attack: 4, health: 6, rules: "A köröd végén adj a lényeidnek +4/+4-et minden rajtuk lévő <b>Magnetization</b> után.", note: "Kör végi skálázás minden Magnetic stack után." },
     ],
-    commit: ["Két valódi Magnetize payoff megvan Tavern 4-5 körül.", "Van spell-gazdaság vagy Gearfin-szerű spelltermelés.", "A board több testen is tudja szétosztani a Magnetic buffokat."],
-    avoid: ["Minden Magneticet egyetlen lényre pakolni, amit könnyű kiszedni.", "Glambotot venni spellhozzáférés nélkül.", "Gazdaság nélkül a tökéletes T6-ot rollolni."],
+    commit: ["Két valódi Magnetize payoff megvan Tavern 5 körül.", "Van spell-gazdaság vagy Gearfin-szerű spelltermelés.", "A board több testen is tudja szétosztani a Magnetic buffokat."],
+    avoid: ["Tavern 4-en Spark Snapperre rollolni a hotfix után.", "Minden Magneticet egyetlen lényre pakolni, amit könnyű kiszedni.", "Glambotot venni spellhozzáférés nélkül."],
   },
   {
     tribe: "quilboar",
@@ -335,7 +359,7 @@ export const giftTimeline: TimelineRow[] = [
   { turn: "7", offer: "Tier 4", use: "Sok comp itt találja meg az első valódi motorját. Board előtt ne greedelj túl." },
   { turn: "8", offer: "Tier 4-5", use: "Erős power spike ablak; a legtöbb lobbiban innen már top 4 stabilizációt vársz." },
   { turn: "9", offer: "Tier 4-6", use: "High-roll keresés T6 payoffra, de csak akkor, ha az életerőd engedi." },
-  { turn: "10+", offer: "Tier 5-6", use: "Finisher vagy tech keresés; a gyenge scalinget ilyenkor már nem menti meg önmagában." },
+  { turn: "10+", offer: "Tier 5-6", use: "Finisher vagy tech keresés; a 36.2.1 hotfix után több kondicionális Gift már nem jelenik meg Turn 10 után, ezért ne számolj végtelen késői mentőövvel." },
 ];
 
 export const playbook: InfoBlock[] = [
@@ -344,8 +368,8 @@ export const playbook: InfoBlock[] = [
     body: "A Gift nem ingyenes tempo: 3 aranyért miniont és hatást veszel, ezért mindig a köröd legjobb három aranyas play-ével hasonlítsd össze.",
     points: [
       "Korán akkor jó, ha megállítja a vérzést vagy irányt ad egy üres boardnak.",
-      "Középen akkor jó, ha létező engine-hez ad payoffot, nem csak új ötletet nyit; a közösségi kérdések is főleg ezt a döntési ablakot feszegetik.",
-      "Későn akkor jó, ha T5/T6 payoffot, scamet vagy célzott techet keresel; ne tartsd mindhárom használatot csak Turn 10+ highrollra.",
+      "Középen akkor jó, ha létező engine-hez ad payoffot, nem csak új ötletet nyit; Charisma például már Turn 6-9 ablakba került.",
+      "Későn akkor jó, ha T5/T6 payoffot, scamet vagy célzott techet keresel; Battle Scars, Death's Embrace és Spell Siphon Turn 10 után már nem alap terv.",
     ],
   },
   {
@@ -391,10 +415,10 @@ export const boardStates: BoardState[] = [
     title: "Mech Magnetic motor",
     stage: "Tavern 4-5 board",
     tribe: "mech",
-    board: ["Spark Snapper", "Drone Duplicator", "Glambot", "két külön Magnetic célpont", "tempo Divine Shield/taunt"],
+    board: ["Drone Duplicator", "Glambot", "Spark Snapper csak T5 után", "két külön Magnetic célpont", "tempo Divine Shield/taunt"],
     hand: ["olcsó célzott Tavern spell", "tartalék Mech vagy economy spell"],
     goal: "Ne egyetlen óriást építs. A cél több külön Magnetic stack, amelyet Utility Drone vagy duplication effekt később megsokszoroz.",
-    next: ["Használj spelleket olyan Mechre, amely túléli a következő fightot.", "Drone Duplicatort csak értelmes Magnetization előtt aktiváld.", "T6-on Utility Drone vagy további Magnetic payoff felé keress."],
+    next: ["Használj spelleket olyan Mechre, amely túléli a következő fightot.", "Drone Duplicatort csak értelmes Magnetization előtt aktiváld.", "T5-ön Snapper/Glambot, T6-on Utility Drone vagy további Magnetic payoff felé keress."],
   },
   {
     title: "Quilboar Choose One setup",
@@ -447,8 +471,8 @@ export const buildRoutes: BuildRoute[] = [
   {
     title: "Stabilizáló Gift útvonal",
     tribe: "mech",
-    opener: "Korai tempó minionokkal és olcsó spellekkel tartsd az HP-t, majd Turn 4-6 között Giftből keress directiont.",
-    midgame: "Ha Glambot/Spark Snapper/Drone Duplicator vonal jön, kezdd szétosztani a Magnetic stackeket több testre.",
+    opener: "Korai tempó minionokkal és olcsó spellekkel tartsd az HP-t, majd Turn 4-6 között Giftből keress directiont; Spark Snapperre már ne tervezz T4 spike-ot.",
+    midgame: "Ha Glambot/Spark Snapper/Drone Duplicator vonal jön T5 körül, kezdd szétosztani a Magnetic stackeket több testre.",
     late: "Utility Drone, Divine Shield és scam tech zárja le a boardot. A túl nagy single carry sebezhető.",
     pivots: ["Gearfin Murloc spell-vonalba átvezethet.", "Gyenge Magnetic shop esetén maradj tempo + Gift discovery módban.", "Ha nincs célzott spell, ne commitolj Glambotra."],
   },
@@ -514,6 +538,12 @@ export const referenceNotes: ReferenceNote[] = [
     href: "https://hsbg.cards/patch-notes/36.2",
   },
   {
+    label: "36.2.1 hotfix",
+    kind: "Hotfix és balance baseline",
+    summary: "A hotfix Spark Snappert Tier 5-re tette, szűkítette több Dark Gift ajánlási ablakát, és több ban/bugfix miatt kevésbé megbízható néhány korai highroll shortcut.",
+    href: "https://hsbg.cards/patch-notes/36.2.1",
+  },
+  {
     label: "Community and creator videos",
     kind: "Korai meta olvasat",
     summary: "A friss videók és Reddit beszélgetések főleg a Dark Gift timingot, a Beast/Rally és Lockbox irányokat, illetve a kliens/időnyomás miatti döntési hibákat emelik ki. Ezt irányjelként, nem önálló win-rate adatként kezeljük.",
@@ -541,25 +571,32 @@ export const referenceNotes: ReferenceNote[] = [
 
 export const communityPulse: CommunityPulse[] = [
   {
+    title: "36.2.1 után a Mech lassabb lett",
+    signal: "A hotfix Spark Snappert Tier 4-ről Tier 5-re mozgatta, miközben több Dark Gift offer-window és ban is változott.",
+    confidence: "high",
+    takeaway: "A Mech továbbra is erős engine, de a főoldalon és comp oldalon A-tierként szerepel, amíg újabb stat/creator konszenzus nem indokol S-tier visszaemelést.",
+    sources: ["Blizzard 36.2.1 hotfix fórum", "HSBG 36.2.1 hotfix összefoglaló"],
+  },
+  {
     title: "A friss Dark Gift videók a középső Gift ablakot erősítik",
-    signal: "JeefHS és Sevel friss Dark Gift tartalma, valamint a Reddit stratégiai thread is arról szól, hogy a Gift akkor a legerősebb, amikor már van irányod, de még nem csak T6 mentőövet keresel.",
+    signal: "JeefHS és Sevel Dark Gift tartalma, valamint a 36.2.1 Gift-window változások is azt erősítik, hogy a Gift akkor a legerősebb, amikor már van irányod, de még nem csak T6 mentőövet keresel.",
     confidence: "medium",
     takeaway: "A stratégia oldalon a Turn 6-8 Gift marad a fő döntési pont: engine-darabot vagy payoffot keress, ne csak késői highrollra tartogasd a gombot.",
-    sources: ["JeefHS Dark Gift videó", "Sevel Dark Gifts videó", "r/BobsTavern Dark Gift stratégia"],
+    sources: ["JeefHS Dark Gift videó", "Sevel Dark Gifts videó", "Blizzard 36.2.1 hotfix fórum"],
   },
   {
     title: "A Tasty Lobster Beast most már valódi route",
-    signal: "Friss creator videók, a HSReplay Tasty Lobstah oldala, a HSReplay comp lista és a HSBG card pool ugyanarra mutat: ismételt Lobster Deathrattle, Hoarding Hyena és Deathstrider.",
+    signal: "dogdog friss Fish of N'Zoth/Dark Gift videója, a korábbi Tasty Lobster route, a HSReplay Tasty Lobstah oldala és a HSBG card pool ugyanarra mutat: ismételt Deathrattle/Rally érték továbbra is valós Beast irány.",
     confidence: "medium",
     takeaway: "A főoldali snapshot is A-tierként kezeli a Beastet, de csak akkor ajánlott, ha ismételni tudod a Lobster triggereket és kontrollálod a bal szélső pozíciót.",
-    sources: ["dogdog Tasty Lobster Beast videó", "HSReplay Tasty Lobstah comp oldal", "HSReplay Season 14 Battlegrounds statok", "HSBG 36.2 vizuális adatbázis"],
+    sources: ["dogdog Fish of N'Zoth Dark Gift videó", "dogdog Tasty Lobster Beast videó", "HSReplay Tasty Lobstah comp oldal", "HSBG 36.2 vizuális adatbázis"],
   },
   {
-    title: "Quilboar, Beast, Undead és Elemental kapja a legtöbb korai figyelmet",
-    signal: "A creator/video találatok és Reddit kommentek alapján a Beast Lobster, Quilboar, Undead és Elemental a legtöbbet emlegetett high-ceiling csomag, miközben Pirate Lockboxra is sokan kíváncsiak.",
+    title: "Quilboar, Beast és Undead marad a legtöbb creator-backed jel",
+    signal: "dogdog új Quilboar anyaga, Shadybunny/BeterBabbit Undead és Titus videói, valamint a Beast videók alapján ezek adják a legtöbb ismétlődő high-ceiling jelet több creatornál.",
     confidence: "medium",
-    takeaway: "A Mech és Quilboar marad felül engine-tisztaság miatt; Beast A-tier, Elemental A-tier, Pirate pedig továbbra is B-tier greed route, mert még payoff és tempo együtt kell hozzá.",
-    sources: ["YouTube Season 14 guide keresés", "r/BobsTavern friss feed", "r/BobsTavern Dark Gift stratégia"],
+    takeaway: "Quilboar marad az egyetlen tiszta S-tier a snapshotban; Beast és Undead A-tier, Mech A-tierre csúszik a Snapper nerf miatt.",
+    sources: ["dogdog Quilboar videó", "Shadybunny Undead/BeterBabbit videó", "Shadybunny Titus/BeterBabbit videó", "YouTube Season 14 guide keresés"],
   },
   {
     title: "A Reddit feed inkább highrollokat mutat, nem stabil tierlistát",
@@ -592,6 +629,17 @@ export const communityPulse: CommunityPulse[] = [
 ];
 
 export const changelog: ChangelogEntry[] = [
+  {
+    date: "2026-08-09",
+    title: "36.2.1 hotfix és több creator check",
+    summary: "A guide frissült a 36.2.1 hotfix, Blizzard fórumposzt, HSBG hotfix oldal, valamint dogdog és Shadybunny/BeterBabbit friss videói alapján.",
+    changes: [
+      "Spark Snapper Tier 5-re frissült, a Mech comp A-tier lett a lassabb midgame spike miatt.",
+      "A Dark Gift timing tanács bekerítette a 36.2.1 offer-window változásokat.",
+      "Bekerültek a 36.2.1 hotfix források és új dogdog/Shadybunny/BeterBabbit videók.",
+      "A community pulse külön jelzi a hotfix hatását, a Beast Deathrattle/Rally jeleket és a Quilboar/Undead creator konszenzust.",
+    ],
+  },
   {
     date: "2026-08-06",
     title: "Friss videó és közösségi feedback update",
